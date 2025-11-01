@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+const projects = [
+  {
+    title: "Boulangerie Artisanale",
+    category: "Boulangerie",
+    description: "Site vitrine moderne avec présentation des produits, horaires et système de pré-commande.",
+    features: ["Design chaleureux", "Galerie de produits", "Formulaire de commande", "SEO local"],
+    color: "from-amber-500 to-orange-600",
+    icon: "bakery"
+  },
+  {
+    title: "Pizzeria Bella Napoli",
+    category: "Restaurant",
+    description: "Site avec menu interactif, commande en ligne et intégration avec les services de livraison.",
+    features: ["Menu digital", "Commande en ligne", "Responsive mobile", "Intégration Google Maps"],
+    color: "from-red-500 to-rose-600",
+    icon: "pizza"
+  },
+  {
+    title: "Salon de Coiffure Élégance",
+    category: "Beauté",
+    description: "Site élégant avec présentation des services, galerie avant/après et prise de rendez-vous en ligne.",
+    features: ["Réservation en ligne", "Galerie photos", "Présentation équipe", "Blog beauté"],
+    color: "from-pink-500 to-purple-600",
+    icon: "salon"
+  },
+  {
+    title: "Garage Mécanique Pro",
+    category: "Automobile",
+    description: "Site professionnel pour garage automobile avec services, tarifs et prise de rendez-vous.",
+    features: ["Services détaillés", "Devis en ligne", "Témoignages clients", "Coordonnées"],
+    color: "from-gray-600 to-slate-700",
+    icon: "garage"
+  },
+  {
+    title: "Boutique Mode & Style",
+    category: "Commerce",
+    description: "Site e-commerce pour boutique de vêtements avec catalogue produits et paiement sécurisé.",
+    features: ["Catalogue en ligne", "Panier d'achat", "Paiement sécurisé", "Mode responsive"],
+    color: "from-indigo-500 to-blue-600",
+    icon: "boutique"
+  },
+  {
+    title: "Cabinet Dentaire Sourire",
+    category: "Santé",
+    description: "Site médical professionnel avec informations sur les soins et prise de rendez-vous facile.",
+    features: ["Présentation soins", "RDV en ligne", "Infos pratiques", "Urgences"],
+    color: "from-teal-500 to-cyan-600",
+    icon: "dental"
+  }
+];
+---
+
+<BaseLayout title="Portfolio - Loire Digital" description="Découvrez nos réalisations de sites web pour commerces locaux à Saint-Étienne. Exemples de sites pour boulangeries, restaurants, salons et plus encore.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-loire-blue-600 to-loire-blue-800 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Notre Portfolio
+        </h1>
+        <p class="text-xl text-blue-100">
+          Découvrez des exemples de sites web que nous pouvons créer pour votre commerce.
+          Chaque projet est unique et personnalisé selon vos besoins.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="py-8 bg-white border-b border-gray-200 sticky top-[73px] z-40">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap gap-3 justify-center">
+        <button class="filter-btn active px-6 py-2 rounded-full font-semibold transition-all" data-filter="all">
+          Tous les projets
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="Boulangerie">
+          Boulangeries
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="Restaurant">
+          Restaurants
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="Beauté">
+          Beauté & Bien-être
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="Commerce">
+          Commerces
+        </button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all" data-filter="Santé">
+          Santé
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Grid -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+        {projects.map((project) => (
+          <div class="project-card bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 group" data-category={project.category}>
+            <!-- Mockup Preview -->
+            <div class={`relative h-64 bg-gradient-to-br ${project.color} flex items-center justify-center overflow-hidden`}>
+              <div class="absolute inset-0 bg-grid-white/[0.1] bg-[size:20px_20px]"></div>
+              <div class="relative z-10 text-center">
+                <div class="text-white mb-4 transform group-hover:scale-110 transition-transform duration-300 flex justify-center">
+                  <Icon name={project.icon} size={80} />
+                </div>
+                <div class="bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg mx-4">
+                  <p class="text-gray-800 font-semibold">Exemple de site</p>
+                </div>
+              </div>
+
+              <!-- Browser mockup -->
+              <div class="absolute top-4 left-4 right-4 bg-white rounded-t-lg shadow-lg opacity-90 group-hover:opacity-100 transition-opacity">
+                <div class="flex items-center space-x-2 p-2 border-b border-gray-200">
+                  <div class="flex space-x-1">
+                    <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                    <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                    <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                  </div>
+                  <div class="flex-1 bg-gray-100 rounded px-2 py-0.5 text-[8px] text-gray-500">
+                    loiredigital.fr/{project.category.toLowerCase()}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Info -->
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-sm font-semibold text-loire-blue-600 bg-loire-blue-50 px-3 py-1 rounded-full">
+                  {project.category}
+                </span>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-3 text-gray-900">
+                {project.title}
+              </h3>
+
+              <p class="text-gray-600 mb-4">
+                {project.description}
+              </p>
+
+              <div class="space-y-2">
+                <p class="text-sm font-semibold text-gray-700">Fonctionnalités :</p>
+                <div class="flex flex-wrap gap-2">
+                  {project.features.map((feature) => (
+                    <span class="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full">
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div class="mt-6 pt-6 border-t border-gray-200">
+                <a href="/devis" class="text-loire-blue-600 font-semibold hover:text-loire-blue-700 inline-flex items-center group/link">
+                  Commander un site similaire
+                  <svg class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-20">
+        <div class="text-gray-400 mb-4 flex justify-center"><Icon name="search" size={64} /></div>
+        <h3 class="text-2xl font-bold text-gray-900 mb-2">Aucun projet trouvé</h3>
+        <p class="text-gray-600">Essayez un autre filtre pour voir plus de projets.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title">De l'idée à la réalité</h2>
+        <p class="section-subtitle mx-auto">
+          Votre projet mérite le meilleur. Découvrez notre processus de création.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-20 h-20 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-loire-blue-600">
+            <Icon name="chat" size={40} />
+          </div>
+          <h3 class="text-xl font-bold mb-2">1. Discussion</h3>
+          <p class="text-gray-600">
+            Nous discutons de vos besoins, objectifs et de l'identité de votre commerce.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-loire-blue-600">
+            <Icon name="palette" size={40} />
+          </div>
+          <h3 class="text-xl font-bold mb-2">2. Design</h3>
+          <p class="text-gray-600">
+            Création d'une maquette personnalisée qui reflète votre image de marque.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-loire-blue-600">
+            <Icon name="code" size={40} />
+          </div>
+          <h3 class="text-xl font-bold mb-2">3. Développement</h3>
+          <p class="text-gray-600">
+            Développement professionnel avec les dernières technologies web.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-20 h-20 bg-loire-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-loire-blue-600">
+            <Icon name="rocket" size={40} />
+          </div>
+          <h3 class="text-xl font-bold mb-2">4. Lancement</h3>
+          <p class="text-gray-600">
+            Mise en ligne de votre site avec formation et support inclus.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="section-title">Ce qui est inclus dans chaque projet</h2>
+        <p class="section-subtitle mx-auto">
+          Des sites web complets, performants et prêts à générer des résultats
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-loire-blue-600"><Icon name="smartphone" size={32} /></div>
+            <div>
+              <h3 class="font-bold mb-2">Design Responsive</h3>
+              <p class="text-sm text-gray-600">Parfait sur mobile, tablette et ordinateur</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-loire-blue-600"><Icon name="zap" size={32} /></div>
+            <div>
+              <h3 class="font-bold mb-2">Performances optimales</h3>
+              <p class="text-sm text-gray-600">Temps de chargement ultra-rapides</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-loire-blue-600"><Icon name="search" size={32} /></div>
+            <div>
+              <h3 class="font-bold mb-2">SEO optimisé</h3>
+              <p class="text-sm text-gray-600">Bien référencé sur Google dès le départ</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-loire-blue-600"><Icon name="lock" size={32} /></div>
+            <div>
+              <h3 class="font-bold mb-2">Sécurisé (HTTPS)</h3>
+              <p class="text-sm text-gray-600">Certificat SSL inclus pour la sécurité</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-loire-blue-600"><Icon name="mail" size={32} /></div>
+            <div>
+              <h3 class="font-bold mb-2">Formulaire de contact</h3>
+              <p class="text-sm text-gray-600">Restez connecté avec vos clients</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <div class="flex items-start space-x-4">
+            <div class="text-loire-blue-600"><Icon name="graduation" size={32} /></div>
+            <div>
+              <h3 class="font-bold mb-2">Formation incluse</h3>
+              <p class="text-sm text-gray-600">Apprenez à gérer votre site facilement</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-loire-blue-600 to-loire-blue-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Prêt à lancer votre projet ?
+      </h2>
+      <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+        Ces exemples vous inspirent ? Créons ensemble un site unique
+        qui correspond parfaitement à votre commerce.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/devis" class="btn-primary bg-white text-loire-blue-600 hover:bg-gray-100">
+          Obtenir un devis gratuit
+        </a>
+        <a href="/contact" class="btn-secondary border-white text-white hover:bg-white/10">
+          Discuter de mon projet
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Portfolio filtering
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const projectCards = document.querySelectorAll('.project-card');
+      const emptyState = document.getElementById('empty-state');
+      const projectsGrid = document.getElementById('projects-grid');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const filter = button.getAttribute('data-filter');
+
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          // Filter projects
+          let visibleCount = 0;
+          projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            if (filter === 'all' || category === filter) {
+              card.style.display = 'block';
+              visibleCount++;
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          // Show/hide empty state
+          if (visibleCount === 0) {
+            projectsGrid?.classList.add('hidden');
+            emptyState?.classList.remove('hidden');
+          } else {
+            projectsGrid?.classList.remove('hidden');
+            emptyState?.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .filter-btn {
+      @apply bg-gray-100 text-gray-700 hover:bg-loire-blue-100 hover:text-loire-blue-700;
+    }
+
+    .filter-btn.active {
+      @apply bg-loire-blue-600 text-white hover:bg-loire-blue-700;
+    }
+
+    .bg-grid-white\/\[0\.1\] {
+      background-image: linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    }
+  </style>
+</BaseLayout>

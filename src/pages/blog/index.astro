@@ -1,0 +1,190 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const allPosts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) => {
+  return new Intl.DateTimeFormat('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date);
+};
+---
+
+<BaseLayout title="Blog - Loire Digital" description="Conseils et guides pour les commerces locaux : SEO, création de sites web, marketing digital et transformation numérique à Saint-Étienne.">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-loire-blue-600 to-loire-blue-800 text-white py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Blog
+        </h1>
+        <p class="text-xl text-blue-100">
+          Conseils, guides et actualités pour développer votre présence en ligne
+          et faire grandir votre commerce à Saint-Étienne.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-5xl mx-auto">
+        {allPosts.length === 0 ? (
+          <div class="text-center py-20">
+            <p class="text-gray-600 text-lg">Aucun article pour le moment. Revenez bientôt !</p>
+          </div>
+        ) : (
+          <div class="grid grid-cols-1 gap-12">
+            {allPosts.map((post, index) => (
+              <article class="flex flex-col md:flex-row gap-8 pb-12 border-b border-gray-200 last:border-0">
+                {/* Post Image/Icon */}
+                <div class="md:w-72 flex-shrink-0">
+                  <div class="aspect-video bg-gradient-to-br from-loire-blue-100 to-blue-100 rounded-xl flex items-center justify-center">
+                    {post.data.image ? (
+                      <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover rounded-xl" />
+                    ) : (
+                      <div class="text-center">
+                        <div class="text-6xl mb-3">
+                          {post.data.tags.includes('SEO') ? '🔍' :
+                           post.data.tags.includes('tarifs') ? '💰' :
+                           post.data.tags.includes('commerce local') ? '🏪' : '📝'}
+                        </div>
+                        <p class="text-loire-blue-600 font-semibold px-4">
+                          {post.data.title.split(' ').slice(0, 3).join(' ')}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Post Content */}
+                <div class="flex-1">
+                  <div class="flex flex-wrap gap-2 mb-3">
+                    {post.data.tags.map((tag: string) => (
+                      <span class="text-xs bg-loire-blue-100 text-loire-blue-700 px-3 py-1 rounded-full font-medium">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-3 hover:text-loire-blue-600 transition-colors">
+                    <a href={`/blog/${post.slug}`}>
+                      {post.data.title}
+                    </a>
+                  </h2>
+
+                  <div class="flex items-center text-sm text-gray-500 mb-4">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <time datetime={post.data.pubDate.toISOString()}>
+                      {formatDate(post.data.pubDate)}
+                    </time>
+                    <span class="mx-2">•</span>
+                    <span>{post.data.author}</span>
+                  </div>
+
+                  <p class="text-gray-600 mb-6 leading-relaxed">
+                    {post.data.description}
+                  </p>
+
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="inline-flex items-center text-loire-blue-600 font-semibold hover:text-loire-blue-700 group"
+                  >
+                    Lire l'article complet
+                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">
+          Restez informé
+        </h2>
+        <p class="text-gray-600 mb-8">
+          Recevez nos meilleurs conseils pour développer votre commerce en ligne directement dans votre boîte mail.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="votre@email.fr"
+            class="flex-1 px-6 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-loire-blue-600 focus:border-transparent outline-none"
+            required
+          />
+          <button type="submit" class="btn-primary whitespace-nowrap">
+            S'inscrire
+          </button>
+        </form>
+        <p class="text-xs text-gray-500 mt-4">
+          Pas de spam. Vous pouvez vous désinscrire à tout moment.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Sujets populaires</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+            <div class="text-3xl mb-2">🏪</div>
+            <div class="font-semibold">Commerce local</div>
+          </a>
+          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+            <div class="text-3xl mb-2">🔍</div>
+            <div class="font-semibold">SEO Local</div>
+          </a>
+          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+            <div class="text-3xl mb-2">💰</div>
+            <div class="font-semibold">Tarifs & Budget</div>
+          </a>
+          <a href="/blog" class="card text-center hover:border-loire-blue-600 border-2 border-transparent">
+            <div class="text-3xl mb-2">🎨</div>
+            <div class="font-semibold">Design Web</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-loire-blue-600 to-loire-blue-800 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Prêt à passer à l'action ?
+      </h2>
+      <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+        Ces conseils vous ont convaincu ? Créons ensemble le site web qui fera
+        décoller votre commerce à Saint-Étienne.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="/devis" class="btn-primary bg-white text-loire-blue-600 hover:bg-gray-100">
+          Obtenir un devis gratuit
+        </a>
+        <a href="/contact" class="btn-secondary border-white text-white hover:bg-white/10">
+          Discuter de mon projet
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

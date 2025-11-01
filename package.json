@@ -1,0 +1,26 @@
+{
+  "name": "vitrine-loire-digital",
+  "version": "1.0.0",
+  "description": "Loire Digital - Création de sites web pour commerces locaux à Saint-Étienne",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": ["web design", "saint-etienne", "loire", "freelance"],
+  "author": "Loire Digital",
+  "license": "MIT",
+  "dependencies": {
+    "@astrojs/react": "^4.4.1",
+    "@astrojs/tailwind": "^6.0.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "astro": "^5.15.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^3.4.18"
+  }
+}

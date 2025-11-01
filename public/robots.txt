@@ -1,0 +1,5 @@
+# robots.txt for Loire Digital
+User-agent: *
+Allow: /
+
+Sitemap: https://loiredigital.fr/sitemap-index.xml

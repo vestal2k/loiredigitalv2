@@ -1,0 +1,157 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Loire Digital - Création de sites web à Saint-Étienne',
+  description = 'Création de sites web professionnels pour les commerces locaux de Saint-Étienne et sa région. Design moderne, SEO optimisé et prix transparents.'
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="création site web, Saint-Étienne, Loire, site internet, web design, commerce local, freelance" />
+    <meta name="author" content="Loire Digital" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+          <a href="/" class="flex items-center space-x-2">
+            <div class="w-10 h-10 bg-gradient-to-br from-loire-blue-600 to-loire-blue-800 rounded-lg flex items-center justify-center">
+              <span class="text-white font-bold text-xl">LD</span>
+            </div>
+            <span class="text-xl font-bold text-gray-900">Loire Digital</span>
+          </a>
+
+          <ul class="hidden md:flex items-center space-x-8">
+            <li><a href="/" class="text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Accueil</a></li>
+            <li><a href="/services" class="text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Services</a></li>
+            <li><a href="/portfolio" class="text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Portfolio</a></li>
+            <li><a href="/devis" class="text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Devis</a></li>
+            <li><a href="/blog" class="text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Blog</a></li>
+            <li><a href="/contact" class="btn-primary">Contact</a></li>
+          </ul>
+
+          <!-- Mobile menu button -->
+          <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2">
+          <ul class="flex flex-col space-y-3">
+            <li><a href="/" class="block text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Accueil</a></li>
+            <li><a href="/services" class="block text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Services</a></li>
+            <li><a href="/portfolio" class="block text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Portfolio</a></li>
+            <li><a href="/devis" class="block text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Devis</a></li>
+            <li><a href="/blog" class="block text-gray-700 hover:text-loire-blue-600 transition-colors font-medium">Blog</a></li>
+            <li><a href="/contact" class="block text-loire-blue-600 font-semibold">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 py-12 mt-20">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div>
+            <div class="flex items-center space-x-2 mb-4">
+              <div class="w-10 h-10 bg-gradient-to-br from-loire-blue-600 to-loire-blue-800 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">LD</span>
+              </div>
+              <span class="text-xl font-bold text-white">Loire Digital</span>
+            </div>
+            <p class="text-sm text-gray-400">
+              Création de sites web pour les commerces de Saint-Étienne et sa région.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">Navigation</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/services" class="hover:text-loire-blue-400 transition-colors">Services</a></li>
+              <li><a href="/portfolio" class="hover:text-loire-blue-400 transition-colors">Portfolio</a></li>
+              <li><a href="/devis" class="hover:text-loire-blue-400 transition-colors">Devis gratuit</a></li>
+              <li><a href="/blog" class="hover:text-loire-blue-400 transition-colors">Blog</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">Services</h3>
+            <ul class="space-y-2 text-sm">
+              <li><a href="/services#creation" class="hover:text-loire-blue-400 transition-colors">Création de sites</a></li>
+              <li><a href="/services#refonte" class="hover:text-loire-blue-400 transition-colors">Refonte de sites</a></li>
+              <li><a href="/services#seo" class="hover:text-loire-blue-400 transition-colors">SEO local</a></li>
+              <li><a href="/services#maintenance" class="hover:text-loire-blue-400 transition-colors">Maintenance</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="text-white font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span>Saint-Étienne, Loire (42)</span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+                <a href="mailto:contact@loiredigital.fr" class="hover:text-loire-blue-400 transition-colors">contact@loiredigital.fr</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <p>&copy; {new Date().getFullYear()} Loire Digital. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+
+      mobileMenuButton?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
