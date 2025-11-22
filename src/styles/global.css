@@ -4,68 +4,69 @@
 
 @layer base {
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+  @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
 
   html {
     @apply scroll-smooth;
   }
 
   body {
-    @apply font-sans text-gray-900 antialiased;
+    @apply font-sans text-gray-100 antialiased bg-dark-950;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-loire-blue-600 rounded-lg hover:bg-loire-blue-700 transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-indigo-electric-600 rounded-lg hover:bg-indigo-electric-500 transition-all duration-200 shadow-lg shadow-indigo-electric-600/20 hover:shadow-indigo-electric-500/40;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-loire-blue-600 bg-transparent border-2 border-loire-blue-600 rounded-lg hover:bg-loire-blue-600 hover:text-white transition-all duration-200;
+    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-indigo-electric-400 bg-transparent border-2 border-indigo-electric-600 rounded-lg hover:bg-indigo-electric-600 hover:text-white transition-all duration-200;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
+    @apply text-3xl md:text-4xl font-bold font-display text-white mb-4;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-600 max-w-3xl;
+    @apply text-lg md:text-xl text-gray-400 max-w-3xl;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6;
+    @apply bg-dark-900 border border-dark-800 rounded-xl shadow-lg hover:shadow-xl hover:border-indigo-electric-900/50 transition-all duration-300 p-6;
   }
 
-  /* Blog prose styling */
+  /* Blog prose styling - Dark Mode */
   .prose {
-    @apply text-gray-700;
+    @apply text-gray-300;
   }
 
   .prose h1 {
-    @apply text-4xl font-bold text-gray-900 mt-8 mb-6 leading-tight;
+    @apply text-4xl font-bold font-display text-white mt-8 mb-6 leading-tight;
   }
 
   .prose h2 {
-    @apply text-3xl font-bold text-gray-900 mt-12 mb-6 leading-tight;
+    @apply text-3xl font-bold font-display text-white mt-12 mb-6 leading-tight;
   }
 
   .prose h3 {
-    @apply text-2xl font-bold text-gray-900 mt-8 mb-4 leading-snug;
+    @apply text-2xl font-bold font-display text-white mt-8 mb-4 leading-snug;
   }
 
   .prose h4 {
-    @apply text-xl font-semibold text-gray-900 mt-6 mb-3;
+    @apply text-xl font-semibold font-display text-white mt-6 mb-3;
   }
 
   .prose p {
-    @apply text-gray-700 leading-relaxed mb-6;
+    @apply text-gray-300 leading-relaxed mb-6;
   }
 
   .prose a {
-    @apply text-loire-blue-600 hover:text-loire-blue-700 no-underline font-medium transition-colors;
+    @apply text-indigo-electric-400 hover:text-indigo-electric-300 no-underline font-medium transition-colors;
   }
 
   .prose strong {
-    @apply text-gray-900 font-semibold;
+    @apply text-white font-semibold;
   }
 
   .prose ul, .prose ol {
@@ -81,26 +82,26 @@
   }
 
   .prose li {
-    @apply text-gray-700 leading-relaxed;
+    @apply text-gray-300 leading-relaxed;
   }
 
   .prose blockquote {
-    @apply border-l-4 border-loire-blue-600 pl-6 py-2 my-6 italic text-gray-700;
+    @apply border-l-4 border-indigo-electric-600 pl-6 py-2 my-6 italic text-gray-400 bg-dark-900/50;
   }
 
   .prose code {
-    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded text-sm font-mono;
+    @apply bg-dark-900 text-indigo-electric-300 px-2 py-1 rounded text-sm font-mono border border-dark-800;
   }
 
   .prose pre {
-    @apply bg-gray-900 text-gray-100 p-4 rounded-lg my-6 overflow-x-auto;
+    @apply bg-dark-900 text-gray-100 p-4 rounded-lg my-6 overflow-x-auto border border-dark-800;
   }
 
   .prose pre code {
-    @apply bg-transparent text-gray-100 p-0;
+    @apply bg-transparent text-gray-100 p-0 border-0;
   }
 
   .prose hr {
-    @apply my-8 border-gray-300;
+    @apply my-8 border-dark-800;
   }
 }
