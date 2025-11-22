@@ -3,56 +3,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout>
-  <!-- Hero Section with Geometric Shapes -->
-  <section class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Animated Geometric Background -->
-    <div class="absolute inset-0">
-      <div class="absolute top-20 right-1/4 w-96 h-96 bg-indigo-electric-600/10 rounded-full blur-3xl animate-pulse"></div>
-      <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-indigo-electric-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div class="absolute top-1/3 right-1/3 w-64 h-64 border border-indigo-electric-800/30 rotate-45 rounded-2xl"></div>
-      <div class="absolute bottom-1/3 left-1/3 w-48 h-48 border border-indigo-electric-900/20 rotate-12 rounded-xl"></div>
-    </div>
-
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
     <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-5xl mx-auto">
-        <div class="mb-6">
-          <span class="inline-block px-4 py-2 bg-indigo-electric-950/50 border border-indigo-electric-800 rounded-full text-indigo-electric-300 text-sm font-medium">
-            Studio Digital Premium · Saint-Étienne
+      <div class="max-w-5xl mx-auto text-center">
+        <div class="mb-8">
+          <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 backdrop-blur-lg text-sm font-medium text-gray-300" style="background: rgba(255, 255, 255, 0.05);">
+            <span class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></span>
+            Studio Digital · Saint-Étienne
           </span>
         </div>
 
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-8 leading-tight">
-          Sites web qui
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-electric-400 to-indigo-electric-600">
-            convertissent
-          </span>
+        <h1 class="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
+          Votre site web <span class="gradient-text">professionnel</span><br/>à Saint-Étienne,<br/>sans blabla.
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl">
-          Création de sites web premium pour commerces ambitieux. Design minimaliste, performances maximales.
+        <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Design premium. Code propre. Résultats mesurables.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 mb-16">
-          <a href="/devis" class="btn-primary text-lg px-8 py-4">
-            Démarrer un projet
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <a href="/devis" class="btn-cta text-lg">
+            Obtenir un devis
           </a>
-          <a href="/portfolio" class="btn-secondary text-lg px-8 py-4">
-            Voir nos réalisations
+          <a href="/portfolio" class="btn-secondary text-lg">
+            Voir le portfolio
           </a>
         </div>
 
-        <div class="flex flex-wrap items-center gap-8 text-sm text-gray-500">
+        <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
           <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-indigo-electric-500 rounded-full"></div>
-            <span>Devis sous 24h</span>
+            <div class="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></div>
+            <span>Réponse sous 24h</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-indigo-electric-500 rounded-full"></div>
+            <div class="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></div>
+            <span>Prix transparents</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></div>
             <span>Support continu</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-indigo-electric-500 rounded-full"></div>
-            <span>Tarifs transparents</span>
           </div>
         </div>
       </div>
@@ -61,259 +51,140 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- Services Section -->
   <section class="py-32 relative">
-    <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-electric-900/5 rounded-full blur-3xl"></div>
-
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-20">
-          <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+        <div class="mb-20 text-center">
+          <h2 class="section-title">
             Services
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl">
-            Solutions web complètes pour votre croissance digitale
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Solutions web complètes pour commerces ambitieux
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="group card hover:bg-dark-800">
-            <div class="w-14 h-14 bg-indigo-electric-950 border border-indigo-electric-900 rounded-lg flex items-center justify-center mb-6 group-hover:border-indigo-electric-700 transition-colors">
-              <svg class="w-7 h-7 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="glass-card p-8 group">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-display font-bold text-white mb-3">Création</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-              Sites web sur-mesure, optimisés pour la conversion
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Création de sites</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Sites web modernes optimisés pour la conversion. Design sur-mesure, performances maximales.
             </p>
+            <a href="/services" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+              En savoir plus
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
           </div>
 
-          <div class="group card hover:bg-dark-800">
-            <div class="w-14 h-14 bg-indigo-electric-950 border border-indigo-electric-900 rounded-lg flex items-center justify-center mb-6 group-hover:border-indigo-electric-700 transition-colors">
-              <svg class="w-7 h-7 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-card p-8 group">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-display font-bold text-white mb-3">Refonte</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-              Modernisation de votre présence digitale
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Refonte</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Modernisation complète de votre site existant. Nouveau design, meilleures performances, plus de conversions.
             </p>
+            <a href="/services" class="inline-flex items-center text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors group">
+              En savoir plus
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
           </div>
 
-          <div class="group card hover:bg-dark-800">
-            <div class="w-14 h-14 bg-indigo-electric-950 border border-indigo-electric-900 rounded-lg flex items-center justify-center mb-6 group-hover:border-indigo-electric-700 transition-colors">
-              <svg class="w-7 h-7 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-card p-8 group">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-display font-bold text-white mb-3">SEO Local</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-              Visibilité maximale sur Saint-Étienne
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">SEO Local</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Référencement optimisé pour Saint-Étienne. Attirez plus de clients locaux qualifiés.
             </p>
+            <a href="/services" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+              En savoir plus
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
           </div>
 
-          <div class="group card hover:bg-dark-800">
-            <div class="w-14 h-14 bg-indigo-electric-950 border border-indigo-electric-900 rounded-lg flex items-center justify-center mb-6 group-hover:border-indigo-electric-700 transition-colors">
-              <svg class="w-7 h-7 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-card p-8 group">
+            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
             </div>
-            <h3 class="text-xl font-display font-bold text-white mb-3">Maintenance</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">
-              Support technique et évolution continue
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Maintenance</h3>
+            <p class="text-gray-400 leading-relaxed mb-6">
+              Support technique réactif. Mises à jour régulières. Votre site reste performant et sécurisé.
             </p>
+            <a href="/services" class="inline-flex items-center text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors group">
+              En savoir plus
+              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+              </svg>
+            </a>
           </div>
-        </div>
-
-        <div class="mt-12">
-          <a href="/services" class="inline-flex items-center text-indigo-electric-400 hover:text-indigo-electric-300 font-medium group">
-            Découvrir tous les services
-            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us -->
-  <section class="py-32 relative">
-    <div class="absolute bottom-0 left-0 w-96 h-96 bg-indigo-electric-900/5 rounded-full blur-3xl"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          <div class="lg:col-span-1">
-            <div class="sticky top-32">
-              <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-                Pourquoi Loire Digital
-              </h2>
-              <p class="text-gray-400">
-                Un studio digital qui combine expertise technique et sens du design
-              </p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-2 space-y-8">
-            <div class="border-l-2 border-indigo-electric-900 pl-8 hover:border-indigo-electric-600 transition-colors">
-              <div class="text-6xl font-display font-bold text-indigo-electric-950 mb-4">01</div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">Expertise locale</h3>
-              <p class="text-gray-400 leading-relaxed">
-                Basé à Saint-Étienne, nous comprenons les enjeux du commerce local. Rencontres en personne possibles.
-              </p>
-            </div>
-
-            <div class="border-l-2 border-indigo-electric-900 pl-8 hover:border-indigo-electric-600 transition-colors">
-              <div class="text-6xl font-display font-bold text-indigo-electric-950 mb-4">02</div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">Tarifs transparents</h3>
-              <p class="text-gray-400 leading-relaxed">
-                Calculateur de devis en ligne pour une estimation immédiate. Pas de surprises, prix fixes.
-              </p>
-            </div>
-
-            <div class="border-l-2 border-indigo-electric-900 pl-8 hover:border-indigo-electric-600 transition-colors">
-              <div class="text-6xl font-display font-bold text-indigo-electric-950 mb-4">03</div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">Accompagnement premium</h3>
-              <p class="text-gray-400 leading-relaxed">
-                De la conception à la mise en ligne, formation et support inclus pour votre autonomie.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process Section -->
-  <section class="py-32 relative overflow-hidden">
-    <div class="absolute top-1/2 right-0 w-96 h-96 bg-gradient-to-l from-indigo-electric-950/30 to-transparent rounded-full blur-3xl"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-6xl mx-auto">
-        <div class="mb-20">
-          <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">
-            Processus
-          </h2>
-          <p class="text-xl text-gray-400">
-            Simple, rapide et efficace
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div class="relative">
-            <div class="text-8xl font-display font-bold text-indigo-electric-950 absolute -top-4 -left-4">1</div>
-            <div class="relative z-10 pt-16">
-              <h3 class="text-xl font-display font-bold text-white mb-3">Contact</h3>
-              <p class="text-gray-400 text-sm">
-                Utilisez le formulaire ou le calculateur. Réponse sous 24h.
-              </p>
-            </div>
-          </div>
-
-          <div class="relative">
-            <div class="text-8xl font-display font-bold text-indigo-electric-950 absolute -top-4 -left-4">2</div>
-            <div class="relative z-10 pt-16">
-              <h3 class="text-xl font-display font-bold text-white mb-3">Conception</h3>
-              <p class="text-gray-400 text-sm">
-                Maquette personnalisée validée ensemble.
-              </p>
-            </div>
-          </div>
-
-          <div class="relative">
-            <div class="text-8xl font-display font-bold text-indigo-electric-950 absolute -top-4 -left-4">3</div>
-            <div class="relative z-10 pt-16">
-              <h3 class="text-xl font-display font-bold text-white mb-3">Développement</h3>
-              <p class="text-gray-400 text-sm">
-                Technologies modernes, suivi en temps réel.
-              </p>
-            </div>
-          </div>
-
-          <div class="relative">
-            <div class="text-8xl font-display font-bold text-indigo-electric-950 absolute -top-4 -left-4">4</div>
-            <div class="relative z-10 pt-16">
-              <h3 class="text-xl font-display font-bold text-white mb-3">Lancement</h3>
-              <p class="text-gray-400 text-sm">
-                Mise en ligne + formation pour votre autonomie.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="py-32 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-electric-950/10 to-transparent"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl md:text-7xl font-display font-bold text-white mb-8">
-          Prêt à démarrer ?
-        </h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-          Obtenez un devis gratuit en quelques clics. Réponse garantie sous 24h.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-primary text-lg px-8 py-4">
-            Calculer mon devis
-          </a>
-          <a href="/contact" class="btn-secondary text-lg px-8 py-4">
-            Discuter du projet
-          </a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Nos Engagements -->
-  <section class="py-32">
-    <div class="container mx-auto px-4">
+  <section class="py-32 relative">
+    <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-20">
-          <h2 class="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+        <div class="mb-20 text-center">
+          <h2 class="section-title">
             Nos Engagements
           </h2>
-          <p class="text-xl text-gray-400">
-            Des garanties concrètes pour votre projet
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Des garanties concrètes pour votre réussite
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="card text-center">
-            <div class="w-20 h-20 bg-indigo-electric-950 border border-indigo-electric-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <svg class="w-10 h-10 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-card p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-10 h-10 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4">Rapidité</h3>
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Rapidité</h3>
             <p class="text-gray-400 leading-relaxed">
               Réponse sous 24h. Livraison dans les délais convenus. Pas d'attente inutile.
             </p>
           </div>
 
-          <div class="card text-center">
-            <div class="w-20 h-20 bg-indigo-electric-950 border border-indigo-electric-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <svg class="w-10 h-10 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-card p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-10 h-10 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4">Code Propre</h3>
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Code Propre</h3>
             <p class="text-gray-400 leading-relaxed">
               Technologies modernes. Code maintenable. Performances optimales garanties.
             </p>
           </div>
 
-          <div class="card text-center">
-            <div class="w-20 h-20 bg-indigo-electric-950 border border-indigo-electric-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <svg class="w-10 h-10 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="glass-card p-8 text-center">
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
+              <svg class="w-10 h-10 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4">Suivi 100% Écrit</h3>
+            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Suivi 100% Écrit</h3>
             <p class="text-gray-400 leading-relaxed">
               Communication écrite privilégiée. Traçabilité totale. Clarté des échanges.
             </p>
@@ -323,22 +194,83 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <style>
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.3;
-      }
-      50% {
-        opacity: 0.6;
-      }
-    }
+  <!-- Process -->
+  <section class="py-32 relative">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-20 text-center">
+          <h2 class="section-title">
+            Comment ça marche
+          </h2>
+          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+            Un processus simple et transparent
+          </p>
+        </div>
 
-    .animate-pulse {
-      animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    }
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="relative">
+            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">1</div>
+            <div class="relative z-10 pt-12">
+              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Contact</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Formulaire ou calculateur. Réponse garantie sous 24h.
+              </p>
+            </div>
+          </div>
 
-    .delay-1000 {
-      animation-delay: 1s;
-    }
-  </style>
+          <div class="relative">
+            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">2</div>
+            <div class="relative z-10 pt-12">
+              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Conception</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Maquette sur-mesure validée ensemble avant développement.
+              </p>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">3</div>
+            <div class="relative z-10 pt-12">
+              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Développement</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Code propre, performances optimales. Suivi en temps réel.
+              </p>
+            </div>
+          </div>
+
+          <div class="relative">
+            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">4</div>
+            <div class="relative z-10 pt-12">
+              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Lancement</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Mise en ligne + formation pour votre autonomie.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Final -->
+  <section class="py-32 relative">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tighter">
+          Prêt à démarrer<br/>votre <span class="gradient-text">projet</span> ?
+        </h2>
+        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          Obtenez un devis gratuit en quelques minutes. Sans engagement.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/devis" class="btn-cta text-lg">
+            Calculer mon devis
+          </a>
+          <a href="/contact" class="btn-secondary text-lg">
+            Nous contacter
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

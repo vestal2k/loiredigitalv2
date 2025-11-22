@@ -1,107 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-  @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
+body {
+  @apply font-sans text-gray-100 antialiased;
+  background-color: #0A0A0A;
+  position: relative;
+  overflow-x: hidden;
+}
 
-  html {
-    @apply scroll-smooth;
+/* Animated Background Blobs */
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, #8b5cf6 0%, transparent 70%);
+  top: -200px;
+  right: -200px;
+  animation: blob 30s infinite;
+}
+
+body::after {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+  bottom: -100px;
+  left: -100px;
+  animation: blob-slow 40s infinite reverse;
+}
+
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
   }
-
-  body {
-    @apply font-sans text-gray-100 antialiased bg-dark-950;
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
   }
 }
 
-@layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-indigo-electric-600 rounded-lg hover:bg-indigo-electric-500 transition-all duration-200 shadow-lg shadow-indigo-electric-600/20 hover:shadow-indigo-electric-500/40;
+@keyframes blob-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
   }
+  50% {
+    transform: translate(-40px, 30px) scale(1.05);
+  }
+}
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-indigo-electric-400 bg-transparent border-2 border-indigo-electric-600 rounded-lg hover:bg-indigo-electric-600 hover:text-white transition-all duration-200;
-  }
+/* Glass Card */
+.glass-card {
+  @apply backdrop-blur-lg border border-white/10 rounded-2xl transition-all duration-500;
+  background: rgba(255, 255, 255, 0.05);
+}
 
-  .section-title {
-    @apply text-3xl md:text-4xl font-bold font-display text-white mb-4;
-  }
+.glass-card:hover {
+  @apply border-white/20;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
 
-  .section-subtitle {
-    @apply text-lg md:text-xl text-gray-400 max-w-3xl;
-  }
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-cyan-400 to-violet-500 bg-clip-text text-transparent;
+}
 
-  .card {
-    @apply bg-dark-900 border border-dark-800 rounded-xl shadow-lg hover:shadow-xl hover:border-indigo-electric-900/50 transition-all duration-300 p-6;
-  }
+/* CTA Button */
+.btn-cta {
+  @apply relative inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full overflow-hidden transition-all duration-300 hover:scale-105;
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+}
 
-  /* Blog prose styling - Dark Mode */
-  .prose {
-    @apply text-gray-300;
-  }
+.btn-cta:hover {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+}
 
-  .prose h1 {
-    @apply text-4xl font-bold font-display text-white mt-8 mb-6 leading-tight;
-  }
+/* Secondary Button */
+.btn-secondary {
+  @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white rounded-full border border-white/20 backdrop-blur-lg transition-all duration-300 hover:border-white/30;
+  background: rgba(255, 255, 255, 0.05);
+}
 
-  .prose h2 {
-    @apply text-3xl font-bold font-display text-white mt-12 mb-6 leading-tight;
-  }
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 
-  .prose h3 {
-    @apply text-2xl font-bold font-display text-white mt-8 mb-4 leading-snug;
-  }
+/* Section Title */
+.section-title {
+  @apply text-4xl md:text-6xl lg:text-7xl font-display font-bold text-white tracking-tighter mb-6;
+}
 
-  .prose h4 {
-    @apply text-xl font-semibold font-display text-white mt-6 mb-3;
-  }
+/* Ensure content is above blobs */
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
 
-  .prose p {
-    @apply text-gray-300 leading-relaxed mb-6;
-  }
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
 
-  .prose a {
-    @apply text-indigo-electric-400 hover:text-indigo-electric-300 no-underline font-medium transition-colors;
-  }
+/* Progress Bar Glow */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+}
 
-  .prose strong {
-    @apply text-white font-semibold;
-  }
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+  border: none;
+}
 
-  .prose ul, .prose ol {
-    @apply my-6 pl-6 space-y-2;
-  }
+/* Card */
+.card {
+  @apply backdrop-blur-lg border border-white/10 rounded-2xl p-6 transition-all duration-500;
+  background: rgba(255, 255, 255, 0.05);
+}
 
-  .prose ul {
-    @apply list-disc;
-  }
-
-  .prose ol {
-    @apply list-decimal;
-  }
-
-  .prose li {
-    @apply text-gray-300 leading-relaxed;
-  }
-
-  .prose blockquote {
-    @apply border-l-4 border-indigo-electric-600 pl-6 py-2 my-6 italic text-gray-400 bg-dark-900/50;
-  }
-
-  .prose code {
-    @apply bg-dark-900 text-indigo-electric-300 px-2 py-1 rounded text-sm font-mono border border-dark-800;
-  }
-
-  .prose pre {
-    @apply bg-dark-900 text-gray-100 p-4 rounded-lg my-6 overflow-x-auto border border-dark-800;
-  }
-
-  .prose pre code {
-    @apply bg-transparent text-gray-100 p-0 border-0;
-  }
-
-  .prose hr {
-    @apply my-8 border-dark-800;
-  }
+.card:hover {
+  @apply border-white/20;
+  background: rgba(255, 255, 255, 0.1);
 }
