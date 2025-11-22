@@ -1,433 +1,418 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from '../components/Icon.astro';
 ---
 
-<BaseLayout title="Services - Loire Digital" description="Découvrez nos services de création de sites web, refonte, SEO local et maintenance pour commerces à Saint-Étienne.">
+<BaseLayout title="Services - Loire Digital" description="Création de sites web, refonte, SEO local et maintenance pour commerces à Saint-Étienne.">
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-loire-blue-600 to-loire-blue-800 text-white py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl">
-        <h1 class="text-4xl md:text-5xl font-bold mb-6">
-          Nos Services
+  <section class="relative py-32 overflow-hidden">
+    <div class="absolute inset-0">
+      <div class="absolute top-20 left-1/4 w-96 h-96 bg-indigo-electric-600/10 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl">
+        <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6">
+          Services
         </h1>
-        <p class="text-xl text-blue-100">
-          Des solutions web complètes et sur-mesure pour faire grandir votre commerce local à Saint-Étienne.
+        <p class="text-xl text-gray-400 max-w-2xl">
+          Solutions web complètes pour commerces ambitieux. Design premium, performances maximales.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Main Services -->
-  <section class="py-20 bg-white">
+  <!-- Services Grid -->
+  <section class="py-32">
     <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto space-y-32">
 
-      <!-- Création de sites -->
-      <div id="creation" class="mb-20 scroll-mt-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-block bg-loire-blue-100 text-loire-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Service principal
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Création de sites web</h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Votre commerce mérite un site web à la hauteur de votre savoir-faire.
-              Je crée des sites modernes, rapides et optimisés pour convertir vos visiteurs en clients.
-            </p>
+        <!-- Création de sites -->
+        <div id="creation" class="scroll-mt-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <div class="inline-block bg-indigo-electric-950 border border-indigo-electric-800 px-4 py-2 rounded-full text-sm font-medium text-indigo-electric-300 mb-6">
+                Service principal
+              </div>
+              <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                Création de sites web
+              </h2>
+              <p class="text-lg text-gray-400 mb-8">
+                Sites modernes et performants, conçus pour convertir vos visiteurs en clients.
+                Technologies de pointe, design sur-mesure.
+              </p>
 
-            <div class="space-y-4">
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Design sur-mesure</h3>
-                  <p class="text-gray-600">Un design unique qui reflète l'identité de votre commerce</p>
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Design sur-mesure</h3>
+                    <p class="text-gray-400 text-sm">Identité unique adaptée à votre commerce</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">100% Responsive</h3>
+                    <p class="text-gray-400 text-sm">Parfait sur mobile, tablette et desktop</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Performances optimales</h3>
+                    <p class="text-gray-400 text-sm">Temps de chargement ultra-rapides</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">SEO intégré</h3>
+                    <p class="text-gray-400 text-sm">Optimisé pour Google dès le départ</p>
+                  </div>
                 </div>
               </div>
 
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">100% responsive</h3>
-                  <p class="text-gray-600">Parfaitement adapté à tous les écrans (mobile, tablette, desktop)</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Performances optimales</h3>
-                  <p class="text-gray-600">Temps de chargement ultra-rapides pour une meilleure expérience</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">SEO intégré</h3>
-                  <p class="text-gray-600">Optimisé dès le départ pour être bien référencé sur Google</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-8">
               <a href="/devis" class="btn-primary">
                 Obtenir un devis
               </a>
             </div>
-          </div>
 
-          <div class="bg-gradient-to-br from-loire-blue-50 to-blue-50 p-8 rounded-2xl">
-            <h3 class="text-2xl font-bold mb-6">Idéal pour :</h3>
-            <div class="grid grid-cols-2 gap-4">
-              <div class="bg-white p-4 rounded-lg shadow-sm">
-                <div class="text-loire-blue-600 mb-2"><Icon name="bakery" size={32} /></div>
-                <div class="font-semibold">Boulangeries</div>
-              </div>
-              <div class="bg-white p-4 rounded-lg shadow-sm">
-                <div class="text-loire-blue-600 mb-2"><Icon name="pizza" size={32} /></div>
-                <div class="font-semibold">Restaurants</div>
-              </div>
-              <div class="bg-white p-4 rounded-lg shadow-sm">
-                <div class="text-loire-blue-600 mb-2"><Icon name="salon" size={32} /></div>
-                <div class="font-semibold">Salons</div>
-              </div>
-              <div class="bg-white p-4 rounded-lg shadow-sm">
-                <div class="text-loire-blue-600 mb-2"><Icon name="boutique" size={32} /></div>
-                <div class="font-semibold">Boutiques</div>
-              </div>
-              <div class="bg-white p-4 rounded-lg shadow-sm">
-                <div class="text-loire-blue-600 mb-2"><Icon name="garage" size={32} /></div>
-                <div class="font-semibold">Artisans</div>
-              </div>
-              <div class="bg-white p-4 rounded-lg shadow-sm">
-                <div class="text-loire-blue-600 mb-2"><Icon name="briefcase" size={32} /></div>
-                <div class="font-semibold">Services</div>
+            <div class="card">
+              <h3 class="font-display font-bold text-white mb-6">À partir de 800€</h3>
+              <div class="space-y-4 text-gray-400">
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Design personnalisé</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Jusqu'à 5 pages</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Formulaire de contact</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Optimisation SEO</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Hébergement 1ère année inclus</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Formation incluse</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <hr class="my-20 border-gray-200" />
-
-      <!-- Refonte de sites -->
-      <div id="refonte" class="mb-20 scroll-mt-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="bg-gray-50 p-8 rounded-2xl">
-              <h3 class="text-2xl font-bold mb-6">Signes qu'il est temps de refaire votre site :</h3>
-              <ul class="space-y-4">
-                <li class="flex items-start space-x-3">
-                  <span class="text-2xl">❌</span>
-                  <span>Votre site n'est pas adapté aux mobiles</span>
-                </li>
-                <li class="flex items-start space-x-3">
-                  <span class="text-2xl">❌</span>
-                  <span>Le design semble dépassé (plus de 3-4 ans)</span>
-                </li>
-                <li class="flex items-start space-x-3">
-                  <span class="text-2xl">❌</span>
-                  <span>Vous n'apparaissez pas dans les recherches Google</span>
-                </li>
-                <li class="flex items-start space-x-3">
-                  <span class="text-2xl">❌</span>
-                  <span>Le site est difficile à mettre à jour</span>
-                </li>
-                <li class="flex items-start space-x-3">
-                  <span class="text-2xl">❌</span>
-                  <span>Les temps de chargement sont lents</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="order-1 lg:order-2">
-            <div class="inline-block bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Modernisation
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Refonte de sites web</h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Votre site actuel ne vous satisfait plus ? Je le transforme en site moderne, performant
-              et aligné avec vos objectifs actuels.
-            </p>
-
-            <div class="space-y-4">
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Audit complet</h3>
-                  <p class="text-gray-600">Analyse de votre site actuel et recommandations</p>
+        <!-- Refonte -->
+        <div id="refonte" class="scroll-mt-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div class="order-2 lg:order-1 card">
+              <h3 class="font-display font-bold text-white mb-6">À partir de 1 200€</h3>
+              <div class="space-y-4 text-gray-400">
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Audit complet du site existant</span>
                 </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Design moderne</h3>
-                  <p class="text-gray-600">Une nouvelle image qui correspond aux standards actuels</p>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Nouveau design moderne</span>
                 </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Migration sécurisée</h3>
-                  <p class="text-gray-600">Récupération de vos contenus et de votre référencement</p>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Amélioration des performances</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Migration de contenu</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Optimisation SEO</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Formation</span>
                 </div>
               </div>
             </div>
 
-            <div class="mt-8">
+            <div class="order-1 lg:order-2">
+              <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                Refonte de sites
+              </h2>
+              <p class="text-lg text-gray-400 mb-8">
+                Modernisez votre présence digitale. Nouveau design, meilleures performances,
+                meilleur référencement.
+              </p>
+
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Audit complet</h3>
+                    <p class="text-gray-400 text-sm">Analyse approfondie de l'existant</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Design moderne</h3>
+                    <p class="text-gray-400 text-sm">Interface actuelle et professionnelle</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Migration sécurisée</h3>
+                    <p class="text-gray-400 text-sm">Conservation de votre contenu et SEO</p>
+                  </div>
+                </div>
+              </div>
+
               <a href="/contact" class="btn-primary">
-                Discuter de ma refonte
+                Discuter du projet
               </a>
             </div>
           </div>
         </div>
-      </div>
 
-      <hr class="my-20 border-gray-200" />
+        <!-- SEO Local -->
+        <div id="seo" class="scroll-mt-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                SEO Local
+              </h2>
+              <p class="text-lg text-gray-400 mb-8">
+                Dominez les recherches Google sur Saint-Étienne. Attirez plus de clients locaux
+                grâce à un référencement optimisé.
+              </p>
 
-      <!-- SEO Local -->
-      <div id="seo" class="mb-20 scroll-mt-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <div class="inline-block bg-green-100 text-green-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Visibilité
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">SEO Local</h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Être trouvé par les clients de Saint-Étienne qui recherchent vos services sur Google.
-              Le SEO local est essentiel pour attirer une clientèle de proximité.
-            </p>
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Google My Business</h3>
+                    <p class="text-gray-400 text-sm">Optimisation de votre fiche locale</p>
+                  </div>
+                </div>
 
-            <div class="space-y-4">
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Google My Business</h3>
-                  <p class="text-gray-600">Optimisation de votre fiche pour apparaître dans les recherches locales</p>
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Mots-clés locaux</h3>
+                    <p class="text-gray-400 text-sm">Ciblage précis de votre zone</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Suivi mensuel</h3>
+                    <p class="text-gray-400 text-sm">Rapports de positions et trafic</p>
+                  </div>
                 </div>
               </div>
 
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Mots-clés locaux</h3>
-                  <p class="text-gray-600">Ciblage des recherches spécifiques à Saint-Étienne et la Loire</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Optimisation technique</h3>
-                  <p class="text-gray-600">Structure, vitesse et balises optimisées pour le référencement</p>
-                </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Contenu optimisé</h3>
-                  <p class="text-gray-600">Rédaction de contenus pertinents pour votre audience locale</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-8">
               <a href="/devis" class="btn-primary">
-                Améliorer mon référencement
+                Demander un audit
               </a>
             </div>
-          </div>
 
-          <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl">
-            <h3 class="text-2xl font-bold mb-6">Résultats attendus :</h3>
-            <div class="space-y-6">
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="font-semibold">Visibilité locale</span>
-                  <span class="text-green-600 font-bold">+150%</span>
+            <div class="card">
+              <h3 class="font-display font-bold text-white mb-6">À partir de 300€/mois</h3>
+              <div class="space-y-4 text-gray-400">
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Audit SEO complet</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-3">
-                  <div class="bg-green-500 h-3 rounded-full" style="width: 75%"></div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Optimisation on-page</span>
                 </div>
-              </div>
-
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="font-semibold">Trafic organique</span>
-                  <span class="text-green-600 font-bold">+200%</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Google My Business</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-3">
-                  <div class="bg-green-500 h-3 rounded-full" style="width: 100%"></div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Stratégie de contenu</span>
                 </div>
-              </div>
-
-              <div class="bg-white p-6 rounded-lg shadow-sm">
-                <div class="flex items-center justify-between mb-2">
-                  <span class="font-semibold">Demandes de contact</span>
-                  <span class="text-green-600 font-bold">+180%</span>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Suivi mensuel</span>
                 </div>
-                <div class="w-full bg-gray-200 rounded-full h-3">
-                  <div class="bg-green-500 h-3 rounded-full" style="width: 90%"></div>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Rapports détaillés</span>
                 </div>
               </div>
             </div>
-            <p class="text-sm text-gray-600 mt-6 italic">
-              * Résultats moyens observés sur 6 mois pour les commerces locaux
-            </p>
           </div>
         </div>
-      </div>
 
-      <hr class="my-20 border-gray-200" />
-
-      <!-- Maintenance -->
-      <div id="maintenance" class="scroll-mt-24">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="order-2 lg:order-1">
-            <div class="bg-gray-50 p-8 rounded-2xl">
-              <h3 class="text-2xl font-bold mb-6">Nos formules de maintenance :</h3>
-
-              <div class="space-y-4">
-                <div class="bg-white p-6 rounded-lg border-2 border-gray-200">
-                  <div class="flex items-start justify-between mb-2">
-                    <h4 class="font-bold text-lg">Essentiel</h4>
-                    <span class="text-loire-blue-600 font-bold">49€/mois</span>
-                  </div>
-                  <ul class="text-sm text-gray-600 space-y-2">
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Mises à jour de sécurité</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Sauvegardes hebdomadaires</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Support par email</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Monitoring 24/7</span></li>
-                  </ul>
+        <!-- Maintenance -->
+        <div id="maintenance" class="scroll-mt-24">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <div class="order-2 lg:order-1 card">
+              <h3 class="font-display font-bold text-white mb-6">À partir de 49€/mois</h3>
+              <div class="space-y-4 text-gray-400">
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Mises à jour de sécurité</span>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg border-2 border-loire-blue-600 relative">
-                  <div class="absolute -top-3 left-6 bg-loire-blue-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    Populaire
-                  </div>
-                  <div class="flex items-start justify-between mb-2">
-                    <h4 class="font-bold text-lg">Premium</h4>
-                    <span class="text-loire-blue-600 font-bold">99€/mois</span>
-                  </div>
-                  <ul class="text-sm text-gray-600 space-y-2">
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Tout Essentiel +</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Modifications de contenu (2h/mois)</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Support prioritaire</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Optimisations SEO mensuelles</span></li>
-                    <li class="flex items-start gap-2"><span class="text-green-500 flex-shrink-0 mt-0.5"><Icon name="check-circle" size={16} /></span><span>Rapport d'analytics mensuel</span></li>
-                  </ul>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Sauvegardes automatiques</span>
                 </div>
-
-                <div class="bg-white p-6 rounded-lg border-2 border-gray-200">
-                  <div class="flex items-start justify-between mb-2">
-                    <h4 class="font-bold text-lg">Sur-mesure</h4>
-                    <span class="text-loire-blue-600 font-bold">Sur devis</span>
-                  </div>
-                  <p class="text-sm text-gray-600">
-                    Formule personnalisée selon vos besoins spécifiques
-                  </p>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Monitoring 24/7</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="order-1 lg:order-2">
-            <div class="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Tranquillité
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Maintenance & Support</h2>
-            <p class="text-lg text-gray-600 mb-6">
-              Concentrez-vous sur votre commerce, je m'occupe de votre site.
-              Support technique, mises à jour et optimisations continues.
-            </p>
-
-            <div class="space-y-4">
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Disponibilité garantie</h3>
-                  <p class="text-gray-600">Monitoring 24/7 pour que votre site soit toujours accessible</p>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Support prioritaire</span>
                 </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Mises à jour régulières</h3>
-                  <p class="text-gray-600">Sécurité et fonctionnalités toujours à jour</p>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Modifications mineures incluses</span>
                 </div>
-              </div>
-
-              <div class="flex items-start space-x-3">
-                <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                </svg>
-                <div>
-                  <h3 class="font-semibold mb-1">Support réactif</h3>
-                  <p class="text-gray-600">Réponse rapide à toutes vos questions et problèmes</p>
+                <div class="flex items-center gap-2">
+                  <div class="w-1.5 h-1.5 bg-indigo-electric-500 rounded-full"></div>
+                  <span>Rapports mensuels</span>
                 </div>
               </div>
             </div>
 
-            <div class="mt-8">
+            <div class="order-1 lg:order-2">
+              <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+                Maintenance
+              </h2>
+              <p class="text-lg text-gray-400 mb-8">
+                Votre site toujours performant et sécurisé. Support technique, mises à jour
+                et surveillance continue.
+              </p>
+
+              <div class="space-y-4 mb-8">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Sécurité maximale</h3>
+                    <p class="text-gray-400 text-sm">Mises à jour et surveillance continue</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Sauvegardes quotidiennes</h3>
+                    <p class="text-gray-400 text-sm">Vos données protégées</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 bg-indigo-electric-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-display font-semibold text-white mb-1">Support réactif</h3>
+                    <p class="text-gray-400 text-sm">Réponse sous 24h garantie</p>
+                  </div>
+                </div>
+              </div>
+
               <a href="/contact" class="btn-primary">
-                Choisir une formule
+                Souscrire
               </a>
             </div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-20 bg-gradient-to-r from-loire-blue-600 to-loire-blue-800 text-white">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6">
-        Besoin d'un service personnalisé ?
-      </h2>
-      <p class="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
-        Chaque commerce est unique. Discutons de vos besoins spécifiques
-        et créons ensemble la solution parfaite pour vous.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="/devis" class="btn-primary bg-white text-loire-blue-600 hover:bg-gray-100">
-          Calculer un devis
-        </a>
-        <a href="/contact" class="btn-secondary border-white text-white hover:bg-white/10">
-          Prendre contact
-        </a>
+  <!-- CTA -->
+  <section class="py-32 relative">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-electric-950/10 to-transparent"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-5xl md:text-6xl font-display font-bold text-white mb-8">
+          Besoin d'un service personnalisé ?
+        </h2>
+        <p class="text-xl text-gray-400 mb-12">
+          Chaque projet est unique. Discutons de vos besoins spécifiques.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/devis" class="btn-primary text-lg px-8 py-4">
+            Calculer mon devis
+          </a>
+          <a href="/contact" class="btn-secondary text-lg px-8 py-4">
+            Nous contacter
+          </a>
+        </div>
       </div>
     </div>
   </section>
