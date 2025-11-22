@@ -50,17 +50,13 @@ const projects = [
 
 <BaseLayout title="Portfolio - Loire Digital" description="Découvrez nos réalisations de sites web pour commerces locaux à Saint-Étienne.">
   <!-- Hero -->
-  <section class="relative py-32 overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 right-1/4 w-96 h-96 bg-indigo-electric-600/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-4xl">
-        <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6">
+  <section class="relative py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-5xl md:text-7xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Portfolio
         </h1>
-        <p class="text-xl text-gray-400 max-w-2xl">
+        <p class="text-xl text-gray-text max-w-2xl mx-auto">
           Exemples de réalisations pour commerces locaux. Design moderne, performances optimales.
         </p>
       </div>
@@ -68,24 +64,24 @@ const projects = [
   </section>
 
   <!-- Projects Grid -->
-  <section class="py-20">
+  <section class="py-20 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <div class="card group hover:scale-[1.02] transition-transform">
-              <div class="w-16 h-16 bg-indigo-electric-950 border border-indigo-electric-900 rounded-xl flex items-center justify-center mb-6 group-hover:border-indigo-electric-700 transition-colors">
-                <Icon name={project.icon} class="text-indigo-electric-400" size={32} />
+            <div class="card-minimal group">
+              <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-100 transition-colors">
+                <Icon name={project.icon} class="text-blue-600" size={32} />
               </div>
 
-              <div class="text-sm text-indigo-electric-400 mb-2">{project.category}</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">{project.title}</h3>
-              <p class="text-gray-400 mb-6 text-sm leading-relaxed">{project.description}</p>
+              <div class="text-sm text-blue-600 font-semibold mb-2">{project.category}</div>
+              <h3 class="text-xl font-bold text-black mb-3">{project.title}</h3>
+              <p class="text-gray-text mb-6 text-sm leading-relaxed">{project.description}</p>
 
               <div class="space-y-2">
                 {project.features.map((feature) => (
-                  <div class="flex items-center gap-2 text-sm text-gray-500">
-                    <div class="w-1 h-1 bg-indigo-electric-600 rounded-full"></div>
+                  <div class="flex items-center gap-2 text-sm text-gray-text">
+                    <div class="w-1 h-1 bg-blue-600 rounded-full"></div>
                     <span>{feature}</span>
                   </div>
                 ))}
@@ -98,43 +94,57 @@ const projects = [
   </section>
 
   <!-- Technologies -->
-  <section class="py-32 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-electric-950/10 to-transparent"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
             Technologies utilisées
           </h2>
-          <p class="text-xl text-gray-400">
+          <p class="text-xl text-gray-text">
             Stack moderne pour des performances optimales
           </p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="card text-center">
-            <div class="text-4xl mb-3">⚡</div>
-            <h3 class="font-display font-bold text-white mb-2">Astro</h3>
-            <p class="text-sm text-gray-400">Sites ultra-rapides</p>
+          <div class="card-minimal text-center">
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-black mb-2">Astro</h3>
+            <p class="text-sm text-gray-text">Sites ultra-rapides</p>
           </div>
 
-          <div class="card text-center">
-            <div class="text-4xl mb-3">⚛️</div>
-            <h3 class="font-display font-bold text-white mb-2">React</h3>
-            <p class="text-sm text-gray-400">Interactivité fluide</p>
+          <div class="card-minimal text-center">
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-black mb-2">React</h3>
+            <p class="text-sm text-gray-text">Interactivité fluide</p>
           </div>
 
-          <div class="card text-center">
-            <div class="text-4xl mb-3">🎨</div>
-            <h3 class="font-display font-bold text-white mb-2">Tailwind CSS</h3>
-            <p class="text-sm text-gray-400">Design moderne</p>
+          <div class="card-minimal text-center">
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-black mb-2">Tailwind CSS</h3>
+            <p class="text-sm text-gray-text">Design moderne</p>
           </div>
 
-          <div class="card text-center">
-            <div class="text-4xl mb-3">📱</div>
-            <h3 class="font-display font-bold text-white mb-2">Mobile-First</h3>
-            <p class="text-sm text-gray-400">100% responsive</p>
+          <div class="card-minimal text-center">
+            <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+              </svg>
+            </div>
+            <h3 class="font-bold text-black mb-2">Mobile-First</h3>
+            <p class="text-sm text-gray-text">100% responsive</p>
           </div>
         </div>
       </div>
@@ -142,20 +152,20 @@ const projects = [
   </section>
 
   <!-- CTA -->
-  <section class="py-32">
+  <section class="py-24 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl md:text-6xl font-display font-bold text-white mb-8">
+        <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Prêt à démarrer votre projet ?
         </h2>
-        <p class="text-xl text-gray-400 mb-12">
+        <p class="text-xl text-gray-text mb-12">
           Créons ensemble un site qui vous ressemble
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-primary text-lg px-8 py-4">
+          <a href="/devis" class="btn-blue">
             Obtenir un devis
           </a>
-          <a href="/contact" class="btn-secondary text-lg px-8 py-4">
+          <a href="/contact" class="btn-secondary">
             Nous contacter
           </a>
         </div>

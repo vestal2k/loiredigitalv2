@@ -5,18 +5,13 @@ import QuoteCalculator from '../components/QuoteCalculator';
 
 <BaseLayout title="Calculateur de devis - Loire Digital" description="Obtenez une estimation instantanée pour votre projet de site web. Calculateur de devis gratuit et sans engagement.">
   <!-- Hero -->
-  <section class="relative py-32 overflow-hidden">
-    <div class="absolute inset-0">
-      <div class="absolute top-20 right-1/4 w-96 h-96 bg-indigo-electric-600/10 rounded-full blur-3xl"></div>
-      <div class="absolute bottom-20 left-1/4 w-80 h-80 bg-indigo-electric-500/10 rounded-full blur-3xl"></div>
-    </div>
-
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="relative py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl md:text-7xl font-display font-bold text-white mb-6">
+        <h1 class="text-5xl md:text-7xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Calculateur de Devis
         </h1>
-        <p class="text-xl text-gray-400">
+        <p class="text-xl text-gray-text">
           Obtenez une estimation instantanée et transparente pour votre projet de site web.
           Simple, rapide et sans engagement.
         </p>
@@ -25,59 +20,57 @@ import QuoteCalculator from '../components/QuoteCalculator';
   </section>
 
   <!-- Calculator Section -->
-  <section class="py-20">
+  <section class="py-20 section-pale">
     <div class="container mx-auto px-4">
       <QuoteCalculator client:load />
     </div>
   </section>
 
   <!-- Why Transparent Pricing -->
-  <section class="py-32 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-electric-950/10 to-transparent"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+        <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Pourquoi des tarifs transparents ?
         </h2>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+        <p class="text-xl text-gray-text max-w-2xl mx-auto">
           Chez Loire Digital, pas de mauvaises surprises
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="card text-center">
-          <div class="w-20 h-20 bg-indigo-electric-950 border border-indigo-electric-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="card-minimal text-center">
+          <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-display font-bold text-white mb-4">Prix fixes</h3>
-          <p class="text-gray-400 leading-relaxed">
+          <h3 class="text-2xl font-bold text-black mb-4">Prix fixes</h3>
+          <p class="text-gray-text leading-relaxed">
             Le prix convenu au départ ne change pas, sauf si vous ajoutez des fonctionnalités.
           </p>
         </div>
 
-        <div class="card text-center">
-          <div class="w-20 h-20 bg-indigo-electric-950 border border-indigo-electric-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="card-minimal text-center">
+          <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-display font-bold text-white mb-4">Pas de frais cachés</h3>
-          <p class="text-gray-400 leading-relaxed">
+          <h3 class="text-2xl font-bold text-black mb-4">Pas de frais cachés</h3>
+          <p class="text-gray-text leading-relaxed">
             Tous les coûts sont clairement détaillés dans le devis. Aucune surprise à la fin.
           </p>
         </div>
 
-        <div class="card text-center">
-          <div class="w-20 h-20 bg-indigo-electric-950 border border-indigo-electric-900 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg class="w-10 h-10 text-indigo-electric-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="card-minimal text-center">
+          <div class="w-20 h-20 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
-          <h3 class="text-2xl font-display font-bold text-white mb-4">Devis en temps réel</h3>
-          <p class="text-gray-400 leading-relaxed">
+          <h3 class="text-2xl font-bold text-black mb-4">Devis en temps réel</h3>
+          <p class="text-gray-text leading-relaxed">
             Utilisez notre calculateur pour obtenir une estimation immédiate de votre projet.
           </p>
         </div>
@@ -86,96 +79,96 @@ import QuoteCalculator from '../components/QuoteCalculator';
   </section>
 
   <!-- What's Included -->
-  <section class="py-20">
+  <section class="py-20 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
             Ce qui est toujours inclus
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p class="text-xl text-gray-text max-w-2xl mx-auto">
             Quel que soit votre forfait, vous bénéficiez de ces éléments essentiels
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Design responsive</h3>
-              <p class="text-gray-400 text-sm">Adapté à tous les écrans (mobile, tablette, desktop)</p>
+              <h3 class="font-bold text-black mb-1">Design responsive</h3>
+              <p class="text-gray-text text-sm">Adapté à tous les écrans (mobile, tablette, desktop)</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Certificat SSL (HTTPS)</h3>
-              <p class="text-gray-400 text-sm">Sécurité et confiance pour vos visiteurs</p>
+              <h3 class="font-bold text-black mb-1">Certificat SSL (HTTPS)</h3>
+              <p class="text-gray-text text-sm">Sécurité et confiance pour vos visiteurs</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Optimisation SEO de base</h3>
-              <p class="text-gray-400 text-sm">Balises meta, sitemap, et structure optimisée</p>
+              <h3 class="font-bold text-black mb-1">Optimisation SEO de base</h3>
+              <p class="text-gray-text text-sm">Balises meta, sitemap, et structure optimisée</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Performances optimales</h3>
-              <p class="text-gray-400 text-sm">Temps de chargement rapides garantis</p>
+              <h3 class="font-bold text-black mb-1">Performances optimales</h3>
+              <p class="text-gray-text text-sm">Temps de chargement rapides garantis</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Formulaire de contact</h3>
-              <p class="text-gray-400 text-sm">Restez connecté avec vos clients</p>
+              <h3 class="font-bold text-black mb-1">Formulaire de contact</h3>
+              <p class="text-gray-text text-sm">Restez connecté avec vos clients</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Formation complète</h3>
-              <p class="text-gray-400 text-sm">Apprenez à gérer votre site en autonomie</p>
+              <h3 class="font-bold text-black mb-1">Formation complète</h3>
+              <p class="text-gray-text text-sm">Apprenez à gérer votre site en autonomie</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Google Analytics</h3>
-              <p class="text-gray-400 text-sm">Suivez vos statistiques de visite</p>
+              <h3 class="font-bold text-black mb-1">Google Analytics</h3>
+              <p class="text-gray-text text-sm">Suivez vos statistiques de visite</p>
             </div>
           </div>
 
-          <div class="flex items-start space-x-4 card">
-            <svg class="w-6 h-6 text-indigo-electric-400 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 card-minimal">
+            <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
             </svg>
             <div>
-              <h3 class="font-display font-bold text-white mb-1">Support 30 jours</h3>
-              <p class="text-gray-400 text-sm">Assistance gratuite pendant un mois après la livraison</p>
+              <h3 class="font-bold text-black mb-1">Support 30 jours</h3>
+              <p class="text-gray-text text-sm">Assistance gratuite pendant un mois après la livraison</p>
             </div>
           </div>
         </div>
@@ -184,80 +177,78 @@ import QuoteCalculator from '../components/QuoteCalculator';
   </section>
 
   <!-- FAQ Section -->
-  <section class="py-32 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-indigo-electric-950/10 to-transparent"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
             Questions fréquentes
           </h2>
         </div>
 
         <div class="space-y-4">
-          <details class="card group cursor-pointer">
-            <summary class="font-display font-bold text-lg list-none flex items-center justify-between text-white">
+          <details class="card-minimal group cursor-pointer">
+            <summary class="font-bold text-lg list-none flex items-center justify-between text-black">
               Ce devis est-il définitif ?
-              <svg class="w-5 h-5 text-indigo-electric-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </summary>
-            <p class="text-gray-400 mt-4 leading-relaxed">
+            <p class="text-gray-text mt-4 leading-relaxed">
               Ce calculateur vous donne une estimation précise basée sur vos choix. Le devis final peut varier
               légèrement selon la complexité exacte de votre projet. Contactez-nous pour un devis détaillé et définitif.
             </p>
           </details>
 
-          <details class="card group cursor-pointer">
-            <summary class="font-display font-bold text-lg list-none flex items-center justify-between text-white">
+          <details class="card-minimal group cursor-pointer">
+            <summary class="font-bold text-lg list-none flex items-center justify-between text-black">
               Quels sont les modes de paiement acceptés ?
-              <svg class="w-5 h-5 text-indigo-electric-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </summary>
-            <p class="text-gray-400 mt-4 leading-relaxed">
+            <p class="text-gray-text mt-4 leading-relaxed">
               Nous acceptons les virements bancaires et les paiements par chèque. Le paiement se fait généralement
               en 2 fois : 50% au démarrage du projet et 50% à la livraison.
             </p>
           </details>
 
-          <details class="card group cursor-pointer">
-            <summary class="font-display font-bold text-lg list-none flex items-center justify-between text-white">
+          <details class="card-minimal group cursor-pointer">
+            <summary class="font-bold text-lg list-none flex items-center justify-between text-black">
               Combien de temps prend la création d'un site ?
-              <svg class="w-5 h-5 text-indigo-electric-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </summary>
-            <p class="text-gray-400 mt-4 leading-relaxed">
+            <p class="text-gray-text mt-4 leading-relaxed">
               Cela dépend de la complexité du projet. Un site vitrine simple prend généralement 2-3 semaines,
               tandis qu'un site e-commerce peut prendre 4-6 semaines. Nous vous donnons un calendrier précis
               lors de la signature du contrat.
             </p>
           </details>
 
-          <details class="card group cursor-pointer">
-            <summary class="font-display font-bold text-lg list-none flex items-center justify-between text-white">
+          <details class="card-minimal group cursor-pointer">
+            <summary class="font-bold text-lg list-none flex items-center justify-between text-black">
               Puis-je modifier mon site après sa création ?
-              <svg class="w-5 h-5 text-indigo-electric-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </summary>
-            <p class="text-gray-400 mt-4 leading-relaxed">
+            <p class="text-gray-text mt-4 leading-relaxed">
               Absolument ! Nous vous formons à la gestion de votre site pour que vous puissiez faire des modifications
               simples vous-même. Pour des changements plus complexes, nos forfaits de maintenance incluent
               des heures de modification mensuelles.
             </p>
           </details>
 
-          <details class="card group cursor-pointer">
-            <summary class="font-display font-bold text-lg list-none flex items-center justify-between text-white">
+          <details class="card-minimal group cursor-pointer">
+            <summary class="font-bold text-lg list-none flex items-center justify-between text-black">
               L'hébergement est-il inclus ?
-              <svg class="w-5 h-5 text-indigo-electric-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-blue-600 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
             </summary>
-            <p class="text-gray-400 mt-4 leading-relaxed">
+            <p class="text-gray-text mt-4 leading-relaxed">
               L'hébergement n'est pas inclus dans le prix de création, mais nous pouvons vous recommander
               des solutions d'hébergement adaptées (à partir de 5€/mois). Nous pouvons également gérer
               l'hébergement pour vous via nos forfaits de maintenance.
@@ -269,16 +260,16 @@ import QuoteCalculator from '../components/QuoteCalculator';
   </section>
 
   <!-- CTA -->
-  <section class="py-32">
+  <section class="py-24 section-pale">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl md:text-6xl font-display font-bold text-white mb-8">
+        <h2 class="text-4xl md:text-5xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
           Une question sur votre devis ?
         </h2>
-        <p class="text-xl text-gray-400 mb-12">
+        <p class="text-xl text-gray-text mb-12">
           Nous sommes là pour répondre à toutes vos questions et affiner votre projet ensemble.
         </p>
-        <a href="/contact" class="btn-primary text-lg px-8 py-4">
+        <a href="/contact" class="btn-blue">
           Contactez-nous
         </a>
       </div>

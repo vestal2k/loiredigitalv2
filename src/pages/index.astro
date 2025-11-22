@@ -4,26 +4,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout>
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-5xl mx-auto text-center">
-        <div class="mb-8">
-          <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/10 backdrop-blur-lg text-sm font-medium text-gray-300" style="background: rgba(255, 255, 255, 0.05);">
-            <span class="w-2 h-2 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></span>
+  <section class="relative py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="mb-6">
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-pale text-sm font-semibold text-gray-700">
+            <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
             Studio Digital · Saint-Étienne
           </span>
         </div>
 
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white mb-8 tracking-tighter leading-none">
-          Votre site web <span class="gradient-text">professionnel</span><br/>à Saint-Étienne,<br/>sans blabla.
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-black mb-6 leading-tight" style="letter-spacing: -0.03em;">
+          Votre site web professionnel à Saint-Étienne,<br/>
+          <span class="text-blue-600">sans blabla.</span>
         </h1>
 
-        <p class="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+        <p class="text-xl md:text-2xl text-gray-text mb-10 max-w-3xl mx-auto leading-relaxed">
           Design premium. Code propre. Résultats mesurables.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <a href="/devis" class="btn-cta text-lg">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a href="/devis" class="btn-primary text-lg">
             Obtenir un devis
           </a>
           <a href="/portfolio" class="btn-secondary text-lg">
@@ -33,15 +34,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500">
           <div class="flex items-center gap-2">
-            <div class="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></div>
+            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
             <span>Réponse sous 24h</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></div>
+            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
             <span>Prix transparents</span>
           </div>
           <div class="flex items-center gap-2">
-            <div class="w-1.5 h-1.5 bg-gradient-to-r from-cyan-400 to-violet-500 rounded-full"></div>
+            <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
             <span>Support continu</span>
           </div>
         </div>
@@ -50,87 +57,87 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Services Section -->
-  <section class="py-32 relative">
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 section-pale">
+    <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-20 text-center">
-          <h2 class="section-title">
+        <div class="mb-16 text-center">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-4" style="letter-spacing: -0.02em;">
             Services
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p class="text-lg text-gray-text max-w-2xl mx-auto">
             Solutions web complètes pour commerces ambitieux
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="glass-card p-8 group">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
-              <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Création de sites</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
+            <h3 class="text-2xl font-bold text-black mb-3">Création de sites</h3>
+            <p class="text-gray-text leading-relaxed mb-6">
               Sites web modernes optimisés pour la conversion. Design sur-mesure, performances maximales.
             </p>
-            <a href="/services" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+            <a href="/services" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               En savoir plus
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
           </div>
 
-          <div class="glass-card p-8 group">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
-              <svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Refonte</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
+            <h3 class="text-2xl font-bold text-black mb-3">Refonte</h3>
+            <p class="text-gray-text leading-relaxed mb-6">
               Modernisation complète de votre site existant. Nouveau design, meilleures performances, plus de conversions.
             </p>
-            <a href="/services" class="inline-flex items-center text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors group">
+            <a href="/services" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               En savoir plus
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
           </div>
 
-          <div class="glass-card p-8 group">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
-              <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">SEO Local</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
+            <h3 class="text-2xl font-bold text-black mb-3">SEO Local</h3>
+            <p class="text-gray-text leading-relaxed mb-6">
               Référencement optimisé pour Saint-Étienne. Attirez plus de clients locaux qualifiés.
             </p>
-            <a href="/services" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+            <a href="/services" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               En savoir plus
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
           </div>
 
-          <div class="glass-card p-8 group">
-            <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
-              <svg class="w-8 h-8 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center mb-6">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-4 tracking-tight">Maintenance</h3>
-            <p class="text-gray-400 leading-relaxed mb-6">
+            <h3 class="text-2xl font-bold text-black mb-3">Maintenance</h3>
+            <p class="text-gray-text leading-relaxed mb-6">
               Support technique réactif. Mises à jour régulières. Votre site reste performant et sécurisé.
             </p>
-            <a href="/services" class="inline-flex items-center text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors group">
+            <a href="/services" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               En savoir plus
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
@@ -141,65 +148,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Tarifs -->
-  <section class="py-32 relative">
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-20 text-center">
-          <h2 class="section-title">
+        <div class="mb-16 text-center">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-4" style="letter-spacing: -0.02em;">
             Tarifs
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p class="text-lg text-gray-text max-w-2xl mx-auto">
             Prix transparents. Sans surprise.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
           <!-- L'Essentiel -->
-          <div class="glass-card p-8">
+          <div class="card-minimal">
             <div class="mb-6">
-              <h3 class="text-2xl font-display font-bold text-white mb-2 tracking-tight">L'Essentiel</h3>
-              <p class="text-sm text-gray-400">Idéal pour démarrer</p>
+              <h3 class="text-2xl font-bold text-black mb-2">L'Essentiel</h3>
+              <p class="text-sm text-gray-500">Idéal pour démarrer</p>
             </div>
 
             <div class="mb-8">
               <div class="flex items-baseline gap-2 mb-2">
-                <span class="text-5xl font-display font-bold text-white tracking-tighter">499€</span>
+                <span class="text-5xl font-black text-black">499€</span>
               </div>
               <p class="text-sm text-gray-500">Paiement unique</p>
             </div>
 
-            <ul class="space-y-4 mb-8">
+            <ul class="space-y-3 mb-8">
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Page unique</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Page unique</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Design Premium</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Design Premium</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Hébergement inclus</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Hébergement inclus</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-cyan-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Email pro</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Email pro</span>
               </li>
             </ul>
 
@@ -209,59 +208,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
 
           <!-- Artisan Complet -->
-          <div class="glass-card p-8 relative border-white/20">
-            <div class="absolute -top-3 left-8 px-4 py-1 rounded-full text-xs font-semibold text-white" style="background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);">
+          <div class="card-minimal relative border-2 border-blue-600">
+            <div class="absolute -top-3 left-6 px-4 py-1 rounded-full text-xs font-bold text-white bg-blue-600">
               Populaire
             </div>
 
             <div class="mb-6">
-              <h3 class="text-2xl font-display font-bold text-white mb-2 tracking-tight">Artisan Complet</h3>
-              <p class="text-sm text-gray-400">Pour aller plus loin</p>
+              <h3 class="text-2xl font-bold text-black mb-2">Artisan Complet</h3>
+              <p class="text-sm text-gray-500">Pour aller plus loin</p>
             </div>
 
             <div class="mb-8">
               <div class="flex items-baseline gap-2 mb-2">
-                <span class="text-5xl font-display font-bold text-white tracking-tighter">799€</span>
+                <span class="text-5xl font-black text-black">799€</span>
               </div>
               <p class="text-sm text-gray-500">Paiement unique</p>
             </div>
 
-            <ul class="space-y-4 mb-8">
+            <ul class="space-y-3 mb-8">
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-violet-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Jusqu'à 5 pages</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Jusqu'à 5 pages</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-violet-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Galerie photo</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Galerie photo</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-violet-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Formulaire avancé</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Formulaire avancé</span>
               </li>
               <li class="flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-gradient-to-br from-cyan-400/20 to-violet-500/20 border border-violet-400/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg class="w-3 h-3 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                  </svg>
-                </div>
-                <span class="text-gray-300 text-sm">Blog</span>
+                <svg class="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <span class="text-gray-700">Blog</span>
               </li>
             </ul>
 
-            <a href="/devis" class="btn-cta w-full justify-center">
+            <a href="/devis" class="btn-blue w-full justify-center">
               Choisir
             </a>
           </div>
@@ -269,13 +260,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Maintenance -->
         <div class="max-w-2xl mx-auto">
-          <div class="glass-card p-6 text-center">
+          <div class="card-minimal text-center bg-gray-pale">
             <div class="flex items-center justify-center gap-4 flex-wrap">
               <div>
-                <h4 class="text-lg font-display font-bold text-white tracking-tight">Maintenance & Modifications illimitées</h4>
-                <p class="text-sm text-gray-400">Sans engagement</p>
+                <h4 class="text-lg font-bold text-black">Maintenance & Modifications illimitées</h4>
+                <p class="text-sm text-gray-500">Sans engagement</p>
               </div>
-              <div class="text-3xl font-display font-bold gradient-text">29€/mois</div>
+              <div class="text-3xl font-black text-blue-600">29€/mois</div>
             </div>
           </div>
         </div>
@@ -284,71 +275,71 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Portfolio -->
-  <section class="py-32 relative">
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 section-pale">
+    <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-20 text-center">
-          <h2 class="section-title">
+        <div class="mb-16 text-center">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-4" style="letter-spacing: -0.02em;">
             Nos Réalisations
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p class="text-lg text-gray-text max-w-2xl mx-auto">
             Exemples de projets concrets
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Boulangerie -->
-          <div class="glass-card p-8 group">
-            <div class="w-full aspect-square rounded-xl mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10 flex items-center justify-center">
-              <svg class="w-16 h-16 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-full aspect-square rounded-lg mb-6 bg-blue-50 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-3 tracking-tight">Boulangerie</h3>
-            <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+            <h3 class="text-xl font-bold text-black mb-3">Boulangerie</h3>
+            <p class="text-gray-text text-sm mb-6 leading-relaxed">
               Site vitrine avec galerie produits et informations pratiques.
             </p>
-            <a href="/demo/boulangerie" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+            <a href="/demo/boulangerie" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               Voir le site en direct
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
           </div>
 
           <!-- Rénovation -->
-          <div class="glass-card p-8 group">
-            <div class="w-full aspect-square rounded-xl mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10 flex items-center justify-center">
-              <svg class="w-16 h-16 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-full aspect-square rounded-lg mb-6 bg-blue-50 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-3 tracking-tight">Rénovation</h3>
-            <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+            <h3 class="text-xl font-bold text-black mb-3">Rénovation</h3>
+            <p class="text-gray-text text-sm mb-6 leading-relaxed">
               Portfolio avec avant/après et formulaire de demande de devis.
             </p>
-            <a href="/demo/renovation" class="inline-flex items-center text-sm font-medium text-violet-400 hover:text-violet-300 transition-colors group">
+            <a href="/demo/renovation" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               Voir le site en direct
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
           </div>
 
           <!-- Coiffure -->
-          <div class="glass-card p-8 group">
-            <div class="w-full aspect-square rounded-xl mb-6 bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10 flex items-center justify-center">
-              <svg class="w-16 h-16 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="card-minimal">
+            <div class="w-full aspect-square rounded-lg mb-6 bg-blue-50 flex items-center justify-center">
+              <svg class="w-16 h-16 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-display font-bold text-white mb-3 tracking-tight">Coiffure</h3>
-            <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+            <h3 class="text-xl font-bold text-black mb-3">Coiffure</h3>
+            <p class="text-gray-text text-sm mb-6 leading-relaxed">
               Site élégant avec tarifs, galerie et système de réservation.
             </p>
-            <a href="/demo/coiffure" class="inline-flex items-center text-sm font-medium text-cyan-400 hover:text-cyan-300 transition-colors group">
+            <a href="/demo/coiffure" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
               Voir le site en direct
-              <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
               </svg>
             </a>
@@ -359,26 +350,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Approche No Call -->
-  <section class="py-32 relative">
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <div class="glass-card p-12 text-center">
-          <div class="w-20 h-20 mx-auto mb-6 rounded-2xl flex items-center justify-center bg-gradient-to-br from-cyan-400/10 to-violet-500/10 border border-white/10">
-            <svg class="w-10 h-10 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="card-minimal text-center py-16">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-lg bg-blue-50 flex items-center justify-center">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
             </svg>
           </div>
 
-          <h3 class="text-3xl md:text-4xl font-display font-bold text-white mb-6 tracking-tight">
+          <h3 class="text-3xl md:text-4xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
             Gagnez du temps
           </h3>
 
-          <p class="text-xl text-gray-400 leading-relaxed mb-8">
+          <p class="text-xl text-gray-text leading-relaxed mb-8 max-w-2xl mx-auto">
             Tout se fait en ligne. Remplissez le formulaire, recevez votre devis et maquette sous 24h.
-            <span class="text-white font-semibold">Pas de réunions interminables.</span>
+            <span class="font-bold text-black">Pas de réunions interminables.</span>
           </p>
 
-          <a href="/contact" class="btn-cta text-lg">
+          <a href="/contact" class="btn-primary text-lg">
             Démarrer maintenant
           </a>
         </div>
@@ -387,57 +378,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- Process -->
-  <section class="py-32 relative">
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 section-pale">
+    <div class="container mx-auto px-4">
       <div class="max-w-6xl mx-auto">
-        <div class="mb-20 text-center">
-          <h2 class="section-title">
+        <div class="mb-16 text-center">
+          <h2 class="text-4xl md:text-5xl font-black text-black mb-4" style="letter-spacing: -0.02em;">
             Comment ça marche
           </h2>
-          <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p class="text-lg text-gray-text max-w-2xl mx-auto">
             Un processus simple et transparent
           </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div class="relative">
-            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">1</div>
-            <div class="relative z-10 pt-12">
-              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Contact</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
-                Formulaire ou calculateur. Réponse garantie sous 24h.
-              </p>
-            </div>
+          <div>
+            <div class="text-5xl font-black text-blue-600 mb-4">01</div>
+            <h3 class="text-lg font-bold text-black mb-2">Contact</h3>
+            <p class="text-gray-text text-sm leading-relaxed">
+              Formulaire ou calculateur. Réponse garantie sous 24h.
+            </p>
           </div>
 
-          <div class="relative">
-            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">2</div>
-            <div class="relative z-10 pt-12">
-              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Conception</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
-                Maquette sur-mesure validée ensemble avant développement.
-              </p>
-            </div>
+          <div>
+            <div class="text-5xl font-black text-blue-600 mb-4">02</div>
+            <h3 class="text-lg font-bold text-black mb-2">Conception</h3>
+            <p class="text-gray-text text-sm leading-relaxed">
+              Maquette sur-mesure validée ensemble avant développement.
+            </p>
           </div>
 
-          <div class="relative">
-            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">3</div>
-            <div class="relative z-10 pt-12">
-              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Développement</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
-                Code propre, performances optimales. Suivi en temps réel.
-              </p>
-            </div>
+          <div>
+            <div class="text-5xl font-black text-blue-600 mb-4">03</div>
+            <h3 class="text-lg font-bold text-black mb-2">Développement</h3>
+            <p class="text-gray-text text-sm leading-relaxed">
+              Code propre, performances optimales. Suivi en temps réel.
+            </p>
           </div>
 
-          <div class="relative">
-            <div class="text-8xl font-display font-bold absolute -top-8 -left-2 opacity-10 text-white">4</div>
-            <div class="relative z-10 pt-12">
-              <h3 class="text-xl font-display font-bold text-white mb-3 tracking-tight">Lancement</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">
-                Mise en ligne + formation pour votre autonomie.
-              </p>
-            </div>
+          <div>
+            <div class="text-5xl font-black text-blue-600 mb-4">04</div>
+            <h3 class="text-lg font-bold text-black mb-2">Lancement</h3>
+            <p class="text-gray-text text-sm leading-relaxed">
+              Mise en ligne + formation pour votre autonomie.
+            </p>
           </div>
         </div>
       </div>
@@ -445,17 +428,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- CTA Final -->
-  <section class="py-32 relative">
-    <div class="container mx-auto px-4 relative z-10">
+  <section class="py-24 bg-white">
+    <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tighter">
-          Prêt à démarrer<br/>votre <span class="gradient-text">projet</span> ?
+        <h2 class="text-5xl md:text-6xl font-black text-black mb-6" style="letter-spacing: -0.02em;">
+          Prêt à démarrer<br/>votre <span class="text-blue-600">projet</span> ?
         </h2>
-        <p class="text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-xl text-gray-text mb-10 max-w-2xl mx-auto leading-relaxed">
           Obtenez un devis gratuit en quelques minutes. Sans engagement.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-cta text-lg">
+          <a href="/devis" class="btn-primary text-lg">
             Calculer mon devis
           </a>
           <a href="/contact" class="btn-secondary text-lg">
