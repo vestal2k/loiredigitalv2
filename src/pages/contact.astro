@@ -107,38 +107,25 @@ import Icon from '../components/Icon.astro';
         </div>
 
         <!-- Contact Form -->
-        <div class="card-minimal">
-          <h3 class="text-2xl font-bold text-black mb-6">Envoyez-nous un message</h3>
+        <div class="bg-gray-pale rounded-xl p-8 md:p-10">
+          <h3 class="text-2xl font-bold text-black mb-3">Envoyez-nous un message</h3>
+          <p class="text-black font-medium mb-8 pb-6 border-b border-gray-200">
+            Réponse garantie sous 24h par email. Pas de démarchage téléphonique.
+          </p>
 
-          <form id="contact-form" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label for="firstName" class="block text-sm font-semibold text-black mb-2">
-                  Prénom *
-                </label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  required
-                  class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
-                  placeholder="Jean"
-                />
-              </div>
-
-              <div>
-                <label for="lastName" class="block text-sm font-semibold text-black mb-2">
-                  Nom *
-                </label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  required
-                  class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
-                  placeholder="Dupont"
-                />
-              </div>
+          <form id="contact-form" class="space-y-5">
+            <div>
+              <label for="name" class="block text-sm font-semibold text-black mb-2">
+                Nom complet *
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
+                placeholder="Jean Dupont"
+              />
             </div>
 
             <div>
@@ -156,114 +143,47 @@ import Icon from '../components/Icon.astro';
             </div>
 
             <div>
-              <label for="phone" class="block text-sm font-semibold text-black mb-2">
-                Téléphone
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
-                placeholder="06 12 34 56 78"
-              />
-            </div>
-
-            <div>
-              <label for="businessType" class="block text-sm font-semibold text-black mb-2">
-                Type de commerce *
+              <label for="project" class="block text-sm font-semibold text-black mb-2">
+                Type de projet *
               </label>
               <select
-                id="businessType"
-                name="businessType"
+                id="project"
+                name="project"
                 required
                 class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
               >
-                <option value="">Sélectionnez un type</option>
-                <option value="restauration">Restauration</option>
-                <option value="commerce-detail">Commerce de détail</option>
-                <option value="beaute-bienetre">Beauté & Bien-être</option>
-                <option value="artisanat">Artisanat</option>
-                <option value="services-pro">Services professionnels</option>
-                <option value="sante">Santé</option>
+                <option value="">Sélectionnez...</option>
+                <option value="creation">Création de site</option>
+                <option value="refonte">Refonte</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="seo">SEO</option>
                 <option value="autre">Autre</option>
               </select>
             </div>
 
             <div>
-              <label for="budget" class="block text-sm font-semibold text-black mb-2">
-                Budget estimé *
-              </label>
-              <select
-                id="budget"
-                name="budget"
-                required
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
-              >
-                <option value="">Sélectionnez une fourchette</option>
-                <option value="800-1500">800€ - 1 500€</option>
-                <option value="1500-3000">1 500€ - 3 000€</option>
-                <option value="3000-5000">3 000€ - 5 000€</option>
-                <option value="5000+">Plus de 5 000€</option>
-                <option value="non-defini">Non défini</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="projectType" class="block text-sm font-semibold text-black mb-2">
-                Type de projet *
-              </label>
-              <select
-                id="projectType"
-                name="projectType"
-                required
-                class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-black"
-              >
-                <option value="">Sélectionnez un type</option>
-                <option value="creation">Création de site</option>
-                <option value="refonte">Refonte de site</option>
-                <option value="maintenance">Maintenance</option>
-                <option value="seo">SEO / Référencement</option>
-                <option value="other">Autre</option>
-              </select>
-            </div>
-
-            <div>
               <label for="message" class="block text-sm font-semibold text-black mb-2">
-                Décrivez votre projet *
+                Votre message *
               </label>
               <textarea
                 id="message"
                 name="message"
                 required
-                rows="5"
+                rows="6"
                 class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all resize-none text-black"
-                placeholder="Parlez-nous de votre projet, vos objectifs, vos besoins..."
+                placeholder="Décrivez votre projet en quelques lignes..."
               ></textarea>
-            </div>
-
-            <div>
-              <label class="flex items-start space-x-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="consent"
-                  required
-                  class="mt-1 w-5 h-5 text-blue-600 border-gray-200 rounded focus:ring-2 focus:ring-blue-600 bg-white"
-                />
-                <span class="text-sm text-gray-text">
-                  J'accepte que mes données soient utilisées pour me recontacter au sujet de ma demande. *
-                </span>
-              </label>
             </div>
 
             <button
               type="submit"
-              class="w-full btn-blue py-4 text-lg"
+              class="w-full btn-blue py-4 text-base font-semibold"
             >
-              Envoyer le message
+              Envoyer
             </button>
 
-            <p class="text-xs text-gray-text text-center">
-              * Champs obligatoires - Réponse garantie sous 24h
+            <p class="text-xs text-gray-500 text-center">
+              * Champs obligatoires
             </p>
           </form>
 
