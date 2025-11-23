@@ -45,6 +45,24 @@ body {
   background-color: #1d4ed8;
 }
 
+/* Navigation link */
+.nav-link {
+  @apply px-4 py-2 text-gray-700 font-medium rounded-lg transition-all duration-200;
+  position: relative;
+}
+
+.nav-link:hover {
+  @apply bg-gray-100 text-black;
+}
+
+.nav-link:focus-visible {
+  @apply outline-none ring-2 ring-blue-600 ring-offset-2;
+}
+
+.nav-link.active {
+  @apply text-blue-600 bg-blue-50 font-semibold;
+}
+
 /* Section Title */
 .section-title {
   @apply text-4xl md:text-5xl lg:text-6xl font-black text-black mb-4;
