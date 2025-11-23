@@ -48,7 +48,7 @@ const formatDate = (date: Date) => {
                 <div class="md:w-72 flex-shrink-0">
                   <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
                     {post.data.image ? (
-                      <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" />
+                      <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" loading="lazy" />
                     ) : (
                       <div class="text-center p-6">
                         <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">

@@ -10,11 +10,17 @@
     "preview": "astro preview",
     "astro": "astro"
   },
-  "keywords": ["web design", "saint-etienne", "loire", "freelance"],
+  "keywords": [
+    "web design",
+    "saint-etienne",
+    "loire",
+    "freelance"
+  ],
   "author": "Loire Digital",
   "license": "MIT",
   "dependencies": {
     "@astrojs/react": "^4.4.1",
+    "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
