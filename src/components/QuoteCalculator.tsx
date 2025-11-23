@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import jsPDF from 'jspdf';
 
 interface QuoteOptions {
   projectType: string;
@@ -125,6 +126,94 @@ const QuoteCalculator = () => {
     });
   };
 
+  const generatePDF = () => {
+    const doc = new jsPDF();
+    const totalPrice = calculatePrice();
+    const maintenancePrice = getMaintenancePrice();
+
+    // Header
+    doc.setFontSize(24);
+    doc.setTextColor(37, 99, 235); // Blue color
+    doc.text('Loire Digital', 105, 20, { align: 'center' });
+
+    doc.setFontSize(18);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Devis Estimatif', 105, 35, { align: 'center' });
+
+    // Date
+    doc.setFontSize(10);
+    doc.setTextColor(100, 100, 100);
+    doc.text(`Généré le ${new Date().toLocaleDateString('fr-FR')}`, 105, 45, { align: 'center' });
+
+    // Price section
+    doc.setFontSize(28);
+    doc.setTextColor(37, 99, 235);
+    doc.text(`${totalPrice.toLocaleString('fr-FR')} €`, 105, 65, { align: 'center' });
+
+    doc.setFontSize(12);
+    doc.setTextColor(100, 100, 100);
+    doc.text('Prix de création (paiement unique)', 105, 73, { align: 'center' });
+
+    if (maintenancePrice > 0) {
+      doc.setFontSize(16);
+      doc.setTextColor(37, 99, 235);
+      doc.text(`+ ${maintenancePrice} €/mois`, 105, 85, { align: 'center' });
+      doc.setFontSize(10);
+      doc.setTextColor(100, 100, 100);
+      doc.text(`Maintenance ${options.maintenance === 'essential' ? 'Essentielle' : 'Premium'}`, 105, 92, { align: 'center' });
+    }
+
+    // Project details
+    doc.setFontSize(14);
+    doc.setTextColor(0, 0, 0);
+    doc.text('Récapitulatif de votre projet', 20, maintenancePrice > 0 ? 110 : 100);
+
+    let yPos = maintenancePrice > 0 ? 120 : 110;
+    doc.setFontSize(11);
+    doc.setTextColor(60, 60, 60);
+
+    const projectTypeLabel = options.projectType === 'vitrine' ? 'Site vitrine' :
+                             options.projectType === 'ecommerce' ? 'Site e-commerce' : 'Site sur-mesure';
+    doc.text(`• Type : ${projectTypeLabel}`, 25, yPos);
+    yPos += 8;
+
+    doc.text(`• Nombre de pages : ${options.pages}`, 25, yPos);
+    yPos += 8;
+
+    const designLabel = options.design === 'custom' ? 'Sur-mesure' : 'À partir d\'un template';
+    doc.text(`• Design : ${designLabel}`, 25, yPos);
+    yPos += 8;
+
+    if (options.features.length > 0) {
+      doc.text(`• Fonctionnalités : ${options.features.join(', ')}`, 25, yPos);
+      yPos += 8;
+    }
+
+    if (options.seo) {
+      doc.text('• Pack SEO local inclus', 25, yPos);
+      yPos += 8;
+    }
+
+    // Note section
+    yPos += 10;
+    doc.setFontSize(10);
+    doc.setTextColor(37, 99, 235);
+    doc.text('Note :', 20, yPos);
+    doc.setTextColor(60, 60, 60);
+    const noteText = 'Le calculateur donne une estimation fiable. Le devis final peut bouger\nlégèrement si le projet devient plus complexe.';
+    const splitNote = doc.splitTextToSize(noteText, 170);
+    doc.text(splitNote, 20, yPos + 5);
+
+    // Footer
+    doc.setFontSize(9);
+    doc.setTextColor(150, 150, 150);
+    doc.text('Loire Digital - Sites web professionnels à Saint-Étienne', 105, 280, { align: 'center' });
+    doc.text('contact@loiredigital.fr | loiredigital.fr', 105, 285, { align: 'center' });
+
+    // Save PDF
+    doc.save(`devis-loire-digital-${Date.now()}.pdf`);
+  };
+
   if (showResult) {
     const totalPrice = calculatePrice();
     const maintenancePrice = getMaintenancePrice();
@@ -208,16 +297,27 @@ const QuoteCalculator = () => {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-4">
-          <button
-            onClick={resetCalculator}
-            className="flex-1 px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
-          >
-            Recommencer
-          </button>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={resetCalculator}
+              className="flex-1 px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+            >
+              Recommencer
+            </button>
+            <button
+              onClick={generatePDF}
+              className="flex-1 px-6 py-3 bg-white border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Télécharger PDF
+            </button>
+          </div>
           <a
             href="/contact"
-            className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
+            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center"
           >
             Demander un devis détaillé
           </a>
