@@ -4,12 +4,58 @@ import '../styles/global.css'
 interface Props {
   title?: string
   description?: string
+  ogImage?: string
 }
 
 const {
   title = 'Loire Digital - Création de sites web à Saint-Étienne',
   description = 'Création de sites web professionnels pour les commerces locaux de Saint-Étienne et sa région. Design moderne, SEO optimisé et prix transparents.',
+  ogImage = '/og-image.jpg',
 } = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const currentYear = new Date().getFullYear()
+
+const jsonLdSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://loiredigital.fr',
+  name: 'Loire Digital',
+  description: 'Agence de création de sites web professionnels pour commerces locaux',
+  url: 'https://loiredigital.fr',
+  telephone: '',
+  email: 'contact@loiredigital.fr',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Saint-Étienne',
+    addressRegion: 'Loire',
+    addressCountry: 'FR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 45.4397,
+    longitude: 4.3872,
+  },
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 45.4397,
+      longitude: 4.3872,
+    },
+    geoRadius: '50000',
+  },
+  priceRange: '€€',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+  ],
+  sameAs: [],
+}
 ---
 
 <!doctype html>
@@ -20,6 +66,9 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
 
     <!-- Preconnect to Google Fonts for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -38,13 +87,21 @@ const {
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="fr_FR" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
 
     <title>{title}</title>
   </head>
@@ -168,7 +225,7 @@ const {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div>
             <div class="flex items-center space-x-3 mb-4">
-              <img src="/logo.svg" alt="Loire Digital" class="w-10 h-10" />
+              <img src="/logo.svg" alt="Loire Digital" class="w-10 h-10" loading="lazy" />
               <span class="text-xl font-display font-bold text-black">Loire Digital</span>
             </div>
             <p class="text-sm text-gray-600">Studio digital premium basé à Saint-Étienne.</p>
@@ -262,7 +319,7 @@ const {
         </div>
 
         <div class="border-t border-gray-200 mt-12 pt-8 text-center text-sm text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Loire Digital. Tous droits réservés.</p>
+          <p>&copy; {currentYear} Loire Digital. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
