@@ -1,0 +1,206 @@
+import type { APIRoute } from 'astro'
+import { Resend } from 'resend'
+import { contactSchema } from '../../schemas/contact.schema'
+
+export const POST: APIRoute = async ({ request }) => {
+  try {
+    const data = await request.json()
+
+    // Validate with Zod
+    const validationResult = contactSchema.safeParse(data)
+
+    if (!validationResult.success) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Données invalides.',
+          errors: validationResult.error.flatten().fieldErrors,
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
+
+    const { name, email, project, message } = validationResult.data
+
+    // Map project types to French labels
+    const projectLabels: Record<string, string> = {
+      creation: 'Création de site',
+      refonte: 'Refonte',
+      maintenance: 'Maintenance',
+      seo: 'SEO',
+      autre: 'Autre',
+    }
+
+    // Check if Resend API key is configured
+    if (!import.meta.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not configured. Email not sent.')
+      console.log('Contact form submission:', { name, email, project, message })
+
+      return new Response(
+        JSON.stringify({
+          success: true,
+          message:
+            'Votre message a été reçu. Nous vous contacterons sous 24h. (Mode développement)',
+        }),
+        {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
+
+    // Send email using Resend
+    const resend = new Resend(import.meta.env.RESEND_API_KEY)
+    const emailResult = await resend.emails.send({
+      from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
+      to: 'contact@loiredigital.fr',
+      replyTo: email,
+      subject: `Nouveau message de ${name} - ${projectLabels[project]}`,
+      html: generateContactEmailHTML({
+        name,
+        email,
+        project: projectLabels[project],
+        message,
+      }),
+    })
+
+    if (!emailResult.data) {
+      throw new Error('Failed to send email')
+    }
+
+    return new Response(
+      JSON.stringify({
+        success: true,
+        message: 'Votre message a été envoyé avec succès. Nous vous contacterons sous 24h.',
+      }),
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+  } catch (error) {
+    console.error('Error processing contact form:', error)
+
+    return new Response(
+      JSON.stringify({
+        success: false,
+        message: 'Une erreur est survenue. Veuillez réessayer plus tard.',
+      }),
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
+  }
+}
+
+// Generate email HTML
+function generateContactEmailHTML(data: {
+  name: string
+  email: string
+  project: string
+  message: string
+}): string {
+  return `
+    <!DOCTYPE html>
+    <html lang="fr">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nouveau message de contact</title>
+        <style>
+          body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+          }
+          .header {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+          }
+          .header h1 {
+            margin: 0;
+            font-size: 24px;
+          }
+          .content {
+            background: #f9fafb;
+            padding: 30px;
+            border: 1px solid #e5e7eb;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+          }
+          .field {
+            margin-bottom: 20px;
+          }
+          .field-label {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 5px;
+          }
+          .field-value {
+            color: #4b5563;
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+          }
+          .message-box {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+          }
+          .footer {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #6b7280;
+            text-align: center;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <h1>📧 Nouveau message de contact</h1>
+        </div>
+        <div class="content">
+          <div class="field">
+            <div class="field-label">Nom :</div>
+            <div class="field-value">${data.name}</div>
+          </div>
+
+          <div class="field">
+            <div class="field-label">Email :</div>
+            <div class="field-value"><a href="mailto:${data.email}">${data.email}</a></div>
+          </div>
+
+          <div class="field">
+            <div class="field-label">Type de projet :</div>
+            <div class="field-value">${data.project}</div>
+          </div>
+
+          <div class="field">
+            <div class="field-label">Message :</div>
+            <div class="message-box">${data.message}</div>
+          </div>
+
+          <div class="footer">
+            Reçu via le formulaire de contact de <strong>loiredigital.fr</strong>
+          </div>
+        </div>
+      </body>
+    </html>
+  `
+}
