@@ -1,0 +1,203 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Paiement sécurisé | Loire Digital"
+  description="Effectuez votre paiement de manière sécurisée via Stripe"
+>
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h1
+          class="text-5xl md:text-7xl font-black text-black mb-6 text-center"
+          style="letter-spacing: -0.02em;"
+        >
+          Paiement sécurisé
+        </h1>
+        <p class="text-xl text-gray-text text-center mb-12">
+          Choisissez votre mode de paiement
+        </p>
+
+        <div class="space-y-8">
+          <!-- Paiement complet -->
+          <div class="card-minimal">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <h2 class="text-2xl font-bold text-black mb-2">Paiement intégral</h2>
+                <p class="text-gray-text">
+                  Payez le montant total de votre projet en une seule fois
+                </p>
+              </div>
+              <div
+                class="px-4 py-2 bg-blue-50 text-blue-600 rounded-lg font-semibold text-sm whitespace-nowrap"
+              >
+                -5% de réduction
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <div class="text-4xl font-black text-black mb-2">
+                <span id="full-amount">1 500</span> €
+              </div>
+              <div class="text-sm text-gray-text">TTC</div>
+            </div>
+
+            <button
+              id="pay-full"
+              class="btn-blue w-full"
+              data-payment-type="full"
+            >
+              Payer maintenant
+            </button>
+          </div>
+
+          <!-- Paiement en acompte -->
+          <div class="card-minimal">
+            <div class="mb-4">
+              <h2 class="text-2xl font-bold text-black mb-2">Paiement en 2 fois</h2>
+              <p class="text-gray-text">
+                Payez 30% d'acompte maintenant, le solde à la livraison
+              </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-sm text-gray-text mb-1">Aujourd'hui (30%)</div>
+                <div class="text-2xl font-bold text-black">
+                  <span id="deposit-amount">450</span> €
+                </div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-sm text-gray-text mb-1">À la livraison</div>
+                <div class="text-2xl font-bold text-gray-text">
+                  <span id="remaining-amount">1 050</span> €
+                </div>
+              </div>
+            </div>
+
+            <button
+              id="pay-deposit"
+              class="btn-secondary w-full"
+              data-payment-type="deposit"
+            >
+              Payer l'acompte
+            </button>
+          </div>
+        </div>
+
+        <!-- Info sécurité -->
+        <div class="mt-12 p-6 bg-gray-50 rounded-xl">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="w-6 h-6 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                ></path>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-black mb-2">Paiement 100% sécurisé</h3>
+              <p class="text-sm text-gray-text leading-relaxed">
+                Tous les paiements sont traités de manière sécurisée par <strong>Stripe</strong>,
+                leader mondial du paiement en ligne. Vos informations bancaires ne transitent jamais
+                par nos serveurs.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Récupérer le montant depuis l'URL ou utiliser un montant par défaut
+    const urlParams = new URLSearchParams(window.location.search)
+    const amount = parseInt(urlParams.get('amount') || '1500')
+    const productName = urlParams.get('product') || 'Site web Premium'
+    const customerEmail = urlParams.get('email') || ''
+
+    // Calculer les montants
+    const depositPercentage = 30
+    const depositAmount = Math.round((amount * depositPercentage) / 100)
+    const remainingAmount = amount - depositAmount
+
+    // Afficher les montants
+    document.getElementById('full-amount')!.textContent = amount.toString()
+    document.getElementById('deposit-amount')!.textContent = depositAmount.toString()
+    document.getElementById('remaining-amount')!.textContent = remainingAmount.toString()
+
+    // Gestion des boutons de paiement
+    const payFullButton = document.getElementById('pay-full')
+    const payDepositButton = document.getElementById('pay-deposit')
+
+    async function createCheckoutSession(paymentType: 'full' | 'deposit') {
+      try {
+        const button = paymentType === 'full' ? payFullButton : payDepositButton
+        if (!button) return
+
+        button.textContent = 'Chargement...'
+        button.setAttribute('disabled', 'true')
+
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            products: [
+              {
+                name: productName,
+                description: `Paiement ${paymentType === 'full' ? 'intégral' : "d'acompte"} pour ${productName}`,
+                amount: paymentType === 'full' ? amount * 100 : depositAmount * 100,
+                currency: 'eur',
+                metadata: {
+                  originalAmount: amount.toString(),
+                  paymentType,
+                },
+              },
+            ],
+            customerEmail,
+            paymentType,
+            depositPercentage,
+          }),
+        })
+
+        const data = await response.json()
+
+        if (data.error) {
+          alert("Erreur lors de la création de la session de paiement: " + data.error)
+          button.textContent = paymentType === 'full' ? 'Payer maintenant' : "Payer l'acompte"
+          button.removeAttribute('disabled')
+          return
+        }
+
+        // Rediriger vers Stripe Checkout
+        if (data.url) {
+          window.location.href = data.url
+        }
+      } catch (error) {
+        console.error('Error:', error)
+        alert('Une erreur est survenue. Veuillez réessayer.')
+        const button = paymentType === 'full' ? payFullButton : payDepositButton
+        if (button) {
+          button.textContent = paymentType === 'full' ? 'Payer maintenant' : "Payer l'acompte"
+          button.removeAttribute('disabled')
+        }
+      }
+    }
+
+    payFullButton?.addEventListener('click', () => createCheckoutSession('full'))
+    payDepositButton?.addEventListener('click', () => createCheckoutSession('deposit'))
+  </script>
+</BaseLayout>

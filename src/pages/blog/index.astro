@@ -1,11 +1,9 @@
 ---
-import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Icon from '../../components/Icon.astro'
+import { getAllBlogPosts } from '../../lib/blog'
 
-const allPosts = (await getCollection('blog'))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+const allPosts = await getAllBlogPosts()
 
 const formatDate = (date: Date) => {
   return new Intl.DateTimeFormat('fr-FR', {
@@ -54,28 +52,28 @@ const formatDate = (date: Date) => {
                   {/* Post Image/Icon */}
                   <div class="md:w-72 flex-shrink-0">
                     <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
-                      {post.data.image ? (
+                      {post.image ? (
                         <img
-                          src={post.data.image}
-                          alt={post.data.title}
+                          src={post.image}
+                          alt={post.title}
                           class="w-full h-full object-cover"
                           loading="lazy"
                         />
                       ) : (
                         <div class="text-center p-6">
                           <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                            {post.data.tags.includes('SEO') ? (
+                            {post.tags.includes('SEO') ? (
                               <Icon name="search" class="text-blue-600" size={32} />
-                            ) : post.data.tags.includes('tarifs') ? (
+                            ) : post.tags.includes('tarifs') ? (
                               <Icon name="price-tag" class="text-blue-600" size={32} />
-                            ) : post.data.tags.includes('commerce local') ? (
+                            ) : post.tags.includes('commerce local') ? (
                               <Icon name="storefront" class="text-blue-600" size={32} />
                             ) : (
                               <Icon name="document-text" class="text-blue-600" size={32} />
                             )}
                           </div>
                           <p class="text-blue-600 font-semibold text-sm">
-                            {post.data.title.split(' ').slice(0, 3).join(' ')}
+                            {post.title.split(' ').slice(0, 3).join(' ')}
                           </p>
                         </div>
                       )}
@@ -85,7 +83,7 @@ const formatDate = (date: Date) => {
                   {/* Post Content */}
                   <div class="flex-1">
                     <div class="flex flex-wrap gap-2 mb-3">
-                      {post.data.tags.map((tag: string) => (
+                      {post.tags.map((tag: string) => (
                         <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
                           {tag}
                         </span>
@@ -93,7 +91,7 @@ const formatDate = (date: Date) => {
                     </div>
 
                     <h2 class="text-2xl md:text-3xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
-                      <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                      <a href={`/blog/${post.slug}`}>{post.title}</a>
                     </h2>
 
                     <div class="flex items-center text-sm text-gray-text mb-4">
@@ -110,14 +108,14 @@ const formatDate = (date: Date) => {
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                       </svg>
-                      <time datetime={post.data.pubDate.toISOString()}>
-                        {formatDate(post.data.pubDate)}
+                      <time datetime={post.pubDate.toISOString()}>
+                        {formatDate(post.pubDate)}
                       </time>
                       <span class="mx-2">•</span>
-                      <span>{post.data.author}</span>
+                      <span>{post.author}</span>
                     </div>
 
-                    <p class="text-gray-text mb-6 leading-relaxed">{post.data.description}</p>
+                    <p class="text-gray-text mb-6 leading-relaxed">{post.description}</p>
 
                     <a
                       href={`/blog/${post.slug}`}

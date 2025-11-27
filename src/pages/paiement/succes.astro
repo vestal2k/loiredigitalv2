@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getCheckoutSession } from '../../lib/stripe'
+
+const sessionId = Astro.url.searchParams.get('session_id')
+
+let session
+let paymentDetails = {
+  amount: 0,
+  currency: 'eur',
+  customerEmail: '',
+  paymentType: 'full',
+  depositPercentage: 0,
+  fullAmount: 0,
+}
+
+if (sessionId) {
+  try {
+    session = await getCheckoutSession(sessionId)
+    paymentDetails = {
+      amount: session.amount_total || 0,
+      currency: session.currency || 'eur',
+      customerEmail: session.customer_email || session.customer_details?.email || '',
+      paymentType: session.metadata?.paymentType || 'full',
+      depositPercentage: parseInt(session.metadata?.depositPercentage || '0'),
+      fullAmount: parseInt(session.metadata?.fullAmount || '0'),
+    }
+  } catch (error) {
+    console.error('Error fetching session:', error)
+  }
+}
+
+const formatAmount = (amount: number, currency: string) => {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: currency.toUpperCase(),
+  }).format(amount / 100)
+}
+---
+
+<BaseLayout
+  title="Paiement réussi | Loire Digital"
+  description="Votre paiement a été effectué avec succès"
+>
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <!-- Icône de succès -->
+        <div
+          class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8"
+        >
+          <svg
+            class="w-12 h-12 text-green-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+
+        <h1
+          class="text-5xl md:text-6xl font-black text-black mb-6"
+          style="letter-spacing: -0.02em;"
+        >
+          Paiement réussi !
+        </h1>
+
+        {
+          paymentDetails.paymentType === 'deposit' ? (
+            <p class="text-xl text-gray-text mb-12">
+              Votre acompte de{' '}
+              <strong class="text-black">
+                {formatAmount(paymentDetails.amount, paymentDetails.currency)}
+              </strong>{' '}
+              a été enregistré avec succès.
+            </p>
+          ) : (
+            <p class="text-xl text-gray-text mb-12">
+              Votre paiement de{' '}
+              <strong class="text-black">
+                {formatAmount(paymentDetails.amount, paymentDetails.currency)}
+              </strong>{' '}
+              a été enregistré avec succès.
+            </p>
+          )
+        }
+
+        <!-- Détails -->
+        <div class="card-minimal text-left mb-12">
+          <h2 class="text-2xl font-bold text-black mb-6">Détails de la transaction</h2>
+
+          <div class="space-y-4">
+            <div class="flex justify-between py-3 border-b border-gray-100">
+              <span class="text-gray-text">Montant payé</span>
+              <span class="font-semibold text-black">
+                {formatAmount(paymentDetails.amount, paymentDetails.currency)}
+              </span>
+            </div>
+
+            {
+              paymentDetails.paymentType === 'deposit' && (
+                <>
+                  <div class="flex justify-between py-3 border-b border-gray-100">
+                    <span class="text-gray-text">Montant total du projet</span>
+                    <span class="font-semibold text-gray-text">
+                      {formatAmount(paymentDetails.fullAmount, paymentDetails.currency)}
+                    </span>
+                  </div>
+                  <div class="flex justify-between py-3 border-b border-gray-100">
+                    <span class="text-gray-text">Solde restant</span>
+                    <span class="font-semibold text-gray-text">
+                      {formatAmount(
+                        paymentDetails.fullAmount - paymentDetails.amount,
+                        paymentDetails.currency,
+                      )}
+                    </span>
+                  </div>
+                </>
+              )
+            }
+
+            {
+              paymentDetails.customerEmail && (
+                <div class="flex justify-between py-3">
+                  <span class="text-gray-text">Email de confirmation</span>
+                  <span class="font-semibold text-black">{paymentDetails.customerEmail}</span>
+                </div>
+              )
+            }
+          </div>
+        </div>
+
+        <!-- Prochaines étapes -->
+        <div class="bg-blue-50 p-8 rounded-xl mb-12">
+          <h3 class="text-2xl font-bold text-black mb-4">Prochaines étapes</h3>
+          <div class="space-y-3 text-left">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-white text-sm font-bold">1</span>
+              </div>
+              <p class="text-gray-text">
+                Vous allez recevoir un email de confirmation à l'adresse{' '}
+                {paymentDetails.customerEmail}
+              </p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-white text-sm font-bold">2</span>
+              </div>
+              <p class="text-gray-text">
+                Notre équipe va prendre contact avec vous sous 24h pour démarrer le projet
+              </p>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span class="text-white text-sm font-bold">3</span>
+              </div>
+              <p class="text-gray-text">
+                Vous aurez accès à votre espace client pour suivre l'avancement du projet
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/" class="btn-blue"> Retour à l'accueil </a>
+          <a href="/contact" class="btn-secondary"> Nous contacter </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

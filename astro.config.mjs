@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
 import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
+import sanity from '@sanity/astro'
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +12,12 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap(),
+    sanity({
+      projectId: process.env.PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
+      dataset: process.env.PUBLIC_SANITY_DATASET || 'production',
+      useCdn: true,
+      apiVersion: '2025-01-01',
+    }),
   ],
   output: 'static',
   site: 'https://loiredigital.fr',

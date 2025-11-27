@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Paiement annulé | Loire Digital"
+  description="Votre paiement a été annulé"
+>
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <!-- Icône d'annulation -->
+        <div
+          class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-8"
+        >
+          <svg
+            class="w-12 h-12 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+
+        <h1
+          class="text-5xl md:text-6xl font-black text-black mb-6"
+          style="letter-spacing: -0.02em;"
+        >
+          Paiement annulé
+        </h1>
+
+        <p class="text-xl text-gray-text mb-12">
+          Votre paiement a été annulé. Aucun montant n'a été débité.
+        </p>
+
+        <!-- Raisons d'annulation -->
+        <div class="card-minimal text-left mb-12">
+          <h2 class="text-2xl font-bold text-black mb-6">Besoin d'aide ?</h2>
+
+          <div class="space-y-4 text-gray-text">
+            <p>Si vous avez rencontré un problème lors du paiement :</p>
+            <ul class="space-y-2 ml-6">
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 mt-1">•</span>
+                <span>Vérifiez que vos informations bancaires sont correctes</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 mt-1">•</span>
+                <span>Assurez-vous que votre carte dispose de fonds suffisants</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue-600 mt-1">•</span>
+                <span>Contactez votre banque si le problème persiste</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="bg-blue-50 p-8 rounded-xl mb-12">
+          <h3 class="text-2xl font-bold text-black mb-4">Une question ?</h3>
+          <p class="text-gray-text mb-6">
+            Notre équipe est disponible pour vous aider à finaliser votre paiement.
+          </p>
+          <div class="flex items-center justify-center gap-6 text-gray-text">
+            <a
+              href="mailto:contact@loiredigital.fr"
+              class="inline-flex items-center gap-2 hover:text-blue-600 transition-colors"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
+              <span>contact@loiredigital.fr</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="javascript:history.back()"
+            class="btn-blue"
+          >
+            Réessayer le paiement
+          </a>
+          <a href="/" class="btn-secondary"> Retour à l'accueil </a>
+          <a href="/contact" class="btn-secondary"> Nous contacter </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

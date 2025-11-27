@@ -3,17 +3,24 @@ import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import Icon from '../../components/Icon.astro'
 import CTABlock from '../../components/CTABlock.astro'
+import { getAllBlogPosts, getBlogPostBySlug } from '../../lib/blog'
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog')
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  const allPosts = await getAllBlogPosts()
+  return allPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
   }))
 }
 
-const { entry } = Astro.props
-const { Content } = await entry.render()
+const { post } = Astro.props
+
+// Si le post vient d'Astro Content Collections, on doit le rendre
+let AstroContent
+if (post._source === 'astro' && post._raw) {
+  const { Content } = await post._raw.render()
+  AstroContent = Content
+}
 
 const formatDate = (date: Date) => {
   return new Intl.DateTimeFormat('fr-FR', {
@@ -24,13 +31,12 @@ const formatDate = (date: Date) => {
 }
 
 // Get other posts for recommendations
-const allPosts = (await getCollection('blog'))
-  .filter((post) => post.slug !== entry.slug && !post.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+const allPosts = (await getAllBlogPosts())
+  .filter((p) => p.slug !== post.slug)
   .slice(0, 2)
 ---
 
-<BaseLayout title={`${entry.data.title} - Loire Digital`} description={entry.data.description}>
+<BaseLayout title={`${post.title} - Loire Digital`} description={post.description}>
   <!-- Article Header -->
   <article class="py-12 bg-white">
     <div class="container mx-auto px-4">
@@ -42,14 +48,14 @@ const allPosts = (await getCollection('blog'))
             <li><span class="mx-2">/</span></li>
             <li><a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
             <li><span class="mx-2">/</span></li>
-            <li class="text-gray-400 truncate">{entry.data.title}</li>
+            <li class="text-gray-400 truncate">{post.title}</li>
           </ol>
         </nav>
 
         <!-- Tags -->
         <div class="flex flex-wrap gap-2 mb-6">
           {
-            entry.data.tags.map((tag: string) => (
+            post.tags.map((tag: string) => (
               <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
                 {tag}
               </span>
@@ -62,7 +68,7 @@ const allPosts = (await getCollection('blog'))
           class="text-4xl md:text-6xl font-black text-black mb-6 leading-tight"
           style="letter-spacing: -0.02em;"
         >
-          {entry.data.title}
+          {post.title}
         </h1>
 
         <!-- Meta -->
@@ -72,7 +78,7 @@ const allPosts = (await getCollection('blog'))
               <span class="text-white font-bold text-lg">LD</span>
             </div>
             <div>
-              <div class="font-semibold text-black">{entry.data.author}</div>
+              <div class="font-semibold text-black">{post.author}</div>
               <div class="text-sm flex items-center text-gray-text">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -82,8 +88,8 @@ const allPosts = (await getCollection('blog'))
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   ></path>
                 </svg>
-                <time datetime={entry.data.pubDate.toISOString()}>
-                  {formatDate(entry.data.pubDate)}
+                <time datetime={post.pubDate.toISOString()}>
+                  {formatDate(post.pubDate)}
                 </time>
               </div>
             </div>
@@ -103,7 +109,11 @@ const allPosts = (await getCollection('blog'))
           prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-100
           prose-blockquote:border-l-blue-600 prose-blockquote:text-gray-text"
         >
-          <Content />
+          {post._source === 'astro' && AstroContent ? (
+            <AstroContent />
+          ) : (
+            <Fragment set:html={post.content} />
+          )}
         </div>
 
         <!-- Share Buttons -->
@@ -111,7 +121,7 @@ const allPosts = (await getCollection('blog'))
           <h3 class="text-lg font-bold text-black mb-4">Partager cet article</h3>
           <div class="flex gap-3">
             <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(entry.data.title)}&url=${encodeURIComponent(Astro.url.href)}`}
+              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(Astro.url.href)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
@@ -119,7 +129,7 @@ const allPosts = (await getCollection('blog'))
               Twitter
             </a>
             <a
-              href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(entry.data.title)}`}
+              href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.title)}`}
               target="_blank"
               rel="noopener noreferrer"
               class="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
@@ -154,29 +164,29 @@ const allPosts = (await getCollection('blog'))
             </h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {allPosts.map((post) => (
+              {allPosts.map((relatedPost) => (
                 <article class="card-minimal hover:scale-[1.02] transition-transform">
                   <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center mb-6 overflow-hidden">
                     <div class="text-center p-6">
                       <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        {post.data.tags.includes('SEO') ? (
+                        {relatedPost.tags.includes('SEO') ? (
                           <Icon name="search" class="text-blue-600" size={32} />
-                        ) : post.data.tags.includes('tarifs') ? (
+                        ) : relatedPost.tags.includes('tarifs') ? (
                           <Icon name="price-tag" class="text-blue-600" size={32} />
-                        ) : post.data.tags.includes('commerce local') ? (
+                        ) : relatedPost.tags.includes('commerce local') ? (
                           <Icon name="storefront" class="text-blue-600" size={32} />
                         ) : (
                           <Icon name="document-text" class="text-blue-600" size={32} />
                         )}
                       </div>
                       <p class="text-blue-600 font-semibold text-sm">
-                        {post.data.title.split(' ').slice(0, 3).join(' ')}
+                        {relatedPost.title.split(' ').slice(0, 3).join(' ')}
                       </p>
                     </div>
                   </div>
 
                   <div class="flex flex-wrap gap-2 mb-3">
-                    {post.data.tags.slice(0, 2).map((tag: string) => (
+                    {relatedPost.tags.slice(0, 2).map((tag: string) => (
                       <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full capitalize font-semibold">
                         {tag}
                       </span>
@@ -184,13 +194,13 @@ const allPosts = (await getCollection('blog'))
                   </div>
 
                   <h3 class="text-xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
-                    <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                    <a href={`/blog/${relatedPost.slug}`}>{relatedPost.title}</a>
                   </h3>
 
-                  <p class="text-gray-text mb-4 text-sm line-clamp-2">{post.data.description}</p>
+                  <p class="text-gray-text mb-4 text-sm line-clamp-2">{relatedPost.description}</p>
 
                   <a
-                    href={`/blog/${post.slug}`}
+                    href={`/blog/${relatedPost.slug}`}
                     class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 text-sm group"
                   >
                     Lire l'article
