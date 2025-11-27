@@ -490,6 +490,10 @@ const QuoteCalculator = () => {
                   setOptions({ ...options, pages: value })
                 }
               }}
+              aria-label={`Nombre de pages : ${options.pages}`}
+              aria-valuemin={1}
+              aria-valuemax={20}
+              aria-valuenow={options.pages}
               className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
               style={{
                 accentColor: '#2563eb',
