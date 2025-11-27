@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
+      "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@config/*": ["src/config/*"]

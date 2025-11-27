@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Loire Digital',
 
-  projectId: 'your-project-id', // À remplacer après création du projet
+  projectId: 'r98l8u9o',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],

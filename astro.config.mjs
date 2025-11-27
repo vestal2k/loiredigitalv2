@@ -4,6 +4,7 @@ import tailwind from '@astrojs/tailwind'
 import sitemap from '@astrojs/sitemap'
 import sanity from '@sanity/astro'
 import vercel from '@astrojs/vercel'
+import { fileURLToPath } from 'url'
 
 // https://astro.build/config
 export default defineConfig({
@@ -33,6 +34,13 @@ export default defineConfig({
       entrypoint: 'astro/assets/services/sharp',
       config: {
         limitInputPixels: false,
+      },
+    },
+  },
+  vite: {
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
     },
   },
