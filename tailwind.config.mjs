@@ -6,6 +6,8 @@ export default {
       colors: {
         'gray-pale': '#f8f9fa',
         'gray-text': '#374151',
+        'green-accent': '#10b981',
+        'blue-accent': '#3b82f6',
       },
       fontFamily: {
         sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
