@@ -1,0 +1,288 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { requireAuth } from '@/lib/auth'
+import { getClientById, getClientProjects } from '@/lib/sanity-client'
+
+// Vérifier l'authentification
+const authResult = requireAuth(Astro.cookies)
+if (authResult instanceof Response) {
+  return authResult
+}
+
+// Récupérer les données du client
+const client = await getClientById(authResult.userId)
+if (!client) {
+  return Astro.redirect('/espace-client/connexion')
+}
+
+// Récupérer les projets
+const projects = await getClientProjects(authResult.userId)
+
+// Labels des statuts
+const statusLabels: Record<string, string> = {
+  'pending-payment': '⏳ En attente de paiement',
+  design: '🎨 En conception',
+  development: '💻 En développement',
+  review: '🔍 En révision',
+  completed: '✅ Terminé',
+  deployed: '🚀 Déployé',
+}
+
+// Labels des packs
+const packLabels: Record<string, string> = {
+  starter: 'Starter One-Page',
+  essentiel: 'Essentiel',
+  premium: 'Premium',
+  ecommerce: 'E-commerce',
+}
+---
+
+<Layout
+  title="Dashboard - Espace Client"
+  description="Tableau de bord de votre espace client Loire Digital"
+>
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <a href="/">
+              <img src="/images/logo.svg" alt="Loire Digital" class="h-10" width="150" height="40" />
+            </a>
+            <span class="text-gray-300">|</span>
+            <h1 class="text-xl font-semibold text-gray-800">Espace Client</h1>
+          </div>
+          <button
+            id="logout-btn"
+            class="text-gray-600 hover:text-red-600 transition flex items-center space-x-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              ></path>
+            </svg>
+            <span>Déconnexion</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Bienvenue -->
+      <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-2">
+          Bienvenue, {client.firstName} !
+        </h2>
+        <p class="text-gray-600">
+          Retrouvez ici le suivi de tous vos projets avec Loire Digital.
+        </p>
+      </div>
+
+      <!-- Statistiques -->
+      {
+        projects.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* Projets en cours */}
+            <div class="bg-white rounded-xl shadow-md p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm mb-1">Projets en cours</p>
+                  <p class="text-3xl font-bold text-blue-600">
+                    {
+                      projects.filter(
+                        (p) =>
+                          !['completed', 'deployed'].includes(p.status),
+                      ).length
+                    }
+                  </p>
+                </div>
+                <div class="bg-blue-100 rounded-full p-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-blue-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Projets terminés */}
+            <div class="bg-white rounded-xl shadow-md p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm mb-1">Projets terminés</p>
+                  <p class="text-3xl font-bold text-green-600">
+                    {
+                      projects.filter((p) =>
+                        ['completed', 'deployed'].includes(p.status),
+                      ).length
+                    }
+                  </p>
+                </div>
+                <div class="bg-green-100 rounded-full p-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Total investi */}
+            <div class="bg-white rounded-xl shadow-md p-6">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-gray-600 text-sm mb-1">Total investi</p>
+                  <p class="text-3xl font-bold text-purple-600">
+                    {projects.reduce((sum, p) => sum + p.totalAmount, 0)} €
+                  </p>
+                </div>
+                <div class="bg-purple-100 rounded-full p-3">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-purple-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+      <!-- Liste des projets -->
+      <div class="bg-white rounded-xl shadow-md p-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-6">Mes projets</h3>
+
+        {
+          projects.length === 0 ? (
+            <div class="text-center py-12">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-16 w-16 text-gray-400 mx-auto mb-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              <p class="text-gray-600 mb-4">
+                Vous n'avez pas encore de projet en cours.
+              </p>
+              <a
+                href="/devis"
+                class="inline-block bg-gradient-to-r from-green-600 to-green-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg"
+              >
+                Demander un devis
+              </a>
+            </div>
+          ) : (
+            <div class="space-y-4">
+              {projects.map((project) => (
+                <a
+                  href={`/espace-client/projet/${project._id}`}
+                  class="block border border-gray-200 rounded-lg p-6 hover:border-green-500 hover:shadow-md transition group"
+                >
+                  <div class="flex justify-between items-start mb-4">
+                    <div>
+                      <h4 class="text-lg font-semibold text-gray-900 group-hover:text-green-600 transition">
+                        {project.title}
+                      </h4>
+                      <p class="text-sm text-gray-600 mt-1">
+                        {packLabels[project.pack]} • {project.totalAmount} €
+                      </p>
+                    </div>
+                    <span class="text-sm font-medium">
+                      {statusLabels[project.status]}
+                    </span>
+                  </div>
+
+                  {/* Barre de progression */}
+                  <div class="mb-3">
+                    <div class="flex justify-between text-sm text-gray-600 mb-1">
+                      <span>Progression</span>
+                      <span>{project.progress}%</span>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2">
+                      <div
+                        class="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full transition-all"
+                        style={`width: ${project.progress}%`}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Paiement */}
+                  <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-600">
+                      Payé: {project.paidAmount} € / {project.totalAmount} €
+                    </span>
+                    <span class="text-green-600 font-medium group-hover:underline">
+                      Voir les détails →
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Déconnexion
+    const logoutBtn = document.getElementById('logout-btn')
+    logoutBtn?.addEventListener('click', async () => {
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' })
+        window.location.href = '/espace-client/connexion'
+      } catch (error) {
+        console.error('Logout error:', error)
+      }
+    })
+  </script>
+</Layout>

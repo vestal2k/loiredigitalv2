@@ -1,0 +1,452 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { requireAuth } from '@/lib/auth'
+import { getProjectById } from '@/lib/sanity-client'
+import { imageBuilder } from '@/lib/sanity'
+
+// Vérifier l'authentification
+const authResult = requireAuth(Astro.cookies)
+if (authResult instanceof Response) {
+  return authResult
+}
+
+// Récupérer le projet
+const projectId = Astro.params.id
+if (!projectId) {
+  return Astro.redirect('/espace-client/dashboard')
+}
+
+const project = await getProjectById(projectId)
+if (!project) {
+  return Astro.redirect('/espace-client/dashboard')
+}
+
+// Vérifier que le projet appartient au client
+if (project.client._ref !== authResult.userId) {
+  return Astro.redirect('/espace-client/dashboard')
+}
+
+// Labels
+const statusLabels: Record<string, string> = {
+  'pending-payment': '⏳ En attente de paiement',
+  design: '🎨 En conception',
+  development: '💻 En développement',
+  review: '🔍 En révision',
+  completed: '✅ Terminé',
+  deployed: '🚀 Déployé',
+}
+
+const packLabels: Record<string, string> = {
+  starter: 'Starter One-Page',
+  essentiel: 'Essentiel',
+  premium: 'Premium',
+  ecommerce: 'E-commerce',
+}
+
+const mockupStatusLabels: Record<string, string> = {
+  pending: '⏳ En attente de votre validation',
+  approved: '✅ Validée',
+  revision: '🔄 À réviser',
+}
+
+const invoiceStatusLabels: Record<string, string> = {
+  pending: '⏳ En attente',
+  paid: '✅ Payée',
+  overdue: '❌ Échue',
+}
+
+// Formater les dates
+function formatDate(dateString?: string): string {
+  if (!dateString) return 'Non définie'
+  const date = new Date(dateString)
+  return date.toLocaleDateString('fr-FR', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  })
+}
+---
+
+<Layout
+  title={`${project.title} - Espace Client`}
+  description={`Suivi du projet ${project.title}`}
+>
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center space-x-4">
+            <a href="/">
+              <img src="/images/logo.svg" alt="Loire Digital" class="h-10" width="150" height="40" />
+            </a>
+            <span class="text-gray-300">|</span>
+            <a
+              href="/espace-client/dashboard"
+              class="text-gray-600 hover:text-green-600 transition flex items-center space-x-1"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+              </svg>
+              <span>Retour au dashboard</span>
+            </a>
+          </div>
+          <button
+            id="logout-btn"
+            class="text-gray-600 hover:text-red-600 transition flex items-center space-x-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              ></path>
+            </svg>
+            <span>Déconnexion</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenu principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- En-tête du projet -->
+      <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+        <div class="flex justify-between items-start mb-4">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">{project.title}</h1>
+            <p class="text-gray-600">{project.description || 'Pas de description'}</p>
+          </div>
+          <span class="inline-block bg-blue-100 text-blue-800 px-4 py-2 rounded-lg font-medium">
+            {statusLabels[project.status]}
+          </span>
+        </div>
+
+        <!-- Informations du projet -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Pack</p>
+            <p class="text-lg font-semibold text-gray-900">{packLabels[project.pack]}</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Montant total</p>
+            <p class="text-lg font-semibold text-gray-900">{project.totalAmount} €</p>
+          </div>
+          <div>
+            <p class="text-sm text-gray-600 mb-1">Livraison estimée</p>
+            <p class="text-lg font-semibold text-gray-900">
+              {formatDate(project.estimatedDelivery)}
+            </p>
+          </div>
+        </div>
+
+        <!-- Barre de progression -->
+        <div class="mt-6">
+          <div class="flex justify-between text-sm text-gray-600 mb-2">
+            <span class="font-medium">Progression du projet</span>
+            <span class="font-semibold">{project.progress}%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-3">
+            <div
+              class="bg-gradient-to-r from-green-500 to-green-600 h-3 rounded-full transition-all"
+              style={`width: ${project.progress}%`}
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Colonne principale -->
+        <div class="lg:col-span-2 space-y-8">
+          <!-- Mises à jour -->
+          {
+            project.updates && project.updates.length > 0 && (
+              <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">
+                  📢 Mises à jour du projet
+                </h2>
+                <div class="space-y-4">
+                  {project.updates
+                    .slice()
+                    .reverse()
+                    .map((update) => (
+                      <div class="border-l-4 border-green-500 pl-4 py-2">
+                        <p class="text-gray-700">{update.message}</p>
+                        <p class="text-sm text-gray-500 mt-1">
+                          {formatDate(update.createdAt)}
+                        </p>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )
+          }
+
+          <!-- Maquettes -->
+          {
+            project.mockups && project.mockups.length > 0 && (
+              <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">🎨 Maquettes</h2>
+                <div class="space-y-6">
+                  {project.mockups.map((mockup, index) => (
+                    <div class="border border-gray-200 rounded-lg p-4">
+                      <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-semibold text-gray-900">
+                          {mockup.title}
+                        </h3>
+                        <span
+                          class={`text-sm px-3 py-1 rounded-full ${
+                            mockup.status === 'approved'
+                              ? 'bg-green-100 text-green-800'
+                              : mockup.status === 'revision'
+                                ? 'bg-orange-100 text-orange-800'
+                                : 'bg-blue-100 text-blue-800'
+                          }`}
+                        >
+                          {mockupStatusLabels[mockup.status]}
+                        </span>
+                      </div>
+
+                      {mockup.image && (
+                        <img
+                          src={imageBuilder.image(mockup.image).width(800).url()}
+                          alt={mockup.title}
+                          class="w-full rounded-lg mb-3"
+                        />
+                      )}
+
+                      {mockup.status === 'pending' && (
+                        <div class="mt-4">
+                          <p class="text-sm text-gray-600 mb-3">
+                            Donnez votre avis sur cette maquette :
+                          </p>
+                          <form
+                            class="mockup-feedback-form space-y-3"
+                            data-project-id={project._id}
+                            data-mockup-index={index}
+                          >
+                            <textarea
+                              name="feedback"
+                              required
+                              rows={3}
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                              placeholder="Vos commentaires..."
+                            />
+                            <div class="flex gap-3">
+                              <button
+                                type="submit"
+                                data-status="approved"
+                                class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition"
+                              >
+                                ✅ Valider
+                              </button>
+                              <button
+                                type="submit"
+                                data-status="revision"
+                                class="flex-1 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition"
+                              >
+                                🔄 Demander révision
+                              </button>
+                            </div>
+                          </form>
+                        </div>
+                      )}
+
+                      {mockup.feedback && (
+                        <div class="mt-3 bg-gray-50 p-3 rounded-lg">
+                          <p class="text-sm text-gray-600 mb-1 font-medium">
+                            Votre feedback :
+                          </p>
+                          <p class="text-sm text-gray-700">{mockup.feedback}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Colonne latérale -->
+        <div class="space-y-8">
+          <!-- Factures -->
+          {
+            project.invoices && project.invoices.length > 0 && (
+              <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">📄 Factures</h2>
+                <div class="space-y-3">
+                  {project.invoices.map((invoice) => (
+                    <div class="border border-gray-200 rounded-lg p-4">
+                      <div class="flex justify-between items-start mb-2">
+                        <div>
+                          <p class="font-semibold text-gray-900">
+                            {invoice.invoiceNumber}
+                          </p>
+                          <p class="text-sm text-gray-600">
+                            {invoice.type === 'deposit'
+                              ? 'Acompte'
+                              : invoice.type === 'balance'
+                                ? 'Solde'
+                                : 'Complète'}
+                          </p>
+                        </div>
+                        <span
+                          class={`text-xs px-2 py-1 rounded-full ${
+                            invoice.status === 'paid'
+                              ? 'bg-green-100 text-green-800'
+                              : invoice.status === 'overdue'
+                                ? 'bg-red-100 text-red-800'
+                                : 'bg-yellow-100 text-yellow-800'
+                          }`}
+                        >
+                          {invoiceStatusLabels[invoice.status]}
+                        </span>
+                      </div>
+                      <p class="text-lg font-bold text-gray-900 mb-2">
+                        {invoice.amount} €
+                      </p>
+                      <p class="text-xs text-gray-600 mb-3">
+                        Émise le {formatDate(invoice.issuedAt)}
+                      </p>
+                      {invoice.pdfUrl && (
+                        <a
+                          href={invoice.pdfUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-sm text-green-600 hover:text-green-700 font-medium flex items-center space-x-1"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                            />
+                          </svg>
+                          <span>Télécharger PDF</span>
+                        </a>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )
+          }
+
+          <!-- Paiement -->
+          <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">💳 Paiement</h2>
+            <div class="space-y-3">
+              <div class="flex justify-between">
+                <span class="text-gray-600">Montant total</span>
+                <span class="font-semibold">{project.totalAmount} €</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-600">Déjà payé</span>
+                <span class="font-semibold text-green-600">{project.paidAmount} €</span>
+              </div>
+              <div class="border-t pt-3 flex justify-between">
+                <span class="font-semibold text-gray-900">Restant dû</span>
+                <span class="font-bold text-lg">
+                  {project.totalAmount - project.paidAmount} €
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="bg-gradient-to-br from-green-50 to-blue-50 rounded-xl shadow-md p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-3">💬 Besoin d'aide ?</h2>
+            <p class="text-gray-700 mb-4">
+              Notre équipe est là pour répondre à toutes vos questions.
+            </p>
+            <a
+              href="/contact"
+              class="block w-full bg-gradient-to-r from-green-600 to-green-700 text-white text-center px-4 py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg"
+            >
+              Nous contacter
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Déconnexion
+    const logoutBtn = document.getElementById('logout-btn')
+    logoutBtn?.addEventListener('click', async () => {
+      try {
+        await fetch('/api/auth/logout', { method: 'POST' })
+        window.location.href = '/espace-client/connexion'
+      } catch (error) {
+        console.error('Logout error:', error)
+      }
+    })
+
+    // Feedback sur les maquettes
+    const feedbackForms = document.querySelectorAll('.mockup-feedback-form')
+    feedbackForms.forEach((form) => {
+      form.addEventListener('submit', async (e: Event) => {
+        e.preventDefault()
+        const target = e.target as HTMLFormElement
+        const submitter = (e as SubmitEvent).submitter as HTMLButtonElement
+
+        const projectId = target.dataset.projectId
+        const mockupIndex = parseInt(target.dataset.mockupIndex || '0')
+        const feedback = (target.querySelector('[name="feedback"]') as HTMLTextAreaElement).value
+        const status = submitter.dataset.status
+
+        try {
+          submitter.disabled = true
+          submitter.textContent = 'Envoi...'
+
+          const response = await fetch('/api/client/mockup-feedback', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ projectId, mockupIndex, feedback, status }),
+          })
+
+          if (response.ok) {
+            alert('Votre feedback a été enregistré avec succès !')
+            location.reload()
+          } else {
+            alert('Erreur lors de l\'enregistrement du feedback')
+            submitter.disabled = false
+            submitter.textContent =
+              status === 'approved' ? '✅ Valider' : '🔄 Demander révision'
+          }
+        } catch (error) {
+          console.error('Feedback error:', error)
+          alert('Erreur lors de l\'enregistrement du feedback')
+          submitter.disabled = false
+          submitter.textContent = status === 'approved' ? '✅ Valider' : '🔄 Demander révision'
+        }
+      })
+    })
+  </script>
+</Layout>
