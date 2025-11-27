@@ -66,5 +66,5 @@ export function getCouponId(couponName: CouponName) {
  * Vérifie si tous les price IDs sont configurés
  */
 export function areAllPricesConfigured(): boolean {
-  return Object.values(STRIPE_PRODUCTS.packs).every((pack) => pack.priceId !== '')
+  return Object.values(STRIPE_PRODUCTS.packs).every((pack) => pack.priceId.startsWith('price_'))
 }
