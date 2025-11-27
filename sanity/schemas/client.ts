@@ -37,7 +37,8 @@ export default defineType({
       name: 'passwordHash',
       title: 'Mot de passe (hash)',
       type: 'string',
-      hidden: true, // Caché dans l'interface
+      description: 'Hash bcrypt du mot de passe. Générer sur https://bcrypt-generator.com/',
+      // hidden: true, // Temporairement visible pour configuration initiale
     }),
     defineField({
       name: 'createdAt',

@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/Layout.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getUserFromCookie } from '@/lib/auth'
 
 // Si déjà connecté, rediriger vers le dashboard
@@ -9,98 +9,103 @@ if (user) {
 }
 ---
 
-<Layout
-  title="Connexion - Espace Client"
-  description="Connectez-vous à votre espace client Loire Digital pour suivre vos projets."
+<BaseLayout
+  title="Connexion - Espace Client | Loire Digital"
+  description="Connectez-vous à votre espace client Loire Digital pour suivre vos projets en temps réel."
 >
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-md mx-auto">
-      <!-- Logo -->
-      <div class="text-center mb-8">
-        <a href="/" class="inline-block">
-          <img
-            src="/images/logo.svg"
-            alt="Loire Digital"
-            class="h-12 mx-auto"
-            width="200"
-            height="48"
-          />
-        </a>
-        <h2 class="mt-6 text-3xl font-bold text-gray-900">Espace Client</h2>
-        <p class="mt-2 text-gray-600">Connectez-vous pour accéder à vos projets</p>
-      </div>
-
-      <!-- Formulaire de connexion -->
-      <div class="bg-white rounded-xl shadow-lg p-8">
-        <form id="login-form" class="space-y-6">
-          <!-- Email -->
-          <div>
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-              Adresse email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              autocomplete="email"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              placeholder="vous@exemple.fr"
-            />
+  <section class="py-24 md:py-32 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-md mx-auto">
+        <!-- En-tête -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full mb-6">
+            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+            <span class="text-sm font-semibold text-blue-600">Connexion sécurisée</span>
           </div>
 
-          <!-- Mot de passe -->
-          <div>
-            <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-              Mot de passe
-            </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              required
-              autocomplete="current-password"
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition"
-              placeholder="••••••••"
-            />
-          </div>
-
-          <!-- Message d'erreur -->
-          <div id="error-message" class="hidden bg-red-50 text-red-700 px-4 py-3 rounded-lg">
-          </div>
-
-          <!-- Bouton de connexion -->
-          <button
-            type="submit"
-            class="w-full bg-gradient-to-r from-green-600 to-green-700 text-white py-3 rounded-lg font-semibold hover:from-green-700 hover:to-green-800 transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-            id="submit-btn"
-          >
-            Se connecter
-          </button>
-        </form>
-
-        <!-- Liens utiles -->
-        <div class="mt-6 text-center space-y-2">
-          <a href="/contact" class="block text-sm text-gray-600 hover:text-green-600 transition">
-            Mot de passe oublié ?
-          </a>
-          <p class="text-sm text-gray-600">
-            Pas encore de compte ?
-            <a href="/contact" class="text-green-600 hover:text-green-700 font-medium">
-              Contactez-nous
-            </a>
+          <h1 class="text-5xl md:text-6xl font-black text-black mb-4" style="letter-spacing: -0.02em;">
+            Espace Client
+          </h1>
+          <p class="text-xl text-gray-text">
+            Accédez à votre dashboard pour suivre vos projets
           </p>
         </div>
-      </div>
 
-      <!-- Info -->
-      <div class="mt-8 text-center">
-        <p class="text-sm text-gray-600">
-          🔒 Connexion sécurisée - Vos données sont protégées
-        </p>
+        <!-- Formulaire -->
+        <div class="card-minimal">
+          <form id="login-form" class="space-y-6">
+            <!-- Email -->
+            <div>
+              <label for="email" class="block text-sm font-bold text-black mb-2">
+                Adresse email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                autocomplete="email"
+                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-600 focus:ring-0 transition-colors outline-none text-black"
+                placeholder="vous@exemple.fr"
+              />
+            </div>
+
+            <!-- Mot de passe -->
+            <div>
+              <label for="password" class="block text-sm font-bold text-black mb-2">
+                Mot de passe
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-600 focus:ring-0 transition-colors outline-none text-black"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <!-- Message d'erreur -->
+            <div id="error-message" class="hidden bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 rounded-lg">
+            </div>
+
+            <!-- Bouton de connexion -->
+            <button
+              type="submit"
+              class="btn-blue w-full"
+              id="submit-btn"
+            >
+              Se connecter
+            </button>
+          </form>
+
+          <!-- Liens utiles -->
+          <div class="mt-8 pt-6 border-t border-gray-100 space-y-3">
+            <a href="/contact" class="block text-center text-sm text-gray-text hover:text-blue-600 transition-colors">
+              Mot de passe oublié ?
+            </a>
+            <p class="text-center text-sm text-gray-text">
+              Pas encore de compte ?
+              <a href="/contact" class="text-blue-600 hover:text-blue-700 font-semibold transition-colors">
+                Contactez-nous
+              </a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Info sécurité -->
+        <div class="mt-8 flex items-center justify-center gap-3 text-sm text-gray-text">
+          <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+          </svg>
+          <span>Vos données sont protégées et sécurisées</span>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <script>
     const form = document.getElementById('login-form') as HTMLFormElement
@@ -149,4 +154,4 @@ if (user) {
       }
     })
   </script>
-</Layout>
+</BaseLayout>
