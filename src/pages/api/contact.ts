@@ -6,24 +6,9 @@ import { checkRateLimit } from '../../lib/rate-limiter'
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
-    // Rate limiting: max 5 requests per minute per IP
-    const ip = clientAddress || 'unknown'
-    if (!checkRateLimit(ip, 5, 60000)) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: 'Trop de requêtes. Veuillez réessayer dans quelques instants.',
-        }),
-        {
-          status: 429,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
-    }
-
     const data = await request.json()
 
-    // Validate with Zod
+    // Validate with Zod first (before rate limiting)
     const validationResult = contactSchema.safeParse(data)
 
     if (!validationResult.success) {
@@ -41,6 +26,21 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     const { name, email, phone, project, message } = validationResult.data
+
+    // Rate limiting: max 5 requests per minute per IP (after validation)
+    const ip = clientAddress || 'unknown'
+    if (!checkRateLimit(ip, 5, 60000)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Trop de requêtes. Veuillez réessayer dans quelques instants.',
+        }),
+        {
+          status: 429,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
 
     // Map project types to French labels
     const projectLabels: Record<string, string> = {
@@ -70,23 +70,32 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     // Send email using Resend
-    const resend = new Resend(import.meta.env.RESEND_API_KEY)
-    const emailResult = await resend.emails.send({
-      from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
-      to: 'contact@loiredigital.fr',
-      replyTo: email,
-      subject: `Nouveau message de ${name} - ${projectLabels[project]}`,
-      html: generateContactEmailHTML({
-        name,
-        email,
-        phone,
-        project: projectLabels[project],
-        message,
-      }),
-    })
+    let emailSent = false
+    try {
+      const resend = new Resend(import.meta.env.RESEND_API_KEY)
+      const emailResult = await resend.emails.send({
+        from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
+        to: 'contact@loiredigital.fr',
+        replyTo: email,
+        subject: `Nouveau message de ${name} - ${projectLabels[project]}`,
+        html: generateContactEmailHTML({
+          name,
+          email,
+          phone,
+          project: projectLabels[project],
+          message,
+        }),
+      })
 
-    if (!emailResult.data) {
-      throw new Error('Failed to send email')
+      if (emailResult.data) {
+        emailSent = true
+        console.log('Email sent successfully:', emailResult.data)
+      } else {
+        console.warn('Email sending failed - no data returned:', emailResult.error)
+      }
+    } catch (emailError) {
+      console.error('Email sending error:', emailError)
+      // Continue anyway - we'll still save the lead to Sanity
     }
 
     // Save lead to Sanity CRM

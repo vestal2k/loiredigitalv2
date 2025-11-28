@@ -6,24 +6,9 @@ import { checkRateLimit } from '../../lib/rate-limiter'
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
-    // Rate limiting: max 5 requests per minute per IP
-    const ip = clientAddress || 'unknown'
-    if (!checkRateLimit(ip, 5, 60000)) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: 'Trop de requêtes. Veuillez réessayer dans quelques instants.',
-        }),
-        {
-          status: 429,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
-    }
-
     const data = await request.json()
 
-    // Validate with Zod schema
+    // Validate with Zod schema first (before rate limiting)
     const validationResult = quoteSchema.safeParse(data)
 
     if (!validationResult.success) {
@@ -41,6 +26,21 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     const validData = validationResult.data
+
+    // Rate limiting: max 5 requests per minute per IP (after validation)
+    const ip = clientAddress || 'unknown'
+    if (!checkRateLimit(ip, 5, 60000)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Trop de requêtes. Veuillez réessayer dans quelques instants.',
+        }),
+        {
+          status: 429,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
 
     // Check if Resend API key is configured
     if (!import.meta.env.RESEND_API_KEY) {
@@ -64,17 +64,26 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     // Send email using Resend
-    const resend = new Resend(import.meta.env.RESEND_API_KEY)
-    const emailResult = await resend.emails.send({
-      from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
-      to: 'contact@loiredigital.fr',
-      replyTo: validData.email,
-      subject: `Nouveau devis de ${validData.name}`,
-      html: generateQuoteEmailHTML(validData),
-    })
+    let emailSent = false
+    try {
+      const resend = new Resend(import.meta.env.RESEND_API_KEY)
+      const emailResult = await resend.emails.send({
+        from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
+        to: 'contact@loiredigital.fr',
+        replyTo: validData.email,
+        subject: `Nouveau devis de ${validData.name}`,
+        html: generateQuoteEmailHTML(validData),
+      })
 
-    if (!emailResult.data) {
-      throw new Error('Failed to send email')
+      if (emailResult.data) {
+        emailSent = true
+        console.log('Email sent successfully:', emailResult.data)
+      } else {
+        console.warn('Email sending failed - no data returned:', emailResult.error)
+      }
+    } catch (emailError) {
+      console.error('Email sending error:', emailError)
+      // Continue anyway - we'll still save the lead to Sanity
     }
 
     // Save quote lead to Sanity CRM
@@ -108,8 +117,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     return new Response(
       JSON.stringify({
         success: true,
-        message:
-          'Votre demande de devis a été envoyée avec succès. Nous vous contacterons sous 24h.',
+        message: 'Votre demande de devis a été envoyée avec succès. Nous vous contacterons sous 24h.',
       }),
       {
         status: 200,
