@@ -1,16 +1,37 @@
 import type { APIRoute } from 'astro'
 import { Resend } from 'resend'
+import { quoteSchema } from '../../schemas/quote.schema'
+import { sanityWriteClient } from '../../lib/sanity'
+import { checkRateLimit } from '../../lib/rate-limiter'
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
+    // Rate limiting: max 5 requests per minute per IP
+    const ip = clientAddress || 'unknown'
+    if (!checkRateLimit(ip, 5, 60000)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Trop de requêtes. Veuillez réessayer dans quelques instants.',
+        }),
+        {
+          status: 429,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
+
     const data = await request.json()
 
-    // Validate the request data
-    if (!data.packId || !data.pages || !data.name || !data.email) {
+    // Validate with Zod schema
+    const validationResult = quoteSchema.safeParse(data)
+
+    if (!validationResult.success) {
       return new Response(
         JSON.stringify({
           success: false,
-          message: 'Données manquantes. Veuillez remplir tous les champs requis.',
+          message: 'Données invalides.',
+          errors: validationResult.error.flatten().fieldErrors,
         }),
         {
           status: 400,
@@ -19,20 +40,7 @@ export const POST: APIRoute = async ({ request }) => {
       )
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(data.email)) {
-      return new Response(
-        JSON.stringify({
-          success: false,
-          message: 'Adresse email invalide.',
-        }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      )
-    }
+    const validData = validationResult.data
 
     // Check if Resend API key is configured
     if (!import.meta.env.RESEND_API_KEY) {
@@ -60,13 +68,41 @@ export const POST: APIRoute = async ({ request }) => {
     const emailResult = await resend.emails.send({
       from: 'Loire Digital <onboarding@resend.dev>', // Replace with your verified domain
       to: 'contact@loiredigital.fr',
-      replyTo: data.email,
-      subject: `Nouveau devis de ${data.name}`,
-      html: generateQuoteEmailHTML(data),
+      replyTo: validData.email,
+      subject: `Nouveau devis de ${validData.name}`,
+      html: generateQuoteEmailHTML(validData),
     })
 
     if (!emailResult.data) {
       throw new Error('Failed to send email')
+    }
+
+    // Save quote lead to Sanity CRM
+    try {
+      const quoteLeadData = {
+        _type: 'quoteLead',
+        name: validData.name,
+        email: validData.email,
+        phone: validData.phone || null,
+        packId: validData.packId,
+        pages: validData.pages,
+        options: validData.optionIds || [],
+        maintenance: validData.maintenance,
+        totalPrice: validData.totalPrice,
+        message: validData.message || null,
+        status: 'new',
+        createdAt: new Date().toISOString(),
+      }
+
+      await sanityWriteClient.create(quoteLeadData)
+      console.log('Quote lead saved to Sanity CRM:', {
+        name: validData.name,
+        email: validData.email,
+        totalPrice: validData.totalPrice,
+      })
+    } catch (sanityError) {
+      // Log error but don't fail the request if Sanity fails
+      console.error('Failed to save quote lead to Sanity:', sanityError)
     }
 
     return new Response(
@@ -81,7 +117,12 @@ export const POST: APIRoute = async ({ request }) => {
       }
     )
   } catch (error) {
-    console.error('Error processing quote request:', error)
+    // Enhanced error logging
+    console.error('Error processing quote request:', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+    })
 
     return new Response(
       JSON.stringify({

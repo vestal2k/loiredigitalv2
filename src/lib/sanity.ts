@@ -2,13 +2,21 @@ import { createClient } from '@sanity/client'
 import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import imageUrlBuilder from '@sanity/image-url'
 
-// Configuration du client Sanity
+// Configuration du client Sanity (lecture seule avec CDN)
 export const sanityClient = createClient({
   projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
   dataset: import.meta.env.PUBLIC_SANITY_DATASET || 'production',
   useCdn: true, // `false` si vous voulez garantir des données fraîches
   apiVersion: '2025-01-01', // Utiliser la date du jour pour la dernière API
-  token: import.meta.env.SANITY_API_TOKEN, // Token pour les opérations d'écriture
+})
+
+// Client Sanity pour les opérations d'écriture (leads, clients, etc.)
+export const sanityWriteClient = createClient({
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID || 'your-project-id',
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET || 'production',
+  useCdn: false, // Pas de CDN pour les écritures
+  apiVersion: '2025-01-01',
+  token: import.meta.env.SANITY_API_TOKEN, // Token avec droits Editor
 })
 
 // Helper pour générer les URLs d'images optimisées

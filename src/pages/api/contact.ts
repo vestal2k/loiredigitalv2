@@ -1,9 +1,26 @@
 import type { APIRoute } from 'astro'
 import { Resend } from 'resend'
 import { contactSchema } from '../../schemas/contact.schema'
+import { sanityWriteClient } from '../../lib/sanity'
+import { checkRateLimit } from '../../lib/rate-limiter'
 
-export const POST: APIRoute = async ({ request }) => {
+export const POST: APIRoute = async ({ request, clientAddress }) => {
   try {
+    // Rate limiting: max 5 requests per minute per IP
+    const ip = clientAddress || 'unknown'
+    if (!checkRateLimit(ip, 5, 60000)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          message: 'Trop de requêtes. Veuillez réessayer dans quelques instants.',
+        }),
+        {
+          status: 429,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      )
+    }
+
     const data = await request.json()
 
     // Validate with Zod
@@ -72,6 +89,27 @@ export const POST: APIRoute = async ({ request }) => {
       throw new Error('Failed to send email')
     }
 
+    // Save lead to Sanity CRM
+    try {
+      const leadData = {
+        _type: 'lead',
+        name,
+        email,
+        phone: phone || null,
+        projectType: project,
+        message,
+        source: 'contact_form',
+        status: 'new',
+        createdAt: new Date().toISOString(),
+      }
+
+      await sanityWriteClient.create(leadData)
+      console.log('Lead saved to Sanity CRM:', { name, email, project })
+    } catch (sanityError) {
+      // Log error but don't fail the request if Sanity fails
+      console.error('Failed to save lead to Sanity:', sanityError)
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
@@ -83,7 +121,12 @@ export const POST: APIRoute = async ({ request }) => {
       }
     )
   } catch (error) {
-    console.error('Error processing contact form:', error)
+    // Enhanced error logging
+    console.error('Error processing contact form:', {
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+    })
 
     return new Response(
       JSON.stringify({
