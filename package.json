@@ -14,6 +14,7 @@
     "create-client": "node create-client.js",
     "reset-password": "node reset-client-password.js",
     "test:phase8": "node scripts/test-phase8.js",
+    "test:phase8:quick": "node scripts/test-phase8-quick.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
     "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix",
     "format": "prettier --write .",
