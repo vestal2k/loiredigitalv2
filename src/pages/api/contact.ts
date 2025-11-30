@@ -70,7 +70,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     }
 
     // Send email using Resend
-    let emailSent = false
     try {
       const resend = new Resend(import.meta.env.RESEND_API_KEY)
       const emailResult = await resend.emails.send({
@@ -88,7 +87,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       })
 
       if (emailResult.data) {
-        emailSent = true
         console.log('Email sent successfully:', emailResult.data)
       } else {
         console.warn('Email sending failed - no data returned:', emailResult.error)
