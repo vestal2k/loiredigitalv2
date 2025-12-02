@@ -343,7 +343,8 @@ const jsonLdSchema = {
               >Politique de confidentialité</a
             >
           </div>
-          <p class="text-sm text-gray-600">&copy; {currentYear} Loire Digital. Tous droits réservés.</p>
+          <p class="text-sm text-gray-600 mb-2">&copy; {currentYear} Loire Digital. Tous droits réservés.</p>
+          <p class="text-xs text-gray-500">SIRET : [À compléter] • Micro-entreprise basée à Saint-Étienne</p>
         </div>
       </div>
     </footer>
@@ -455,13 +456,13 @@ const jsonLdSchema = {
         window.$crisp.push(['do', 'message:show', ['text', 'Bonjour ! Besoin d\'aide pour choisir votre formule ? Nous vous répondons sous 24 h.']])
       }])
 
-      // Auto-show message after user has been on site for 45 seconds (less aggressive)
+      // Auto-show message after user has been on site for 60 seconds (less aggressive)
       setTimeout(function() {
         if (!sessionStorage.getItem('crisp_welcome_shown')) {
-          window.$crisp.push(['do', 'message:show', ['text', 'Une question sur nos tarifs ou services ? N\'hésitez pas à nous contacter.']])
+          window.$crisp.push(['do', 'message:show', ['text', 'Une question sur nos services ou tarifs ? N\'hésitez pas à nous contacter, nous vous répondons sous 24 h.']])
           sessionStorage.setItem('crisp_welcome_shown', 'true')
         }
-      }, 45000)
+      }, 60000)
 
       // Set company info
       window.$crisp.push(['set', 'session:data', [[
