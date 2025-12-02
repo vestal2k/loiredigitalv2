@@ -1,188 +1,26 @@
-import { useState } from 'react'
-import {
-  PRICING_PACKS,
-  PRICING_OPTIONS,
-  PRICE_PER_EXTRA_PAGE,
-  MAINTENANCE_PLANS,
-} from '../config/pricing'
-
-interface QuoteOptions {
-  packId: string
-  pages: number
-  optionIds: string[]
-  maintenance: string
-}
+import { PRICING_PACKS, PRICING_OPTIONS, MAINTENANCE_PLANS } from '../config/pricing'
+import { useQuoteState, useQuoteCalculation } from '@/features/quote/hooks'
+import { generateQuotePDF } from '@/features/quote'
 
 const QuoteCalculator = () => {
-  const [step, setStep] = useState(1)
-  const [options, setOptions] = useState<QuoteOptions>({
-    packId: '',
-    pages: 3,
-    optionIds: [],
-    maintenance: 'none',
-  })
+  const {
+    step,
+    showResult,
+    options,
+    updateOptions,
+    toggleOption,
+    nextStep,
+    prevStep,
+    reset,
+  } = useQuoteState()
 
-  const [showResult, setShowResult] = useState(false)
+  const calculation = useQuoteCalculation(options)
 
-  // Pricing logic
-  const calculatePrice = () => {
-    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
-    if (!pack) return 0
-
-    let total = pack.basePrice
-
-    // Calculate extra pages beyond what's included in the pack
-    const extraPages = Math.max(0, options.pages - pack.pagesIncluded)
-    total += extraPages * PRICE_PER_EXTRA_PAGE
-
-    // Add selected options
-    options.optionIds.forEach((optionId) => {
-      const option = PRICING_OPTIONS.find((o) => o.id === optionId)
-      if (option) {
-        total += option.price
-      }
-    })
-
-    return total
-  }
-
-  const getMaintenancePrice = () => {
-    const plan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
-    return plan ? plan.pricePerMonth : 0
-  }
-
-  const handleNext = () => {
-    if (step < 4) {
-      setStep(step + 1)
-    } else {
-      setShowResult(true)
-    }
-  }
-
-  const handlePrev = () => {
-    if (step > 1) {
-      setStep(step - 1)
-    }
-  }
-
-  const toggleOption = (optionId: string) => {
-    if (options.optionIds.includes(optionId)) {
-      setOptions({
-        ...options,
-        optionIds: options.optionIds.filter((id) => id !== optionId),
-      })
-    } else {
-      setOptions({
-        ...options,
-        optionIds: [...options.optionIds, optionId],
-      })
-    }
-  }
-
-  const resetCalculator = () => {
-    setStep(1)
-    setShowResult(false)
-    setOptions({
-      packId: '',
-      pages: 3,
-      optionIds: [],
-      maintenance: 'none',
-    })
-  }
-
-  const generatePDF = async () => {
-    // Chargement dynamique de jsPDF uniquement quand nécessaire
-    const jsPDF = (await import('jspdf')).default
-    const doc = new jsPDF()
-    const totalPrice = calculatePrice()
-    const maintenancePrice = getMaintenancePrice()
-    const pack = PRICING_PACKS.find((p) => p.id === options.packId)
-    const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
-
-    // Header
-    doc.setFontSize(24)
-    doc.setTextColor(37, 99, 235) // Blue color
-    doc.text('Loire Digital', 105, 20, { align: 'center' })
-
-    doc.setFontSize(18)
-    doc.setTextColor(0, 0, 0)
-    doc.text('Devis Estimatif', 105, 35, { align: 'center' })
-
-    // Date
-    doc.setFontSize(10)
-    doc.setTextColor(100, 100, 100)
-    doc.text(`Généré le ${new Date().toLocaleDateString('fr-FR')}`, 105, 45, { align: 'center' })
-
-    // Price section
-    doc.setFontSize(28)
-    doc.setTextColor(37, 99, 235)
-    doc.text(`${totalPrice.toLocaleString('fr-FR')} €`, 105, 65, { align: 'center' })
-
-    doc.setFontSize(12)
-    doc.setTextColor(100, 100, 100)
-    doc.text('Prix de création (paiement unique)', 105, 73, { align: 'center' })
-
-    if (maintenancePrice > 0) {
-      doc.setFontSize(16)
-      doc.setTextColor(37, 99, 235)
-      doc.text(`+ ${maintenancePrice} €/mois`, 105, 85, { align: 'center' })
-      doc.setFontSize(10)
-      doc.setTextColor(100, 100, 100)
-      doc.text(`Maintenance ${maintenancePlan?.name || ''}`, 105, 92, { align: 'center' })
-    }
-
-    // Project details
-    doc.setFontSize(14)
-    doc.setTextColor(0, 0, 0)
-    doc.text('Récapitulatif de votre projet', 20, maintenancePrice > 0 ? 110 : 100)
-
-    let yPos = maintenancePrice > 0 ? 120 : 110
-    doc.setFontSize(11)
-    doc.setTextColor(60, 60, 60)
-
-    if (pack) {
-      doc.text(`• Pack : ${pack.name}`, 25, yPos)
-      yPos += 8
-    }
-
-    doc.text(`• Nombre de pages : ${options.pages}`, 25, yPos)
-    yPos += 8
-
-    if (options.optionIds.length > 0) {
-      const selectedOptions = options.optionIds
-        .map((id) => PRICING_OPTIONS.find((o) => o.id === id)?.name)
-        .filter(Boolean)
-        .join(', ')
-      doc.text(`• Options : ${selectedOptions}`, 25, yPos)
-      yPos += 8
-    }
-
-    // Note section
-    yPos += 10
-    doc.setFontSize(10)
-    doc.setTextColor(37, 99, 235)
-    doc.text('Note :', 20, yPos)
-    doc.setTextColor(60, 60, 60)
-    const noteText =
-      'Le calculateur donne une estimation fiable. Le devis final peut bouger\nlégèrement si le projet devient plus complexe.'
-    const splitNote = doc.splitTextToSize(noteText, 170)
-    doc.text(splitNote, 20, yPos + 5)
-
-    // Footer
-    doc.setFontSize(9)
-    doc.setTextColor(150, 150, 150)
-    doc.text('Loire Digital - Sites web professionnels à Saint-Étienne', 105, 280, {
-      align: 'center',
-    })
-    doc.text('contact@loiredigital.fr | loiredigital.fr', 105, 285, { align: 'center' })
-
-    // Save PDF
-    doc.save(`devis-loire-digital-${Date.now()}.pdf`)
+  const handlePDFDownload = async () => {
+    await generateQuotePDF(options)
   }
 
   if (showResult) {
-    const totalPrice = calculatePrice()
-    const maintenancePrice = getMaintenancePrice()
     const pack = PRICING_PACKS.find((p) => p.id === options.packId)
     const maintenancePlan = MAINTENANCE_PLANS.find((p) => p.id === options.maintenance)
 
@@ -211,15 +49,15 @@ const QuoteCalculator = () => {
         <div className="bg-gray-50 border border-blue-100 rounded-xl p-8 mb-8">
           <div className="text-center mb-6">
             <div className="text-5xl font-display font-bold text-blue-600 mb-2">
-              {totalPrice.toLocaleString('fr-FR')} €
+              {calculation.totalPrice.toLocaleString('fr-FR')} €
             </div>
             <p className="text-gray-600">Prix de création (paiement unique)</p>
           </div>
 
-          {maintenancePrice > 0 && (
+          {calculation.maintenancePrice > 0 && (
             <div className="text-center pt-6 border-t border-gray-200">
               <div className="text-3xl font-display font-bold text-blue-600 mb-2">
-                + {maintenancePrice} €/mois
+                + {calculation.maintenancePrice} €/mois
               </div>
               <p className="text-gray-600">Maintenance {maintenancePlan?.name || ''}</p>
             </div>
@@ -302,13 +140,13 @@ const QuoteCalculator = () => {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <button
-              onClick={resetCalculator}
+              onClick={reset}
               className="flex-1 px-6 py-3 bg-white border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
             >
               Recommencer
             </button>
             <button
-              onClick={generatePDF}
+              onClick={handlePDFDownload}
               className="flex-1 px-6 py-3 bg-white border-2 border-blue-600 text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -404,7 +242,7 @@ const QuoteCalculator = () => {
               <button
                 key={pack.id}
                 onClick={() =>
-                  setOptions({ ...options, packId: pack.id, pages: pack.pagesIncluded })
+                  updateOptions({ ...options, packId: pack.id, pages: pack.pagesIncluded })
                 }
                 className={`p-6 rounded-xl border-2 transition-all text-left relative ${
                   options.packId === pack.id
@@ -486,7 +324,7 @@ const QuoteCalculator = () => {
               onChange={(e) => {
                 const value = parseInt(e.target.value)
                 if (value >= 1 && value <= 20) {
-                  setOptions({ ...options, pages: value })
+                  updateOptions({ ...options, pages: value })
                 }
               }}
               aria-label={`Nombre de pages : ${options.pages}`}
@@ -592,7 +430,7 @@ const QuoteCalculator = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button
-              onClick={() => setOptions({ ...options, maintenance: 'none' })}
+              onClick={() => updateOptions({ ...options, maintenance: 'none' })}
               className={`p-6 rounded-xl border-2 transition-all text-left relative ${
                 options.maintenance === 'none'
                   ? 'border-blue-600 bg-blue-50 shadow-md'
@@ -624,7 +462,7 @@ const QuoteCalculator = () => {
             {MAINTENANCE_PLANS.map((plan) => (
               <button
                 key={plan.id}
-                onClick={() => setOptions({ ...options, maintenance: plan.id })}
+                onClick={() => updateOptions({ ...options, maintenance: plan.id })}
                 className={`p-6 rounded-xl border-2 transition-all text-left relative ${
                   options.maintenance === plan.id
                     ? 'border-blue-600 bg-blue-50 shadow-md'
@@ -674,14 +512,14 @@ const QuoteCalculator = () => {
       <div className="flex gap-4 mt-8">
         {step > 1 && (
           <button
-            onClick={handlePrev}
+            onClick={prevStep}
             className="flex-1 px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 hover:border-gray-400 transition-colors"
           >
             ← Précédent
           </button>
         )}
         <button
-          onClick={handleNext}
+          onClick={nextStep}
           disabled={step === 1 && !options.packId}
           className={`flex-1 px-6 py-3 rounded-lg font-semibold transition-all ${
             step === 1 && !options.packId

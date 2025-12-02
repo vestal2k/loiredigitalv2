@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro'
-import { getClientByEmail } from '@/lib/sanity-client'
+import { getClientByEmail } from '@/lib/sanity/queries'
 
 /**
  * API de debug pour vérifier si un client existe

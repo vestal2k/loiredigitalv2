@@ -1,12 +1,12 @@
 import type { APIRoute } from 'astro'
-import { stripe } from '@/lib/stripe'
+import { stripe } from '@/lib/stripe/client'
 import {
   createClient,
   createClientProject,
   getClientByEmail,
   updateProjectStatus,
   addInvoice,
-} from '@/lib/sanity-client'
+} from '@/lib/sanity/queries'
 import { hashPassword, generateTemporaryPassword } from '@/lib/auth'
 import { Resend } from 'resend'
 

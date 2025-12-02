@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro'
 import { getUserFromCookie } from '@/lib/auth'
-import { getProjectById } from '@/lib/sanity-client'
+import { getProjectById } from '@/lib/sanity/queries'
 
 export const GET: APIRoute = async ({ params, cookies }) => {
   try {

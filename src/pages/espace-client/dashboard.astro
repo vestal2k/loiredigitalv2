@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import ClientHeader from '@/components/ClientHeader.astro'
 import { requireAuth } from '@/lib/auth'
-import { getClientById, getClientProjects } from '@/lib/sanity-client'
+import { getClientById, getClientProjects } from '@/lib/sanity/queries'
 
 // Vérifier l'authentification
 const authResult = requireAuth(Astro.cookies)

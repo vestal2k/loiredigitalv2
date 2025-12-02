@@ -1,4 +1,4 @@
-import { sanityClient } from '@/lib/sanity'
+import { sanityClient } from '@/lib/sanity/client'
 
 // Types pour les clients
 export interface SanityClient {

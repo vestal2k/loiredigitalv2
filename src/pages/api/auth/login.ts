@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro'
-import { getClientByEmail } from '@/lib/sanity-client'
+import { getClientByEmail } from '@/lib/sanity/queries'
 import { verifyPassword, createToken, setAuthCookie } from '@/lib/auth'
 
 export const POST: APIRoute = async ({ request, cookies }) => {
