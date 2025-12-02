@@ -168,52 +168,58 @@ const jsonLdSchema = {
           </button>
         </div>
 
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden pt-4 pb-2 border-t border-gray-200 mt-4">
-          <ul class="flex flex-col space-y-2">
-            <li>
-              <a
-                href="/#avantages"
-                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                >Avantages</a
-              >
-            </li>
-            <li>
-              <a
-                href="/#process"
-                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                >Process</a
-              >
-            </li>
-            <li>
-              <a
-                href="/#realisations"
-                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                >Réalisations</a
-              >
-            </li>
-            <li>
-              <a
-                href="/#tarifs"
-                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                >Tarifs</a
-              >
-            </li>
-            <li>
-              <a
-                href="/blog"
-                class="mobile-menu-link block px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
-                >Blog</a
-              >
-            </li>
-            <li>
-              <a
-                href="/#contact"
-                class="mobile-menu-link block px-4 py-2 text-blue-600 hover:bg-blue-50 rounded-lg font-semibold transition-colors"
-                >Contact</a
-              >
-            </li>
-          </ul>
+        <!-- Mobile menu (full-screen overlay) -->
+        <div
+          id="mobile-menu"
+          class="hidden md:hidden fixed inset-0 bg-white z-40 flex flex-col"
+          style="top: 73px;"
+        >
+          <nav class="flex-1 overflow-y-auto px-4 py-8">
+            <ul class="flex flex-col space-y-1">
+              <li>
+                <a
+                  href="/#avantages"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  >Avantages</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/#process"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  >Process</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/#realisations"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  >Réalisations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/#tarifs"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  >Tarifs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/blog"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-gray-700 hover:bg-gray-50 rounded-xl transition-all font-medium"
+                  >Blog</a
+                >
+              </li>
+              <li class="pt-4">
+                <a
+                  href="/#contact"
+                  class="mobile-menu-link block px-6 py-4 text-lg text-white bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition-all text-center"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </nav>
         </div>
       </nav>
     </header>
@@ -234,7 +240,7 @@ const jsonLdSchema = {
           </div>
 
           <div>
-            <h3 class="text-black font-display font-semibold mb-4">Navigation</h3>
+            <p class="text-black font-display font-semibold mb-4">Navigation</p>
             <ul class="space-y-3 text-sm">
               <li>
                 <a href="/#avantages" class="hover:text-blue-600 transition-colors">Avantages</a>
@@ -253,7 +259,7 @@ const jsonLdSchema = {
           </div>
 
           <div>
-            <h3 class="text-black font-display font-semibold mb-4">Liens utiles</h3>
+            <p class="text-black font-display font-semibold mb-4">Liens utiles</p>
             <ul class="space-y-3 text-sm">
               <li>
                 <a href="/devis" class="hover:text-blue-600 transition-colors"
@@ -277,7 +283,7 @@ const jsonLdSchema = {
           </div>
 
           <div>
-            <h3 class="text-black font-display font-semibold mb-4">Contact</h3>
+            <p class="text-black font-display font-semibold mb-4">Contact</p>
             <ul class="space-y-3 text-sm">
               <li class="flex items-center space-x-2">
                 <svg

@@ -25,7 +25,17 @@ body {
 
 /* Bouton noir */
 .btn-primary {
-  @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-black rounded-lg hover:bg-gray-900 transition-all duration-200;
+  @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-black rounded-lg transition-all duration-200;
+}
+
+.btn-primary:hover {
+  @apply bg-gray-900;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-primary:focus-visible {
@@ -34,7 +44,17 @@ body {
 
 /* Bouton outline */
 .btn-secondary {
-  @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-white rounded-lg border-2 border-gray-200 hover:border-black transition-all duration-200;
+  @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-white rounded-lg border-2 border-gray-200 transition-all duration-200;
+}
+
+.btn-secondary:hover {
+  @apply border-black bg-gray-50;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
 }
 
 .btn-secondary:focus-visible {
@@ -49,6 +69,12 @@ body {
 
 .btn-blue:hover {
   background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+}
+
+.btn-blue:active {
+  transform: translateY(0);
 }
 
 .btn-blue:focus-visible {
@@ -90,9 +116,123 @@ a:focus-visible {
   @apply outline-none ring-2 ring-blue-600 ring-offset-2 rounded;
 }
 
+/* Form inputs with enhanced visual feedback */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  @apply transition-all duration-200;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  @apply ring-2 ring-blue-600 border-transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+}
+
+input[type="text"]:hover:not(:focus),
+input[type="email"]:hover:not(:focus),
+input[type="tel"]:hover:not(:focus),
+textarea:hover:not(:focus),
+select:hover:not(:focus) {
+  @apply border-gray-400;
+}
+
+/* Form error state */
+input.error,
+textarea.error {
+  @apply border-red-500;
+}
+
+input.error:focus,
+textarea.error:focus {
+  @apply ring-red-500;
+}
+
+/* Form success state */
+input.success,
+textarea.success {
+  @apply border-green-500;
+}
+
+input.success:focus,
+textarea.success:focus {
+  @apply ring-green-500;
+}
+
+/* Smooth section transitions */
+section {
+  @apply transition-all duration-300 ease-in-out;
+}
+
 /* Ensure content is clean */
 main,
 header,
 footer {
   position: relative;
+}
+
+/* Scroll margin for anchor links (accounts for sticky header) */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Prevent Crisp chat overlap with footer and CTAs on mobile */
+@media (max-width: 768px) {
+  /* Add bottom padding to sections with CTAs to prevent Crisp overlap */
+  section:has(.btn-blue),
+  section:has(.btn-primary),
+  section:has(.btn-secondary) {
+    padding-bottom: 100px;
+  }
+
+  /* Ensure footer has clearance from Crisp widget */
+  footer {
+    padding-bottom: 80px;
+  }
+
+  /* Mobile menu improvements */
+  #mobile-menu {
+    animation: slideDown 0.3s ease-out;
+  }
+
+  #mobile-menu.hidden {
+    animation: slideUp 0.3s ease-in;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+/* Mobile CTA enhancements */
+@media (max-width: 640px) {
+  .btn-blue,
+  .btn-primary,
+  .btn-secondary {
+    @apply w-full text-center;
+  }
 }
