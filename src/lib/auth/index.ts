@@ -16,7 +16,13 @@ export interface JWTPayload {
 }
 
 // Configuration
-const JWT_SECRET = import.meta.env.JWT_SECRET || 'your-secret-key-change-this-in-production'
+if (!import.meta.env.JWT_SECRET) {
+  throw new Error(
+    'JWT_SECRET must be defined in environment variables. Please add it to your .env file.'
+  )
+}
+
+const JWT_SECRET = import.meta.env.JWT_SECRET
 const JWT_EXPIRES_IN = '7d' // Le token expire après 7 jours
 const COOKIE_NAME = 'auth_token'
 

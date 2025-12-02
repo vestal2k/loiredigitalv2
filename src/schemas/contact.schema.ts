@@ -23,6 +23,8 @@ export const contactSchema = z.object({
       message: 'Vous devez accepter la politique de confidentialité pour continuer',
     }),
   }),
+  // Honeypot field - must be empty (bots will fill it, humans won't see it)
+  website: z.string().max(0, 'Spam detected').optional().or(z.literal('')),
 })
 
 export type ContactFormData = z.infer<typeof contactSchema>

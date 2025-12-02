@@ -18,6 +18,8 @@ export const quoteSchema = z.object({
   }),
   totalPrice: z.number().min(0, 'Le prix ne peut pas être négatif'),
   message: z.string().max(1000, 'Le message est trop long (max 1000 caractères)').optional(),
+  // Honeypot field - must be empty (bots will fill it, humans won't see it)
+  website: z.string().max(0, 'Spam detected').optional().or(z.literal('')),
 })
 
 export type QuoteFormData = z.infer<typeof quoteSchema>

@@ -68,11 +68,23 @@ export const POST: APIRoute = async ({ request }) => {
   }
 }
 
+// Store processed webhook IDs to prevent duplicate processing
+const processedWebhooks = new Set<string>()
+
 /**
  * Gère un paiement complété
  */
 async function handleCheckoutCompleted(session: any) {
-  console.log('💳 Checkout completed:', session.id)
+  console.log('💳 Checkout completed:', {
+    sessionId: session.id,
+    timestamp: new Date().toISOString(),
+  })
+
+  // Check for duplicate webhooks (idempotency)
+  if (processedWebhooks.has(session.id)) {
+    console.warn('⚠️ Duplicate webhook detected, skipping:', session.id)
+    return
+  }
 
   const customerEmail = session.customer_details?.email || session.customer_email
   const customerName = session.customer_details?.name || ''
@@ -81,8 +93,35 @@ async function handleCheckoutCompleted(session: any) {
   const amountPaid = session.amount_total / 100 // Convertir centimes en euros
   const paymentType = session.metadata?.paymentType || 'full'
 
+  // Security checks
   if (!customerEmail) {
-    console.error('No customer email in session')
+    console.error('❌ Security: No customer email in session', {
+      sessionId: session.id,
+      timestamp: new Date().toISOString(),
+    })
+    return
+  }
+
+  // Verify currency is EUR
+  if (session.currency !== 'eur') {
+    console.error('❌ Security: Invalid currency detected', {
+      sessionId: session.id,
+      currency: session.currency,
+      expected: 'eur',
+      timestamp: new Date().toISOString(),
+    })
+    return
+  }
+
+  // Verify amount is within expected range
+  const totalAmount = parseInt(session.metadata?.originalAmount || amountPaid.toString())
+  if (!isAmountValid(totalAmount, amountPaid)) {
+    console.error('❌ Security: Amount mismatch detected', {
+      sessionId: session.id,
+      expectedAmount: totalAmount,
+      actualAmount: amountPaid,
+      timestamp: new Date().toISOString(),
+    })
     return
   }
 
@@ -147,8 +186,26 @@ async function handleCheckoutCompleted(session: any) {
       amountPaid,
       paymentType,
     )
+
+    // Mark webhook as processed
+    processedWebhooks.add(session.id)
+
+    // Log success with details
+    console.log('✅ Payment processed successfully:', {
+      sessionId: session.id,
+      customerEmail,
+      amount: amountPaid,
+      paymentType,
+      projectId: project._id,
+      timestamp: new Date().toISOString(),
+    })
   } catch (error) {
-    console.error('Error handling checkout completed:', error)
+    console.error('❌ Error handling checkout completed:', {
+      sessionId: session.id,
+      error: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+    })
     throw error
   }
 }
@@ -157,16 +214,49 @@ async function handleCheckoutCompleted(session: any) {
  * Gère un paiement réussi
  */
 async function handlePaymentSucceeded(paymentIntent: any) {
-  console.log('✅ Payment succeeded:', paymentIntent.id)
-  // Logique supplémentaire si nécessaire
+  console.log('✅ Payment succeeded:', {
+    paymentIntentId: paymentIntent.id,
+    amount: paymentIntent.amount / 100,
+    currency: paymentIntent.currency,
+    timestamp: new Date().toISOString(),
+  })
+
+  // Verify currency
+  if (paymentIntent.currency !== 'eur') {
+    console.warn('⚠️ Unexpected currency for payment intent:', {
+      paymentIntentId: paymentIntent.id,
+      currency: paymentIntent.currency,
+      expected: 'eur',
+    })
+  }
 }
 
 /**
  * Gère un paiement échoué
  */
 async function handlePaymentFailed(paymentIntent: any) {
-  console.log('❌ Payment failed:', paymentIntent.id)
-  // Envoyer un email à l'admin ou au client
+  console.error('❌ Payment failed:', {
+    paymentIntentId: paymentIntent.id,
+    amount: paymentIntent.amount / 100,
+    currency: paymentIntent.currency,
+    lastError: paymentIntent.last_payment_error?.message,
+    timestamp: new Date().toISOString(),
+  })
+
+  // TODO: Send notification email to admin about failed payment
+  // This could indicate a problem with the payment setup or a fraudulent attempt
+}
+
+/**
+ * Vérifie que le montant payé est cohérent avec le montant attendu
+ * Tolère une petite différence pour les arrondis et les frais Stripe
+ */
+function isAmountValid(expectedAmount: number, actualAmount: number): boolean {
+  // Allow 1% tolerance for rounding differences
+  const tolerance = Math.max(1, expectedAmount * 0.01)
+  const difference = Math.abs(expectedAmount - actualAmount)
+
+  return difference <= tolerance
 }
 
 /**

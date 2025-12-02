@@ -201,6 +201,18 @@ export default function ContactForm() {
           )}
         </div>
 
+        {/* Honeypot - Anti-spam field (hidden from humans, visible to bots) */}
+        <div className="absolute opacity-0 pointer-events-none" aria-hidden="true" tabIndex={-1}>
+          <label htmlFor="website">Website</label>
+          <input
+            type="text"
+            id="website"
+            {...register('website')}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+        </div>
+
         {/* Submit Button */}
         <button
           type="submit"
