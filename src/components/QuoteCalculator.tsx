@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import jsPDF from 'jspdf'
 import {
   PRICING_PACKS,
   PRICING_OPTIONS,
@@ -91,7 +90,9 @@ const QuoteCalculator = () => {
     })
   }
 
-  const generatePDF = () => {
+  const generatePDF = async () => {
+    // Chargement dynamique de jsPDF uniquement quand nécessaire
+    const jsPDF = (await import('jspdf')).default
     const doc = new jsPDF()
     const totalPrice = calculatePrice()
     const maintenancePrice = getMaintenancePrice()

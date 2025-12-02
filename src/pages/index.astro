@@ -277,7 +277,7 @@ const faqItems = [
             class="text-4xl md:text-5xl font-black text-black mb-4"
             style="letter-spacing: -0.02em;"
           >
-            Pourquoi Loire Digital ?
+            Création de sites web à Saint-Étienne : Pourquoi nous choisir ?
           </h2>
           <p class="text-lg text-gray-text max-w-2xl mx-auto">
             Simple, efficace, transparent.
@@ -585,7 +585,7 @@ const faqItems = [
             class="text-4xl md:text-5xl font-black text-black mb-4"
             style="letter-spacing: -0.02em;"
           >
-            Tarifs transparents
+            Tarifs sites web professionnels Saint-Étienne
           </h2>
           <p class="text-lg text-gray-text max-w-3xl mx-auto mb-4">
             <strong class="text-gray-800">Prix justes, sans frais cachés.</strong>
@@ -841,7 +841,7 @@ const faqItems = [
             class="text-4xl md:text-5xl font-black text-black mb-4"
             style="letter-spacing: -0.02em;"
           >
-            Exemples de réalisations
+            Sites web pour commerces de la Loire : Nos réalisations
           </h2>
           <p class="text-lg text-gray-text max-w-2xl mx-auto">
             Découvrez des concepts de sites adaptés à différents secteurs d'activité. Professionnels, simples et efficaces.
@@ -1480,6 +1480,20 @@ const faqItems = [
 
   <!-- FAQ -->
   <FAQ items={faqItems} />
+
+  <!-- FAQ Schema.org structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(item => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer
+      }
+    }))
+  })} />
 
   <!-- Contact Form Section -->
   <section id="contact" class="py-16 md:py-24 section-pale">

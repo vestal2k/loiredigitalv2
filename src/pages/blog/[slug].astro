@@ -36,6 +36,31 @@ const allPosts = (await getAllBlogPosts())
 ---
 
 <BaseLayout title={`${post.title} - Loire Digital`} description={post.description}>
+  <!-- Article Schema.org structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.description,
+    "author": {
+      "@type": "Person",
+      "name": post.author
+    },
+    "datePublished": post.pubDate.toISOString(),
+    "publisher": {
+      "@type": "Organization",
+      "name": "Loire Digital",
+      "logo": {
+        "@type": "ImageObject",
+        "url": new URL('/logo.svg', Astro.site).toString()
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": Astro.url.href
+    }
+  })} />
+
   <!-- Article Header -->
   <article class="py-12 bg-white">
     <div class="container mx-auto px-4">
