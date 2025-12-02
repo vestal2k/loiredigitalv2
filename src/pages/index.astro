@@ -11,27 +11,101 @@ import { PRICING_PACKS, COMPARISON_CRITERIA, MAINTENANCE_PLANS } from '../config
 const mainPacks = PRICING_PACKS.filter((pack) => pack.id !== 'ecommerce')
 const ecommercePack = PRICING_PACKS.find((pack) => pack.id === 'ecommerce')
 
-// Process steps data
+// Process steps data - Detailed timeline
 const processSteps = [
   {
     number: '01',
-    title: 'Vous nous contactez',
-    description: 'Formulaire ou calculateur. Devis détaillé + plan d\'action sous 24 h maximum.',
+    title: 'Demande & Devis',
+    description: 'Vous nous contactez via le formulaire ou le calculateur de devis. Nous analysons votre besoin et vous envoyons un devis détaillé avec un plan d\'action personnalisé.',
+    timing: 'J+0 — Réponse sous 24h',
+    clientProvides: [
+      'Type de site souhaité (vitrine, blog, e-commerce...)',
+      'Nombre de pages approximatif',
+      'Fonctionnalités spécifiques (formulaire, réservation, galerie...)',
+      'Budget indicatif',
+    ],
+    weDeliver: [
+      'Devis détaillé et transparent',
+      'Plan d\'action personnalisé',
+      'Délais précis de réalisation',
+      'Conseil sur la meilleure formule',
+    ],
   },
   {
     number: '02',
-    title: 'Nous créons la maquette',
-    description: 'Design sur mesure pour votre activité. Vous validez avant que nous commencions le développement.',
+    title: 'Préparation & Collecte',
+    description: 'Une fois le devis validé, nous collectons tous les éléments nécessaires : textes, photos, logo et informations sur votre activité. Vous nous envoyez tout par e-mail, à votre rythme.',
+    timing: 'J+1 à J+3',
+    clientProvides: [
+      'Textes pour chaque page (nous pouvons vous aider)',
+      'Photos de qualité (produits, équipe, locaux)',
+      'Logo en haute résolution',
+      'Couleurs de votre charte graphique (si existante)',
+    ],
+    weDeliver: [
+      'Guide de préparation des contenus',
+      'Liste précise des éléments à fournir',
+      'Accompagnement pour la rédaction si besoin',
+    ],
+    details: [
+      { label: 'Délai client', content: '2-3 jours pour rassembler les éléments' },
+      { label: 'Support', content: 'Aide à la rédaction incluse' },
+    ],
   },
   {
     number: '03',
-    title: 'Nous développons',
-    description: 'Code propre, rapide et testé. Vous suivez l\'avancement en temps réel par e-mail.',
+    title: 'Maquette & Validation',
+    description: 'Nous créons une maquette graphique sur mesure, adaptée à votre secteur d\'activité et à votre identité. Vous validez le design avant que nous commencions le développement.',
+    timing: 'J+4 à J+7',
+    clientProvides: [
+      'Feedback sur la maquette proposée',
+      'Demandes de modifications éventuelles',
+    ],
+    weDeliver: [
+      'Maquette professionnelle complète',
+      '2 révisions incluses dans le prix',
+      'Présentation claire de la structure du site',
+    ],
+    details: [
+      { label: 'Révisions', content: '2 allers-retours inclus' },
+      { label: 'Validation', content: 'Vous validez avant développement' },
+      { label: 'Délai', content: '3-5 jours pour la maquette' },
+    ],
   },
   {
     number: '04',
-    title: 'Nous lançons',
-    description: 'Mise en ligne + formation. Vous êtes autonome, nous restons disponibles si besoin.',
+    title: 'Développement & Mise en ligne',
+    description: 'Nous développons votre site avec du code propre, rapide et optimisé. Vous suivez l\'avancement par e-mail. Une fois terminé, nous mettons le site en ligne sur votre nom de domaine.',
+    timing: 'J+8 à J+18',
+    weDeliver: [
+      'Site développé et optimisé (vitesse, SEO)',
+      'Tests sur tous les navigateurs et appareils',
+      'Mise en ligne sur votre domaine',
+      'Configuration HTTPS et sécurité',
+    ],
+    details: [
+      { label: 'Délai', content: '7-10 jours de développement' },
+      { label: 'Tests', content: 'Tous navigateurs et mobiles' },
+      { label: 'Sécurité', content: 'HTTPS automatique' },
+    ],
+  },
+  {
+    number: '05',
+    title: 'Formation & Suivi',
+    description: 'Nous vous formons aux modifications de base (textes, images) et vous livrons un guide d\'utilisation. Support par e-mail inclus pour toutes vos questions.',
+    timing: 'J+19 à J+21',
+    weDeliver: [
+      'Formation vidéo ou écrite aux modifications simples',
+      'Guide d\'utilisation complet',
+      'Support par e-mail (réponse sous 24h)',
+      'Conseils pour améliorer votre visibilité',
+    ],
+    details: [
+      { label: 'Formation', content: 'Modifications textes & images' },
+      { label: 'Documentation', content: 'Guide complet inclus' },
+      { label: 'Support', content: 'Réponse garantie sous 24h' },
+      { label: 'Maintenance', content: 'Optionnelle à 29€/mois' },
+    ],
   },
 ]
 
