@@ -10,6 +10,13 @@ export interface PricingPack {
   pagesIncluded: number
   features: string[]
   popular?: boolean
+  description?: string
+  deliveryTime?: string
+  paymentOptions?: {
+    upfront: boolean
+    installments3x?: boolean
+    installments6x?: boolean
+  }
 }
 
 export interface PricingOption {
@@ -28,13 +35,19 @@ export const PRICING_PACKS: PricingPack[] = [
     name: 'Starter',
     basePrice: 400,
     pagesIncluded: 1,
+    description: 'Démarrer vite avec une présence propre en ligne',
+    deliveryTime: '7–10 jours ouvrés',
     features: [
       'Landing page (1 page)',
       'Design sobre et professionnel',
       'Formulaire de contact',
       'Optimisation mobile',
-      'Hébergement 1ère année offerte',
     ],
+    paymentOptions: {
+      upfront: true,
+      installments3x: false,
+      installments6x: false,
+    },
   },
   {
     id: 'essentiel',
@@ -42,44 +55,58 @@ export const PRICING_PACKS: PricingPack[] = [
     basePrice: 800,
     pagesIncluded: 4,
     popular: true,
+    description: 'Artisans/commerçants qui veulent un site complet',
+    deliveryTime: '2–3 semaines',
     features: [
-      'Tout du pack Starter',
       'Jusqu\'à 4 pages',
       'SEO de base',
-      'Intégration Google Maps',
-      'Galerie photos (20 images)',
-      'Hébergement 1ère année offerte',
+      'Google Maps',
+      'Galerie photos',
     ],
+    paymentOptions: {
+      upfront: true,
+      installments3x: true,
+      installments6x: false,
+    },
   },
   {
-    id: 'premium',
-    name: 'Premium',
+    id: 'complet',
+    name: 'Complet',
     basePrice: 1500,
     pagesIncluded: 8,
+    description: 'Activité installée qui veut un site premium complet',
+    deliveryTime: '3–4 semaines',
     features: [
-      'Tout du pack Essentiel',
       'Jusqu\'à 8 pages',
       'Blog intégré',
       'SEO avancé',
-      'Galerie photos illimitée',
       'Formulaires avancés',
-      'Hébergement 1ère année offerte',
     ],
+    paymentOptions: {
+      upfront: true,
+      installments3x: true,
+      installments6x: true,
+    },
   },
   {
     id: 'ecommerce',
     name: 'E-commerce',
     basePrice: 2500,
     pagesIncluded: 10,
+    description: 'Boutique en ligne complète avec paiement sécurisé, gestion des produits et des commandes',
+    deliveryTime: '4–6 semaines',
     features: [
-      'Tout du pack Premium',
       'Boutique en ligne complète',
       'Gestion des produits',
       'Paiement en ligne sécurisé',
       'Gestion des commandes',
       'Système de panier',
-      'Hébergement 1ère année offerte',
     ],
+    paymentOptions: {
+      upfront: true,
+      installments3x: true,
+      installments6x: true,
+    },
   },
 ]
 
@@ -130,14 +157,16 @@ export const PRICING_OPTIONS: PricingOption[] = [
 export const MAINTENANCE_PLANS = [
   {
     id: 'basic',
-    name: 'Maintenance basique',
+    name: 'Maintenance',
     pricePerMonth: 29,
-    features: ['Mises à jour de sécurité', 'Sauvegardes hebdomadaires', 'Support par email'],
+    description: 'Sans engagement',
+    features: ['Mises à jour', 'Petites modifs', 'Sauvegardes', 'Support'],
   },
   {
     id: 'premium',
     name: 'Maintenance premium',
     pricePerMonth: 59,
+    description: 'Sans engagement',
     features: [
       'Tout de la maintenance basique',
       'Sauvegardes quotidiennes',
@@ -145,6 +174,85 @@ export const MAINTENANCE_PLANS = [
       '2h de modifications/mois incluses',
       'Monitoring 24/7',
     ],
+  },
+]
+
+/**
+ * Payment options info
+ */
+export const PAYMENT_INFO = {
+  installments3x: {
+    name: 'Paiement en 3 fois',
+    description: 'Sans frais via Stripe',
+    minAmount: 600,
+  },
+  installments6x: {
+    name: 'Paiement en 6 fois',
+    description: 'Sans frais via Stripe',
+    minAmount: 1200,
+  },
+}
+
+/**
+ * Comparison criteria for pricing table
+ */
+export interface ComparisonCriterion {
+  id: string
+  label: string
+  starter: string | boolean
+  essentiel: string | boolean
+  complet: string | boolean
+}
+
+export const COMPARISON_CRITERIA: ComparisonCriterion[] = [
+  {
+    id: 'pages',
+    label: 'Nombre de pages incluses',
+    starter: '1 page',
+    essentiel: 'Jusqu\'à 4 pages',
+    complet: 'Jusqu\'à 8 pages',
+  },
+  {
+    id: 'design',
+    label: 'Design sur-mesure',
+    starter: true,
+    essentiel: true,
+    complet: true,
+  },
+  {
+    id: 'seo',
+    label: 'SEO local',
+    starter: false,
+    essentiel: 'SEO de base',
+    complet: 'SEO avancé',
+  },
+  {
+    id: 'blog',
+    label: 'Blog & rédaction',
+    starter: false,
+    essentiel: false,
+    complet: true,
+  },
+  {
+    id: 'maintenance',
+    label: 'Maintenance (optionnelle)',
+    starter: '29 €/mois',
+    essentiel: '29 €/mois',
+    complet: '29 €/mois',
+  },
+  {
+    id: 'delivery',
+    label: 'Délai',
+    starter: '7–10 jours',
+    essentiel: '2–3 semaines',
+    complet: '3–4 semaines',
+  },
+  {
+    id: 'payment',
+    label: 'Paiement en plusieurs fois',
+    starter: false,
+    essentiel: '3x sans frais',
+    complet: '3x ou 6x sans frais',
   },
 ]
 
