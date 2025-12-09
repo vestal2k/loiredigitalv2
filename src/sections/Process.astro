@@ -29,45 +29,40 @@ const {
 } = Astro.props
 ---
 
-<section id={sectionId} class="py-16 md:py-24 bg-white">
+<section id={sectionId} class="section-padding section-white">
   <div class="container mx-auto px-4">
     <div class="max-w-5xl mx-auto">
+      <!-- Section Header -->
       <div class="mb-16 text-center">
-        <h2
-          class="text-4xl md:text-5xl font-black text-black mb-4"
-          style="letter-spacing: -0.02em;"
-        >
-          {title}
-        </h2>
-        {subtitle && <p class="text-lg text-gray-text max-w-2xl mx-auto">{subtitle}</p>}
+        <span class="text-elegant-caps text-or tracking-widest mb-4 block">Notre processus</span>
+        <h2 class="section-title">{title}</h2>
+        <div class="separator-gold-center mt-6 mb-6"></div>
+        {subtitle && <p class="section-subtitle mx-auto">{subtitle}</p>}
       </div>
 
       <!-- Timeline -->
       <div class="relative">
         <!-- Vertical line on desktop -->
-        <div
-          class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-600 via-blue-400 to-blue-200"
-        >
-        </div>
+        <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-or via-or-light to-gris-doux"></div>
 
-        <div class="space-y-12">
+        <div class="space-y-10">
           {
             steps.map((step, _index) => (
               <div class="relative">
                 <!-- Timeline dot -->
-                <div class="hidden md:flex absolute left-8 -translate-x-1/2 w-8 h-8 rounded-full bg-blue-600 items-center justify-center z-10">
-                  <div class="w-4 h-4 rounded-full bg-white" />
+                <div class="hidden md:flex absolute left-8 -translate-x-1/2 w-8 h-8 rounded-full bg-or items-center justify-center z-10 shadow-or">
+                  <div class="w-3 h-3 rounded-full bg-white" />
                 </div>
 
                 <!-- Content card -->
                 <div class="md:ml-20">
-                  <div class="card-minimal bg-gray-50 p-8">
+                  <div class="card-elegant">
                     <div class="flex items-start gap-4 mb-4">
-                      <div class="text-4xl font-black text-blue-600 leading-none">{step.number}</div>
+                      <div class="font-serif text-4xl font-bold text-or leading-none">{step.number}</div>
                       <div class="flex-1">
-                        <h3 class="text-2xl font-bold text-black mb-2">{step.title}</h3>
+                        <h3 class="font-serif text-2xl font-bold text-noir mb-2">{step.title}</h3>
                         {step.timing && (
-                          <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 rounded-full text-xs font-semibold text-blue-600 mb-3">
+                          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-or/10 rounded-elegant text-xs font-semibold text-or mb-3">
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path
                                 stroke-linecap="round"
@@ -79,31 +74,26 @@ const {
                             {step.timing}
                           </div>
                         )}
-                        <p class="text-sm text-gray-700 leading-relaxed">{step.description}</p>
+                        <p class="text-charbon leading-relaxed">{step.description}</p>
                       </div>
                     </div>
 
                     {/* Client provides section */}
                     {step.clientProvides && step.clientProvides.length > 0 && (
-                      <div class="mt-6 p-4 bg-white rounded-lg border border-gray-200">
-                        <p class="text-xs font-bold text-gray-700 uppercase tracking-wide mb-3">
+                      <div class="mt-6 p-5 bg-creme rounded-elegant border border-gris-doux">
+                        <p class="text-elegant-caps text-charbon mb-3">
                           Ce que vous fournissez :
                         </p>
                         <ul class="space-y-2">
                           {step.clientProvides.map((item) => (
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-3 text-sm text-charbon">
                               <svg
-                                class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5"
+                                class="w-4 h-4 text-or flex-shrink-0 mt-0.5"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
                               >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                               </svg>
                               <span>{item}</span>
                             </li>
@@ -114,15 +104,15 @@ const {
 
                     {/* We deliver section */}
                     {step.weDeliver && step.weDeliver.length > 0 && (
-                      <div class="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
-                        <p class="text-xs font-bold text-blue-700 uppercase tracking-wide mb-3">
+                      <div class="mt-4 p-5 bg-or/5 rounded-elegant border border-or/20">
+                        <p class="text-elegant-caps text-or mb-3">
                           Ce que nous faisons :
                         </p>
                         <ul class="space-y-2">
                           {step.weDeliver.map((item) => (
-                            <li class="flex items-start gap-2 text-sm text-gray-700">
+                            <li class="flex items-start gap-3 text-sm text-charbon">
                               <svg
-                                class="w-4 h-4 text-blue-600 flex-shrink-0 mt-0.5"
+                                class="w-4 h-4 text-or flex-shrink-0 mt-0.5"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -138,13 +128,13 @@ const {
 
                     {/* Additional details */}
                     {step.details && step.details.length > 0 && (
-                      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div class="mt-5 pt-5 border-t border-gris-doux grid grid-cols-1 md:grid-cols-2 gap-4">
                         {step.details.map((detail) => (
-                          <div class="flex items-start gap-2">
-                            <div class="w-1.5 h-1.5 bg-blue-600 rounded-full mt-2 flex-shrink-0" />
+                          <div class="flex items-start gap-3">
+                            <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0" />
                             <div>
-                              <p class="text-xs font-semibold text-gray-700">{detail.label}</p>
-                              <p class="text-xs text-gray-600">{detail.content}</p>
+                              <p class="text-xs font-semibold text-noir">{detail.label}</p>
+                              <p class="text-xs text-charbon">{detail.content}</p>
                             </div>
                           </div>
                         ))}
@@ -159,9 +149,9 @@ const {
       </div>
 
       <!-- Summary callout -->
-      <div class="mt-12 text-center">
-        <div class="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-xl border border-blue-100">
-          <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div class="mt-16 text-center">
+        <div class="inline-flex items-center gap-4 px-8 py-5 bg-noir rounded-elegant shadow-elegant-lg">
+          <svg class="w-6 h-6 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -169,8 +159,9 @@ const {
               d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p class="text-sm font-semibold text-gray-800">
-            <strong class="text-blue-600">Total : 2-3 semaines du devis à la mise en ligne</strong> — Simple, transparent, efficace.
+          <p class="text-white font-medium">
+            <span class="text-or font-semibold">Total : 2-3 semaines du devis à la mise en ligne</span>
+            <span class="text-white/70 ml-2">— Simple, transparent, efficace.</span>
           </p>
         </div>
       </div>

@@ -11,7 +11,7 @@ interface Props {
     href: string
   }
   centered?: boolean
-  backgroundColor?: 'white' | 'gray-pale' | 'blue-50'
+  variant?: 'light' | 'dark' | 'gold'
 }
 
 const {
@@ -20,50 +20,68 @@ const {
   primaryButton,
   secondaryButton,
   centered = true,
-  backgroundColor = 'white',
+  variant = 'light',
 } = Astro.props
 
 const bgClass = {
-  white: 'bg-white',
-  'gray-pale': 'bg-gray-pale',
-  'blue-50': 'bg-blue-50',
-}[backgroundColor]
+  light: 'bg-creme',
+  dark: 'bg-noir',
+  gold: 'bg-gradient-to-br from-or/10 to-or/5',
+}[variant]
+
+const textClass = variant === 'dark' ? 'text-white' : 'text-noir'
+const descClass = variant === 'dark' ? 'text-white/70' : 'text-charbon'
 ---
 
-<section class={`py-16 md:py-24 ${bgClass}`}>
-  <div class="container mx-auto px-4">
+<section class={`section-padding ${bgClass} relative overflow-hidden`}>
+  <!-- Decorative elements -->
+  {variant === 'dark' && (
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-or rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-1/4 w-64 h-64 bg-or rounded-full blur-3xl"></div>
+    </div>
+  )}
+
+  <div class="container mx-auto px-4 relative">
     <div class={`max-w-4xl mx-auto ${centered ? 'text-center' : ''}`}>
-      <h2
-        class={`text-5xl md:text-6xl font-black text-black mb-6 ${centered ? '' : 'text-left'}`}
-        style="letter-spacing: -0.02em;"
-      >
+      {variant !== 'dark' && <div class="separator-gold-center mb-8"></div>}
+
+      <h2 class={`section-title ${textClass} mb-6 ${centered ? '' : 'text-left'}`}>
         {title}
       </h2>
+
       {
         description && (
-          <p
-            class={`text-xl text-gray-text mb-10 max-w-2xl ${centered ? 'mx-auto' : ''} leading-relaxed`}
-          >
+          <p class={`text-xl ${descClass} mb-10 max-w-2xl ${centered ? 'mx-auto' : ''} leading-relaxed`}>
             {description}
           </p>
         )
       }
+
       <div class={`flex flex-col sm:flex-row gap-4 ${centered ? 'justify-center' : ''}`}>
         {
           primaryButton && (
-            <a href={primaryButton.href} class="btn-blue text-lg shadow-lg shadow-blue-600/30">
+            <a
+              href={primaryButton.href}
+              class={`${variant === 'dark' ? 'btn-gold' : 'btn-gold'} text-lg shadow-or`}
+            >
               {primaryButton.text}
             </a>
           )
         }
         {
           secondaryButton && (
-            <a href={secondaryButton.href} class="btn-secondary text-lg">
+            <a
+              href={secondaryButton.href}
+              class={`${variant === 'dark' ? 'btn-ghost text-white hover:text-or hover:bg-white/10' : 'btn-secondary'} text-lg`}
+            >
               {secondaryButton.text}
             </a>
           )
         }
       </div>
+
+      {variant !== 'dark' && <div class="separator-gold-center mt-12"></div>}
     </div>
   </div>
 </section>

@@ -32,40 +32,47 @@ const {
 } = Astro.props
 ---
 
-<section class="relative py-24 md:py-32 bg-white overflow-hidden">
+<section class="relative section-padding bg-creme overflow-hidden">
+  <!-- Decorative elements -->
+  <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-or/30 to-transparent"></div>
+
   <div class="container mx-auto px-4">
     <div class="max-w-5xl mx-auto text-center">
-      <div class="mb-8 animate-fadeIn">
-        <span
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-pale text-sm font-semibold text-gray-700"
-        >
-          <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
+      <!-- Badge -->
+      <div class="mb-10 animate-fadeIn">
+        <span class="text-elegant-caps text-or tracking-widest">
           {badge}
         </span>
       </div>
 
+      <!-- Title -->
       <h1
-        class="text-6xl md:text-8xl lg:text-9xl font-black text-black mb-8 leading-[0.95] animate-fadeIn"
-        style="letter-spacing: -0.04em; animation-delay: 0.1s;"
+        class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-noir mb-8 leading-[1.05] animate-fadeIn"
+        style="animation-delay: 0.1s;"
       >
         {title}<br />
-        <span class="text-blue-600">{subtitle}</span>
+        <span class="text-or">{subtitle}</span>
       </h1>
 
+      <!-- Gold separator -->
+      <div class="separator-gold-center mb-10 animate-fadeIn" style="animation-delay: 0.15s;"></div>
+
+      <!-- Description -->
       <p
-        class="text-2xl md:text-3xl text-gray-700 font-medium mb-12 max-w-3xl mx-auto animate-fadeIn"
+        class="text-xl md:text-2xl text-charbon font-sans mb-12 max-w-3xl mx-auto leading-relaxed animate-fadeIn"
         style="animation-delay: 0.2s;"
       >
         {description}
       </p>
 
+      <!-- CTAs -->
       <div
-        class="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fadeIn"
+        class="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fadeIn"
         style="animation-delay: 0.4s;"
       >
         {
           primaryCTA && (
-            <a href={primaryCTA.href} class="btn-blue text-lg shadow-lg shadow-blue-600/30">
+            <a href={primaryCTA.href} class="btn-gold text-lg shadow-or">
               {primaryCTA.text}
             </a>
           )
@@ -79,21 +86,18 @@ const {
         }
       </div>
 
+      <!-- Features -->
       <div
-        class="flex flex-wrap items-center justify-center gap-8 text-sm text-gray-600 animate-fadeIn"
+        class="flex flex-wrap items-center justify-center gap-8 text-sm text-charbon animate-fadeIn"
         style="animation-delay: 0.5s;"
       >
         {
           features.map((feature) => (
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fill-rule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clip-rule="evenodd"
-                />
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
               </svg>
-              <span>{feature}</span>
+              <span class="font-medium">{feature}</span>
             </div>
           ))
         }
@@ -101,38 +105,36 @@ const {
 
       <!-- Social Proof -->
       <div
-        class="mt-12 pt-8 border-t border-gray-100 animate-fadeIn"
+        class="mt-16 pt-10 border-t border-gris-doux animate-fadeIn"
         style="animation-delay: 0.6s;"
       >
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm">
-          <div class="flex items-center gap-2 text-gray-700">
-            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-            </svg>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-10 text-sm">
+          <div class="flex items-center gap-3 text-charbon">
+            <div class="w-10 h-10 rounded-full bg-or/10 flex items-center justify-center">
+              <svg class="w-5 h-5 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
             <span class="font-medium">Commerçants de Saint-Étienne accompagnés</span>
           </div>
-          <div class="flex items-center gap-1 text-gray-700">
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-            </svg>
-            <span class="ml-2 font-medium">Note moyenne 4,9/5</span>
+          <div class="flex items-center gap-2 text-charbon">
+            <div class="flex gap-0.5">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-5 h-5 text-or" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <span class="font-semibold text-noir">4,9/5</span>
+            <span class="text-gris-moyen">note moyenne</span>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Bottom decorative line -->
+  <div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gris-doux to-transparent"></div>
 </section>
 
 <style>
