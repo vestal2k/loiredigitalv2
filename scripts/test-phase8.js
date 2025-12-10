@@ -1,5 +1,5 @@
 /**
- * Script de test automatique pour la Phase 8
+ * Script de test automatique pour les APIs
  * Teste les APIs de contact et devis, la validation, le rate limiting
  */
 
@@ -13,8 +13,6 @@ const __dirname = path.dirname(__filename)
 
 // Configuration
 const BASE_URL = process.env.TEST_URL || 'http://localhost:4321'
-const SANITY_PROJECT_ID = process.env.PUBLIC_SANITY_PROJECT_ID || 'r98l8u9o'
-const SANITY_DATASET = process.env.PUBLIC_SANITY_DATASET || 'production'
 
 // Couleurs pour le terminal
 const colors = {
@@ -95,34 +93,8 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 // Tests
 // ============================================================================
 
-async function testSanitySchemas() {
-  log.section('Test 1: Vérification des schémas Sanity')
-
-  const leadSchema = fs.existsSync(
-    path.join(__dirname, '../sanity/schemas/lead.ts'),
-  )
-  addResult('Schéma lead.ts existe', leadSchema)
-
-  const quoteLeadSchema = fs.existsSync(
-    path.join(__dirname, '../sanity/schemas/quoteLead.ts'),
-  )
-  addResult('Schéma quoteLead.ts existe', quoteLeadSchema)
-
-  const indexFile = path.join(__dirname, '../sanity/schemas/index.ts')
-  if (fs.existsSync(indexFile)) {
-    const content = fs.readFileSync(indexFile, 'utf-8')
-    const hasLead = content.includes('lead')
-    const hasQuoteLead = content.includes('quoteLead')
-
-    addResult('Schéma lead importé dans index.ts', hasLead)
-    addResult('Schéma quoteLead importé dans index.ts', hasQuoteLead)
-  } else {
-    addResult('index.ts existe', false, 'Fichier non trouvé')
-  }
-}
-
 async function testContactAPIValid() {
-  log.section('Test 2: API Contact - Données valides')
+  log.section('Test 1: API Contact - Données valides')
 
   const validData = {
     name: 'Test User',
@@ -156,7 +128,7 @@ async function testContactAPIValid() {
 }
 
 async function testContactAPIInvalid() {
-  log.section('Test 3: API Contact - Données invalides')
+  log.section('Test 2: API Contact - Données invalides')
 
   // Test 1: Email invalide
   const invalidEmail = {
@@ -216,7 +188,7 @@ async function testContactAPIInvalid() {
 }
 
 async function testQuoteAPIValid() {
-  log.section('Test 4: API Devis - Données valides')
+  log.section('Test 3: API Devis - Données valides')
 
   const validData = {
     name: 'Test Quote User',
@@ -248,7 +220,7 @@ async function testQuoteAPIValid() {
 }
 
 async function testQuoteAPIInvalid() {
-  log.section('Test 5: API Devis - Données invalides')
+  log.section('Test 4: API Devis - Données invalides')
 
   // Test 1: Pack invalide
   const invalidPack = {
@@ -315,7 +287,7 @@ async function testQuoteAPIInvalid() {
 }
 
 async function testRateLimiting() {
-  log.section('Test 6: Rate Limiting')
+  log.section('Test 5: Rate Limiting')
 
   // Attendre 65 secondes pour que le rate limiter des tests précédents soit réinitialisé
   log.info('Attente de 65 secondes pour réinitialiser le rate limiter...')
@@ -331,11 +303,11 @@ async function testRateLimiting() {
     name: 'Rate Limit Test',
     email: 'ratelimit@example.com',
     project: 'creation',
-    message: 'Test rate limiting automatique du système CRM',
+    message: 'Test rate limiting automatique du système',
     gdprConsent: true,
   }
 
-  const results = []
+  const testResults = []
 
   // Envoyer 6 requêtes rapidement
   for (let i = 0; i < 6; i++) {
@@ -343,22 +315,21 @@ async function testRateLimiting() {
       method: 'POST',
       body: JSON.stringify(testData),
     })
-    results.push(result.status)
+    testResults.push(result.status)
     log.info(`  Requête ${i + 1}/6: Status ${result.status}`)
     await sleep(50) // Petit délai entre les requêtes
   }
 
   // Vérifier que les 5 premières passent
-  const first5Pass = results.slice(0, 5).every((status) => status === 200)
+  const first5Pass = testResults.slice(0, 5).every((status) => status === 200)
   addResult('Les 5 premières requêtes passent (200)', first5Pass)
 
   // Vérifier que la 6ème est bloquée
-  const sixth429 = results[5] === 429
+  const sixth429 = testResults[5] === 429
   addResult('La 6ème requête est bloquée (429)', sixth429)
 
   if (sixth429) {
     log.info('Attente de 61 secondes pour réinitialisation du rate limit...')
-    log.info('(Vous pouvez interrompre ce test avec Ctrl+C)')
 
     // Afficher un compte à rebours
     for (let i = 61; i > 0; i--) {
@@ -384,16 +355,12 @@ async function testRateLimiting() {
 }
 
 async function testFileStructure() {
-  log.section('Test 7: Structure des fichiers')
+  log.section('Test 6: Structure des fichiers')
 
   const files = [
-    'src/lib/rate-limiter.ts',
+    'src/lib/utils/rate-limiter.ts',
     'src/schemas/quote.schema.ts',
     'src/schemas/contact.schema.ts',
-    'sanity/schemas/lead.ts',
-    'sanity/schemas/quoteLead.ts',
-    '.claude/phase8-crm-automatisation.md',
-    '.claude/phase8-tests.md',
   ]
 
   files.forEach((file) => {
@@ -402,41 +369,15 @@ async function testFileStructure() {
   })
 }
 
-async function testSanityClient() {
-  log.section('Test 8: Configuration Sanity')
-
-  const sanityFile = path.join(__dirname, '../src/lib/sanity.ts')
-
-  if (fs.existsSync(sanityFile)) {
-    const content = fs.readFileSync(sanityFile, 'utf-8')
-
-    const hasSanityClient = content.includes('export const sanityClient')
-    addResult('sanityClient exporté', hasSanityClient)
-
-    const hasSanityWriteClient = content.includes('export const sanityWriteClient')
-    addResult('sanityWriteClient exporté', hasSanityWriteClient)
-
-    const hasToken = content.includes('SANITY_API_TOKEN')
-    addResult('Utilise SANITY_API_TOKEN', hasToken)
-  } else {
-    addResult('Fichier sanity.ts existe', false, 'Fichier non trouvé')
-  }
-}
-
 async function checkEnvironmentVariables() {
-  log.section('Test 9: Variables d\'environnement')
+  log.section('Test 7: Variables d\'environnement')
 
   const envFile = path.join(__dirname, '../.env')
 
   if (fs.existsSync(envFile)) {
     const content = fs.readFileSync(envFile, 'utf-8')
 
-    const vars = [
-      'PUBLIC_SANITY_PROJECT_ID',
-      'PUBLIC_SANITY_DATASET',
-      'SANITY_API_TOKEN',
-      'RESEND_API_KEY',
-    ]
+    const vars = ['RESEND_API_KEY']
 
     vars.forEach((varName) => {
       const hasVar = content.includes(varName)
@@ -457,7 +398,7 @@ async function checkEnvironmentVariables() {
 
 function printReport() {
   log.title()
-  console.log(`${colors.cyan}📊 RAPPORT DE TESTS - PHASE 8${colors.reset}`)
+  console.log(`${colors.cyan}📊 RAPPORT DE TESTS${colors.reset}`)
   log.title()
 
   console.log(`\n${colors.blue}Résumé :${colors.reset}`)
@@ -493,9 +434,6 @@ function printReport() {
       })
   }
 
-  console.log(
-    `\n${colors.gray}Pour plus de détails, consultez .claude/phase8-tests.md${colors.reset}`,
-  )
   log.title()
 }
 
@@ -505,18 +443,13 @@ function printReport() {
 
 async function runAllTests() {
   console.log(`${colors.cyan}${'='.repeat(60)}${colors.reset}`)
-  console.log(`${colors.cyan}🧪 TESTS AUTOMATIQUES - PHASE 8 : CRM & AUTOMATISATION${colors.reset}`)
+  console.log(`${colors.cyan}🧪 TESTS AUTOMATIQUES - APIs Contact & Devis${colors.reset}`)
   console.log(`${colors.cyan}${'='.repeat(60)}${colors.reset}`)
-  console.log(`${colors.gray}URL de test : ${BASE_URL}${colors.reset}`)
-  console.log(
-    `${colors.gray}Sanity : ${SANITY_PROJECT_ID}/${SANITY_DATASET}${colors.reset}\n`,
-  )
+  console.log(`${colors.gray}URL de test : ${BASE_URL}${colors.reset}\n`)
 
   try {
     // Tests de structure
-    await testSanitySchemas()
     await testFileStructure()
-    await testSanityClient()
     await checkEnvironmentVariables()
 
     // Tests des APIs (nécessitent que le serveur tourne)

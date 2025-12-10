@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro'
 import { Resend } from 'resend'
 import { quoteSchema } from '../../schemas/quote.schema'
-import { sanityWriteClient } from '../../lib/sanity'
 import { checkRateLimit } from '../../lib/utils/rate-limiter'
 
 export const POST: APIRoute = async ({ request, clientAddress }) => {
@@ -81,35 +80,6 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       }
     } catch (emailError) {
       console.error('Email sending error:', emailError)
-      // Continue anyway - we'll still save the lead to Sanity
-    }
-
-    // Save quote lead to Sanity CRM
-    try {
-      const quoteLeadData = {
-        _type: 'quoteLead',
-        name: validData.name,
-        email: validData.email,
-        phone: validData.phone || null,
-        packId: validData.packId,
-        pages: validData.pages,
-        options: validData.optionIds || [],
-        maintenance: validData.maintenance,
-        totalPrice: validData.totalPrice,
-        message: validData.message || null,
-        status: 'new',
-        createdAt: new Date().toISOString(),
-      }
-
-      await sanityWriteClient.create(quoteLeadData)
-      console.log('Quote lead saved to Sanity CRM:', {
-        name: validData.name,
-        email: validData.email,
-        totalPrice: validData.totalPrice,
-      })
-    } catch (sanityError) {
-      // Log error but don't fail the request if Sanity fails
-      console.error('Failed to save quote lead to Sanity:', sanityError)
     }
 
     return new Response(

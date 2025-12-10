@@ -1,7 +1,4 @@
-import { getProjects, type SanityProject } from '../sanity'
-import { urlForImage } from '../sanity'
-
-// Type unifié pour les projets (statique + Sanity)
+// Type unifié pour les projets
 export interface UnifiedProject {
   slug: string
   title: string
@@ -16,11 +13,10 @@ export interface UnifiedProject {
   mainImage?: string
   gallery?: string[]
   order?: number
-  _source: 'sanity' | 'static'
-  _raw?: any
+  _source: 'static'
 }
 
-// Projets statiques (actuellement dans portfolio.astro)
+// Projets statiques
 const staticProjects: UnifiedProject[] = [
   {
     slug: 'boulangerie-artisanale',
@@ -144,48 +140,9 @@ const staticProjects: UnifiedProject[] = [
   },
 ]
 
-// Convertir un projet Sanity en projet unifié
-function sanityProjectToUnified(project: SanityProject): UnifiedProject {
-  return {
-    slug: project.slug.current,
-    title: project.title,
-    category: project.category,
-    description: project.description,
-    challenge: project.challenge,
-    solution: project.solution,
-    results: project.results,
-    features: project.features,
-    icon: project.icon,
-    deliveryTime: project.deliveryTime,
-    mainImage: project.mainImage ? urlForImage(project.mainImage).width(1200).url() : undefined,
-    gallery: project.gallery
-      ? project.gallery.map((img) => urlForImage(img).width(800).url())
-      : undefined,
-    order: project.order,
-    _source: 'sanity',
-    _raw: project,
-  }
-}
-
-// Récupérer tous les projets (Sanity + statiques)
+// Récupérer tous les projets
 export async function getAllProjects(): Promise<UnifiedProject[]> {
-  const projects: UnifiedProject[] = []
-
-  // Récupérer depuis Sanity (si configuré)
-  try {
-    const sanityProjects = await getProjects()
-    projects.push(...sanityProjects.map(sanityProjectToUnified))
-  } catch (error) {
-    console.log('Sanity not configured yet, using only static projects')
-  }
-
-  // Ajouter les projets statiques
-  projects.push(...staticProjects)
-
-  // Trier par ordre (si défini) puis supprimer les doublons
-  const uniqueProjects = Array.from(new Map(projects.map((p) => [p.slug, p])).values())
-
-  return uniqueProjects.sort((a, b) => {
+  return staticProjects.sort((a, b) => {
     const orderA = a.order ?? 999
     const orderB = b.order ?? 999
     return orderA - orderB
@@ -194,18 +151,5 @@ export async function getAllProjects(): Promise<UnifiedProject[]> {
 
 // Récupérer un projet spécifique par slug
 export async function getProjectBySlug(slug: string): Promise<UnifiedProject | null> {
-  // Chercher dans Sanity d'abord
-  try {
-    const sanityProjects = await getProjects()
-    const project = sanityProjects.find((p) => p.slug.current === slug)
-    if (project) {
-      return sanityProjectToUnified(project)
-    }
-  } catch (error) {
-    console.log('Sanity not configured yet')
-  }
-
-  // Sinon chercher dans les projets statiques
-  const staticProject = staticProjects.find((p) => p.slug === slug)
-  return staticProject || null
+  return staticProjects.find((p) => p.slug === slug) || null
 }

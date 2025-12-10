@@ -1,9 +1,6 @@
 import { getCollection } from 'astro:content'
-import { getBlogPosts, type SanityBlogPost } from '../sanity'
-import { portableTextToHtml } from './portableText'
-import { urlForImage } from '../sanity'
 
-// Type unifié pour les posts (Astro + Sanity)
+// Type unifié pour les posts
 export interface UnifiedBlogPost {
   slug: string
   title: string
@@ -14,43 +11,16 @@ export interface UnifiedBlogPost {
   image?: string
   ogImage?: string
   keywords?: string[]
-  content?: string // HTML content from Sanity
-  _source: 'sanity' | 'astro' // Pour savoir d'où vient le post
-  _raw?: any // Données brutes pour le rendu
+  content?: string
+  _source: 'astro'
+  _raw?: any
 }
 
-// Convertir un post Sanity en post unifié
-function sanityPostToUnified(post: SanityBlogPost): UnifiedBlogPost {
-  return {
-    slug: post.slug.current,
-    title: post.title,
-    description: post.description,
-    pubDate: new Date(post.publishedAt),
-    author: post.author,
-    tags: post.tags,
-    image: post.mainImage ? urlForImage(post.mainImage).width(1200).url() : undefined,
-    content: post.body ? portableTextToHtml(post.body) : undefined,
-    _source: 'sanity',
-    _raw: post,
-  }
-}
-
-// Récupérer tous les posts (Sanity + Astro Content Collections)
+// Récupérer tous les posts depuis Astro Content Collections
 export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
-  const posts: UnifiedBlogPost[] = []
-
-  // Récupérer depuis Sanity (si configuré)
-  try {
-    const sanityPosts = await getBlogPosts()
-    posts.push(...sanityPosts.map(sanityPostToUnified))
-  } catch (error) {
-    console.log('Sanity not configured yet, using only Astro Content Collections')
-  }
-
-  // Récupérer depuis Astro Content Collections
   try {
     const astroPosts = await getCollection('blog')
-    const astroUnified = astroPosts
+    return astroPosts
       .filter((post) => !post.data.draft)
       .map((post) => ({
         slug: post.slug,
@@ -65,33 +35,15 @@ export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
         _source: 'astro' as const,
         _raw: post,
       }))
-    posts.push(...astroUnified)
+      .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf())
   } catch (error) {
     console.log('Error loading Astro Content Collections:', error)
+    return []
   }
-
-  // Trier par date (plus récent en premier) et supprimer les doublons
-  const uniquePosts = Array.from(
-    new Map(posts.map((post) => [post.slug, post])).values(),
-  )
-
-  return uniquePosts.sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf())
 }
 
 // Récupérer un post spécifique par slug
 export async function getBlogPostBySlug(slug: string): Promise<UnifiedBlogPost | null> {
-  // Chercher dans Sanity d'abord
-  try {
-    const sanityPost = await getBlogPosts()
-    const post = sanityPost.find((p) => p.slug.current === slug)
-    if (post) {
-      return sanityPostToUnified(post)
-    }
-  } catch (error) {
-    console.log('Sanity not configured yet')
-  }
-
-  // Sinon chercher dans Astro Content Collections
   try {
     const astroPosts = await getCollection('blog')
     const post = astroPosts.find((p) => p.slug === slug && !p.data.draft)

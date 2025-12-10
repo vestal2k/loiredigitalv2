@@ -21,8 +21,6 @@ export default defineConfig({
         'node_modules/',
         'dist/',
         '.astro/',
-        'sanity.config.ts',
-        'sanity/',
         '*.config.*',
         'e2e/**',
       ],
