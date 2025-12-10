@@ -6,22 +6,22 @@ interface Props {
 const { currentPage = 'dashboard' } = Astro.props
 ---
 
-<header class="bg-white border-b border-gray-100 sticky top-0 z-50">
+<header class="bg-white border-b border-gris-doux sticky top-0 z-50" role="banner">
   <div class="container mx-auto px-4">
     <div class="flex items-center justify-between h-20">
       <!-- Logo et navigation -->
       <div class="flex items-center gap-8">
-        <a href="/" class="flex-shrink-0">
-          <img src="/images/logo.svg" alt="Loire Digital" class="h-8" width="120" height="32" />
+        <a href="/" class="flex-shrink-0" aria-label="Retour a l'accueil">
+          <img src="/logo.svg" alt="Loire Digital" class="h-8" width="120" height="32" />
         </a>
 
-        <nav class="hidden md:flex items-center gap-6">
+        <nav class="hidden md:flex items-center gap-6" aria-label="Navigation espace client">
           <a
             href="/espace-client/dashboard"
             class={`text-sm font-semibold transition-colors ${
               currentPage === 'dashboard'
-                ? 'text-blue-600'
-                : 'text-gray-text hover:text-black'
+                ? 'text-or'
+                : 'text-charbon hover:text-noir'
             }`}
           >
             Dashboard
@@ -31,17 +31,18 @@ const { currentPage = 'dashboard' } = Astro.props
 
       <!-- Actions -->
       <div class="flex items-center gap-4">
-        <a href="/#contact" class="hidden md:block text-sm font-semibold text-gray-text hover:text-black transition-colors">
+        <a href="/#contact" class="hidden md:block text-sm font-semibold text-charbon hover:text-noir transition-colors">
           Support
         </a>
         <button
           id="logout-btn"
-          class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-text hover:text-red-600 transition-colors"
+          class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-charbon hover:text-red-600 transition-colors"
+          aria-label="Se deconnecter"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
           </svg>
-          <span class="hidden md:block">Déconnexion</span>
+          <span class="hidden md:block">Deconnexion</span>
         </button>
       </div>
     </div>
