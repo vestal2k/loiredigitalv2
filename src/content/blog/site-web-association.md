@@ -3,6 +3,8 @@ title: "Site web pour association : Gagnez en visibilité et facilitez les adhé
 description: "Découvrez comment un site web peut transformer la communication de votre association, attirer de nouveaux membres et simplifier votre gestion administrative."
 pubDate: 2025-01-22
 tags: ['association', 'site web', 'communication', 'adhésion', 'bénévolat']
+keywords: ['site web association', 'création site association loi 1901', 'site internet bénévoles', 'adhésion en ligne association', 'communication digitale association', 'gestion membres association', 'visibilité association']
+ogImage: '/og-blog-association.jpg'
 ---
 
 # Site web pour association : Gagnez en visibilité et facilitez les adhésions

@@ -16,63 +16,62 @@ const formatDate = (date: Date) => {
 
 <BaseLayout
   title="Blog Web & SEO pour commerces locaux | Loire Digital"
-  description="Guides pratiques pour commerces de Saint-Étienne : améliorer son SEO local, créer son site web, optimiser sa présence digitale. Conseils concrets et actionnables."
+  description="Guides pratiques pour commerces de Saint-Etienne : ameliorer son SEO local, creer son site web, optimiser sa presence digitale. Conseils concrets et actionnables."
 >
   <!-- Hero -->
-  <section class="relative py-24 md:py-32 bg-white">
+  <section class="relative py-24 md:py-32 section-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h1
-          class="text-5xl md:text-7xl font-black text-black mb-6"
-          style="letter-spacing: -0.02em;"
-        >
+        <span class="text-elegant-caps text-or tracking-widest mb-4 block">Ressources & Conseils</span>
+        <h1 class="section-title text-5xl md:text-7xl mb-6">
           Blog
         </h1>
-        <p class="text-xl text-gray-text">
-          Conseils, guides et actualités pour développer votre présence en ligne et faire grandir
-          votre commerce à Saint-Étienne.
+        <div class="separator-gold-center mt-6 mb-6"></div>
+        <p class="section-subtitle mx-auto">
+          Conseils, guides et actualites pour developper votre presence en ligne et faire grandir
+          votre commerce a Saint-Etienne.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Blog Posts -->
-  <section class="py-16 md:py-20 section-pale">
+  <section class="py-16 md:py-20 section-creme">
     <div class="container mx-auto px-4">
       <div class="max-w-5xl mx-auto">
         {
           allPosts.length === 0 ? (
             <div class="text-center py-20">
-              <p class="text-gray-text text-lg">Aucun article pour le moment. Revenez bientôt !</p>
+              <p class="text-charbon text-lg">Aucun article pour le moment. Revenez bientot !</p>
             </div>
           ) : (
             <div class="grid grid-cols-1 gap-12">
               {allPosts.map((post) => (
-                <article class="flex flex-col md:flex-row gap-8 pb-12 border-b border-gray-100 last:border-0">
+                <article class="card-elegant flex flex-col md:flex-row gap-8 group">
                   {/* Post Image/Icon */}
                   <div class="md:w-72 flex-shrink-0">
-                    <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center overflow-hidden shadow-sm">
+                    <div class="aspect-video bg-creme border border-gris-doux rounded-elegant flex items-center justify-center overflow-hidden">
                       {post.image ? (
                         <img
                           src={post.image}
                           alt={post.title}
-                          class="w-full h-full object-cover"
+                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           loading="lazy"
                         />
                       ) : (
                         <div class="text-center p-6">
-                          <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+                          <div class="icon-container icon-container-lg mx-auto mb-4">
                             {post.tags.includes('SEO') ? (
-                              <Icon name="search" class="text-blue-600" size={32} />
+                              <Icon name="search" class="icon-gold" size={32} />
                             ) : post.tags.includes('tarifs') ? (
-                              <Icon name="price-tag" class="text-blue-600" size={32} />
+                              <Icon name="price-tag" class="icon-gold" size={32} />
                             ) : post.tags.includes('commerce local') ? (
-                              <Icon name="storefront" class="text-blue-600" size={32} />
+                              <Icon name="storefront" class="icon-gold" size={32} />
                             ) : (
-                              <Icon name="document-text" class="text-blue-600" size={32} />
+                              <Icon name="document-text" class="icon-gold" size={32} />
                             )}
                           </div>
-                          <p class="text-blue-600 font-semibold text-sm">
+                          <p class="text-or font-serif font-semibold text-sm">
                             {post.title.split(' ').slice(0, 3).join(' ')}
                           </p>
                         </div>
@@ -84,19 +83,19 @@ const formatDate = (date: Date) => {
                   <div class="flex-1">
                     <div class="flex flex-wrap gap-2 mb-3">
                       {post.tags.map((tag: string) => (
-                        <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
+                        <span class="text-xs bg-or/10 text-or px-3 py-1 rounded-full font-semibold capitalize">
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <h2 class="text-2xl md:text-3xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-noir mb-3 group-hover:text-or transition-colors">
                       <a href={`/blog/${post.slug}`}>{post.title}</a>
                     </h2>
 
-                    <div class="flex items-center text-sm text-gray-text mb-4">
+                    <div class="flex items-center text-sm text-charbon mb-4">
                       <svg
-                        class="w-4 h-4 mr-2"
+                        class="w-4 h-4 mr-2 text-or"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -104,26 +103,26 @@ const formatDate = (date: Date) => {
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
-                          stroke-width="2"
+                          stroke-width="1.5"
                           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                         />
                       </svg>
                       <time datetime={post.pubDate.toISOString()}>
                         {formatDate(post.pubDate)}
                       </time>
-                      <span class="mx-2">•</span>
+                      <span class="mx-2 text-or">|</span>
                       <span>{post.author}</span>
                     </div>
 
-                    <p class="text-gray-text mb-6 leading-relaxed">{post.description}</p>
+                    <p class="text-charbon mb-6 leading-relaxed">{post.description}</p>
 
                     <a
                       href={`/blog/${post.slug}`}
-                      class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 group"
+                      class="inline-flex items-center text-or font-semibold hover:text-or-light group/link"
                     >
                       Lire l'article complet
                       <svg
-                        class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
+                        class="w-5 h-5 ml-2 group-hover/link:translate-x-1 transition-transform"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -147,89 +146,81 @@ const formatDate = (date: Date) => {
   </section>
 
   <!-- Newsletter -->
-  <section class="py-16 md:py-24 bg-white">
+  <section class="py-16 md:py-24 section-white">
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
-        <h2
-          class="text-4xl md:text-5xl font-black text-black mb-6"
-          style="letter-spacing: -0.02em;"
-        >
-          Restez informé
+        <span class="text-elegant-caps text-or tracking-widest mb-4 block">Newsletter</span>
+        <h2 class="section-title">
+          Restez informe
         </h2>
-        <p class="text-gray-text mb-8 text-lg">
-          Recevez nos meilleurs conseils pour développer votre commerce en ligne directement dans
-          votre boîte mail.
+        <div class="separator-gold-center mt-6 mb-6"></div>
+        <p class="section-subtitle mx-auto mb-8">
+          Recevez nos meilleurs conseils pour developper votre commerce en ligne directement dans
+          votre boite mail.
         </p>
         <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
           <input
             type="email"
             placeholder="votre@email.fr"
-            class="flex-1 px-6 py-3 bg-white border border-gray-200 rounded-lg text-black placeholder-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none"
+            class="flex-1 px-6 py-3 bg-white border border-gris-doux rounded-elegant text-noir placeholder-gris-moyen focus:ring-2 focus:ring-or focus:border-or outline-none transition-all"
             required
           />
-          <button type="submit" class="btn-blue whitespace-nowrap"> S'inscrire </button>
+          <button type="submit" class="btn-gold whitespace-nowrap"> S'inscrire </button>
         </form>
-        <p class="text-xs text-gray-text mt-4">
-          Pas de spam. Vous pouvez vous désinscrire à tout moment.
+        <p class="text-xs text-charbon mt-4">
+          Pas de spam. Vous pouvez vous desinscrire a tout moment.
         </p>
       </div>
     </div>
   </section>
 
   <!-- Topics Section -->
-  <section class="py-16 md:py-20 section-pale">
+  <section class="py-16 md:py-20 section-creme">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
-        <h2
-          class="text-4xl font-black text-black mb-12 text-center"
-          style="letter-spacing: -0.02em;"
-        >
-          Sujets populaires
-        </h2>
+        <div class="text-center mb-12">
+          <span class="text-elegant-caps text-or tracking-widest mb-4 block">Explorer</span>
+          <h2 class="section-title">
+            Sujets populaires
+          </h2>
+          <div class="separator-gold-center mt-6 mb-6"></div>
+        </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
           <a
             href="/blog/pourquoi-site-web-commerce"
-            class="card-minimal hover:scale-[1.02] transition-transform text-center group"
+            class="card-elegant hover:scale-[1.02] transition-transform text-center group"
           >
-            <div
-              class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors"
-            >
-              <Icon name="storefront" class="text-blue-600" size={24} />
+            <div class="icon-container icon-container-lg mx-auto mb-3 group-hover:bg-or/20 transition-colors">
+              <Icon name="storefront" class="icon-gold" size={24} />
             </div>
-            <div class="font-semibold text-black text-sm">Commerce local</div>
+            <div class="font-serif font-semibold text-noir text-sm">Commerce local</div>
           </a>
           <a
             href="/blog/seo-local-saint-etienne"
-            class="card-minimal hover:scale-[1.02] transition-transform text-center group"
+            class="card-elegant hover:scale-[1.02] transition-transform text-center group"
           >
-            <div
-              class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors"
-            >
-              <Icon name="search" class="text-blue-600" size={24} />
+            <div class="icon-container icon-container-lg mx-auto mb-3 group-hover:bg-or/20 transition-colors">
+              <Icon name="search" class="icon-gold" size={24} />
             </div>
-            <div class="font-semibold text-black text-sm">SEO Local</div>
+            <div class="font-serif font-semibold text-noir text-sm">SEO Local</div>
           </a>
           <a
             href="/blog/combien-coute-site-web"
-            class="card-minimal hover:scale-[1.02] transition-transform text-center group"
+            class="card-elegant hover:scale-[1.02] transition-transform text-center group"
           >
-            <div
-              class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors"
-            >
-              <Icon name="price-tag" class="text-blue-600" size={24} />
+            <div class="icon-container icon-container-lg mx-auto mb-3 group-hover:bg-or/20 transition-colors">
+              <Icon name="price-tag" class="icon-gold" size={24} />
             </div>
-            <div class="font-semibold text-black text-sm">Tarifs & Budget</div>
+            <div class="font-serif font-semibold text-noir text-sm">Tarifs & Budget</div>
           </a>
           <a
             href="/blog"
-            class="card-minimal hover:scale-[1.02] transition-transform text-center group"
+            class="card-elegant hover:scale-[1.02] transition-transform text-center group"
           >
-            <div
-              class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-100 transition-colors"
-            >
-              <Icon name="palette" class="text-blue-600" size={24} />
+            <div class="icon-container icon-container-lg mx-auto mb-3 group-hover:bg-or/20 transition-colors">
+              <Icon name="palette" class="icon-gold" size={24} />
             </div>
-            <div class="font-semibold text-black text-sm">Design Web</div>
+            <div class="font-serif font-semibold text-noir text-sm">Design Web</div>
           </a>
         </div>
       </div>
@@ -237,21 +228,20 @@ const formatDate = (date: Date) => {
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-24 bg-white">
+  <section class="py-16 md:py-24 section-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2
-          class="text-4xl md:text-5xl font-black text-black mb-6"
-          style="letter-spacing: -0.02em;"
-        >
-          Prêt à passer à l'action ?
+        <span class="text-elegant-caps text-or tracking-widest mb-4 block">Passez a l'action</span>
+        <h2 class="section-title">
+          Pret a passer a l'action ?
         </h2>
-        <p class="text-xl text-gray-text mb-12">
-          Ces conseils vous ont convaincu ? Créons ensemble le site web qui fera décoller votre
-          commerce à Saint-Étienne.
+        <div class="separator-gold-center mt-6 mb-6"></div>
+        <p class="section-subtitle mx-auto mb-12">
+          Ces conseils vous ont convaincu ? Creons ensemble le site web qui fera decoller votre
+          commerce a Saint-Etienne.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/devis" class="btn-blue"> Obtenir un devis gratuit </a>
+          <a href="/devis" class="btn-gold"> Obtenir un devis gratuit </a>
           <a href="/#contact" class="btn-secondary"> Discuter de mon projet </a>
         </div>
       </div>

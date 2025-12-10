@@ -3,6 +3,8 @@ title: "Site web pour boulangerie : Attirez plus de clients avec une présence d
 description: "Découvrez pourquoi votre boulangerie a besoin d'un site web professionnel et comment cela peut augmenter votre visibilité et vos ventes locales."
 pubDate: 2025-01-15
 tags: ['boulangerie', 'site web', 'commerce local', 'SEO local']
+keywords: ['site web boulangerie', 'création site boulanger', 'site internet pâtisserie', 'présence digitale boulangerie', 'SEO boulangerie', 'site vitrine artisan boulanger', 'marketing digital boulangerie']
+ogImage: '/og-blog-boulangerie.jpg'
 ---
 
 # Site web pour boulangerie : Attirez plus de clients avec une présence digitale

@@ -12,6 +12,8 @@ export interface UnifiedBlogPost {
   author: string
   tags: string[]
   image?: string
+  ogImage?: string
+  keywords?: string[]
   content?: string // HTML content from Sanity
   _source: 'sanity' | 'astro' // Pour savoir d'où vient le post
   _raw?: any // Données brutes pour le rendu
@@ -58,6 +60,8 @@ export async function getAllBlogPosts(): Promise<UnifiedBlogPost[]> {
         author: post.data.author,
         tags: post.data.tags,
         image: post.data.image,
+        ogImage: post.data.ogImage,
+        keywords: post.data.keywords,
         _source: 'astro' as const,
         _raw: post,
       }))
@@ -100,6 +104,8 @@ export async function getBlogPostBySlug(slug: string): Promise<UnifiedBlogPost |
         author: post.data.author,
         tags: post.data.tags,
         image: post.data.image,
+        ogImage: post.data.ogImage,
+        keywords: post.data.keywords,
         _source: 'astro',
         _raw: post,
       }

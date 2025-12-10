@@ -3,6 +3,8 @@ title: "Site web pour TPE : Développez votre activité avec un budget maîtris�
 description: "Découvrez pourquoi et comment créer un site web professionnel pour votre TPE, même avec un budget limité. Guide complet pour les très petites entreprises."
 pubDate: 2025-01-20
 tags: ['TPE', 'petite entreprise', 'site web', 'budget', 'digital']
+keywords: ['site web TPE', 'création site petite entreprise', 'site internet pas cher TPE', 'présence digitale TPE', 'site vitrine petit budget', 'développement web PME', 'digitalisation TPE']
+ogImage: '/og-blog-tpe.jpg'
 ---
 
 # Site web pour TPE : Développez votre activité avec un budget maîtrisé

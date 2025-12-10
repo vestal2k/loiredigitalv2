@@ -3,6 +3,8 @@ title: "Pourquoi votre commerce local a besoin d'un site web en 2025"
 description: 'Découvrez pourquoi avoir un site web est devenu indispensable pour les commerces locaux de Saint-Étienne et comment cela peut booster votre activité.'
 pubDate: 2025-01-15
 tags: ['commerce local', 'site web', 'saint-etienne', 'marketing digital']
+keywords: ['site web commerce local', 'création site internet Saint-Étienne', 'présence en ligne commerce', 'site vitrine commerce', 'digitalisation commerce local', 'SEO local Saint-Étienne', 'visibilité Google commerce']
+ogImage: '/og-blog-commerce-local.jpg'
 ---
 
 # Pourquoi votre commerce local a besoin d'un site web en 2025

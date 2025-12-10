@@ -3,71 +3,64 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout
-  title="Mentions légales - Loire Digital"
-  description="Mentions légales, informations sur l'éditeur et l'hébergement du site Loire Digital."
+  title="Mentions legales - Loire Digital"
+  description="Mentions legales, informations sur l'editeur et l'hebergement du site Loire Digital."
 >
   <!-- Hero -->
-  <section class="relative py-24 md:py-32 bg-white">
+  <section class="relative py-24 md:py-32 section-white">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <h1
-          class="text-5xl md:text-7xl font-black text-black mb-6"
-          style="letter-spacing: -0.02em;"
-        >
-          Mentions légales
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="text-elegant-caps text-or tracking-widest mb-4 block">Informations legales</span>
+        <h1 class="section-title text-5xl md:text-7xl mb-6">
+          Mentions legales
         </h1>
-        <p class="text-xl text-gray-text max-w-2xl leading-relaxed">
-          Informations légales relatives au site Loire Digital
+        <div class="separator-gold-center mt-6 mb-6"></div>
+        <p class="section-subtitle mx-auto">
+          Informations legales relatives au site Loire Digital
         </p>
       </div>
     </div>
   </section>
 
   <!-- Content -->
-  <section class="py-16 md:py-24 section-pale">
+  <section class="py-16 md:py-24 section-creme">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto space-y-12">
-        <!-- Éditeur du site -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
-            Éditeur du site
+        <!-- Editeur du site -->
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
+            Editeur du site
           </h2>
-          <div class="space-y-3 text-lg text-gray-text leading-relaxed">
-            <p><strong class="text-black">Raison sociale :</strong> Loire Digital</p>
-            <p><strong class="text-black">Forme juridique :</strong> Micro-entreprise</p>
-            <p><strong class="text-black">SIRET :</strong> [À compléter]</p>
-            <p><strong class="text-black">Adresse :</strong> Saint-Étienne, Loire (42), France</p>
+          <div class="space-y-3 text-lg text-charbon leading-relaxed">
+            <p><strong class="text-noir">Raison sociale :</strong> Loire Digital</p>
+            <p><strong class="text-noir">Forme juridique :</strong> Micro-entreprise</p>
+            <p><strong class="text-noir">SIRET :</strong> [A completer]</p>
+            <p><strong class="text-noir">Adresse :</strong> Saint-Etienne, Loire (42), France</p>
             <p>
-              <strong class="text-black">Email :</strong>
-              <a href="mailto:contact@loiredigital.fr" class="text-blue-600 hover:underline">
+              <strong class="text-noir">Email :</strong>
+              <a href="mailto:contact@loiredigital.fr" class="text-or hover:text-or-light transition-colors">
                 contact@loiredigital.fr
               </a>
             </p>
-            <p><strong class="text-black">Directeur de publication :</strong> [À compléter]</p>
+            <p><strong class="text-noir">Directeur de publication :</strong> [A completer]</p>
           </div>
         </div>
 
-        <!-- Hébergement -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
-            Hébergement
+        <!-- Hebergement -->
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
+            Hebergement
           </h2>
-          <div class="space-y-3 text-lg text-gray-text leading-relaxed">
-            <p><strong class="text-black">Hébergeur :</strong> Vercel Inc.</p>
-            <p><strong class="text-black">Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, États-Unis</p>
+          <div class="space-y-3 text-lg text-charbon leading-relaxed">
+            <p><strong class="text-noir">Hebergeur :</strong> Vercel Inc.</p>
+            <p><strong class="text-noir">Adresse :</strong> 440 N Barranca Ave #4133, Covina, CA 91723, Etats-Unis</p>
             <p>
-              <strong class="text-black">Site web :</strong>
+              <strong class="text-noir">Site web :</strong>
               <a
                 href="https://vercel.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-blue-600 hover:underline"
+                class="text-or hover:text-or-light transition-colors"
               >
                 vercel.com
               </a>
@@ -75,133 +68,118 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           </div>
         </div>
 
-        <!-- Propriété intellectuelle -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
-            Propriété intellectuelle
+        <!-- Propriete intellectuelle -->
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
+            Propriete intellectuelle
           </h2>
-          <div class="space-y-4 text-lg text-gray-text leading-relaxed">
+          <div class="space-y-4 text-lg text-charbon leading-relaxed">
             <p>
-              L'ensemble du contenu de ce site (textes, images, vidéos, logos, icônes, etc.) est
-              la propriété exclusive de Loire Digital, sauf mention contraire.
+              L'ensemble du contenu de ce site (textes, images, videos, logos, icones, etc.) est
+              la propriete exclusive de Loire Digital, sauf mention contraire.
             </p>
             <p>
-              Toute reproduction, représentation, modification, publication, adaptation de tout ou
-              partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est
-              interdite sans l'autorisation écrite préalable de Loire Digital.
+              Toute reproduction, representation, modification, publication, adaptation de tout ou
+              partie des elements du site, quel que soit le moyen ou le procede utilise, est
+              interdite sans l'autorisation ecrite prealable de Loire Digital.
             </p>
             <p>
-              Toute exploitation non autorisée du site ou de l'un des éléments qu'il contient sera
-              considérée comme constitutive d'une contrefaçon et poursuivie conformément aux
-              dispositions des articles L.335-2 et suivants du Code de Propriété Intellectuelle.
+              Toute exploitation non autorisee du site ou de l'un des elements qu'il contient sera
+              consideree comme constitutive d'une contrefacon et poursuivie conformement aux
+              dispositions des articles L.335-2 et suivants du Code de Propriete Intellectuelle.
             </p>
           </div>
         </div>
 
-        <!-- Données personnelles -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
-            Données personnelles
+        <!-- Donnees personnelles -->
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
+            Donnees personnelles
           </h2>
-          <div class="space-y-4 text-lg text-gray-text leading-relaxed">
+          <div class="space-y-4 text-lg text-charbon leading-relaxed">
             <p>
               Les informations recueillies sur ce site font l'objet d'un traitement informatique
-              destiné à la gestion de la relation client et à l'amélioration de nos services.
+              destine a la gestion de la relation client et a l'amelioration de nos services.
             </p>
             <p>
-              Conformément à la loi "Informatique et Libertés" du 6 janvier 1978 modifiée et au
-              Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit
-              d'accès, de rectification, de suppression et d'opposition aux données personnelles
+              Conformement a la loi "Informatique et Libertes" du 6 janvier 1978 modifiee et au
+              Reglement General sur la Protection des Donnees (RGPD), vous disposez d'un droit
+              d'acces, de rectification, de suppression et d'opposition aux donnees personnelles
               vous concernant.
             </p>
             <p>
-              Pour exercer ces droits, vous pouvez nous contacter à l'adresse suivante :
-              <a href="mailto:contact@loiredigital.fr" class="text-blue-600 hover:underline">
+              Pour exercer ces droits, vous pouvez nous contacter a l'adresse suivante :
+              <a href="mailto:contact@loiredigital.fr" class="text-or hover:text-or-light transition-colors">
                 contact@loiredigital.fr
               </a>
             </p>
             <p>
               Pour plus d'informations, consultez notre
-              <a href="/politique-confidentialite" class="text-blue-600 hover:underline">
-                politique de confidentialité
+              <a href="/politique-confidentialite" class="text-or hover:text-or-light transition-colors">
+                politique de confidentialite
               </a>.
             </p>
           </div>
         </div>
 
         <!-- Cookies -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
             Cookies
           </h2>
-          <div class="space-y-4 text-lg text-gray-text leading-relaxed">
+          <div class="space-y-4 text-lg text-charbon leading-relaxed">
             <p>
-              Ce site utilise des cookies pour améliorer l'expérience utilisateur et collecter des
-              données analytiques anonymes via Vercel Analytics.
+              Ce site utilise des cookies pour ameliorer l'experience utilisateur et collecter des
+              donnees analytiques anonymes via Vercel Analytics.
             </p>
             <p>
-              Vous pouvez désactiver les cookies dans les paramètres de votre navigateur. Notez
-              que cela peut affecter certaines fonctionnalités du site.
+              Vous pouvez desactiver les cookies dans les parametres de votre navigateur. Notez
+              que cela peut affecter certaines fonctionnalites du site.
             </p>
           </div>
         </div>
 
-        <!-- Responsabilité -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
-            Limitation de responsabilité
+        <!-- Responsabilite -->
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
+            Limitation de responsabilite
           </h2>
-          <div class="space-y-4 text-lg text-gray-text leading-relaxed">
+          <div class="space-y-4 text-lg text-charbon leading-relaxed">
             <p>
-              Loire Digital s'efforce d'assurer l'exactitude et la mise à jour des informations
-              diffusées sur ce site, mais ne peut garantir l'exactitude, la précision ou
-              l'exhaustivité des informations mises à disposition.
+              Loire Digital s'efforce d'assurer l'exactitude et la mise a jour des informations
+              diffusees sur ce site, mais ne peut garantir l'exactitude, la precision ou
+              l'exhaustivite des informations mises a disposition.
             </p>
             <p>
-              Loire Digital ne pourra être tenu responsable des dommages directs et indirects
-              causés au matériel de l'utilisateur lors de l'accès au site.
+              Loire Digital ne pourra etre tenu responsable des dommages directs et indirects
+              causes au materiel de l'utilisateur lors de l'acces au site.
             </p>
             <p>
-              Loire Digital décline toute responsabilité quant aux éventuels virus pouvant
-              infecter le matériel informatique de l'utilisateur après l'utilisation ou l'accès à
+              Loire Digital decline toute responsabilite quant aux eventuels virus pouvant
+              infecter le materiel informatique de l'utilisateur apres l'utilisation ou l'acces a
               ce site.
             </p>
           </div>
         </div>
 
         <!-- Loi applicable -->
-        <div>
-          <h2
-            class="text-3xl md:text-4xl font-black text-black mb-6"
-            style="letter-spacing: -0.02em;"
-          >
+        <div class="card-elegant">
+          <h2 class="text-3xl md:text-4xl font-serif font-bold text-noir mb-6">
             Loi applicable
           </h2>
-          <div class="space-y-4 text-lg text-gray-text leading-relaxed">
+          <div class="space-y-4 text-lg text-charbon leading-relaxed">
             <p>
-              Les présentes mentions légales sont régies par le droit français. En cas de litige
-              et à défaut d'accord amiable, le litige sera porté devant les tribunaux français
-              conformément aux règles de compétence en vigueur.
+              Les presentes mentions legales sont regies par le droit francais. En cas de litige
+              et a defaut d'accord amiable, le litige sera porte devant les tribunaux francais
+              conformement aux regles de competence en vigueur.
             </p>
           </div>
         </div>
 
-        <!-- Date de mise à jour -->
-        <div class="pt-8 border-t border-gray-200">
-          <p class="text-sm text-gray-text">
-            <strong class="text-black">Dernière mise à jour :</strong> 27 novembre 2025
+        <!-- Date de mise a jour -->
+        <div class="pt-8 border-t border-gris-doux">
+          <p class="text-sm text-charbon">
+            <strong class="text-noir">Derniere mise a jour :</strong> 27 novembre 2025
           </p>
         </div>
       </div>
@@ -209,19 +187,18 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </section>
 
   <!-- CTA -->
-  <section class="py-16 md:py-24 bg-white">
+  <section class="py-16 md:py-24 section-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
-        <h2
-          class="text-4xl md:text-5xl font-black text-black mb-6"
-          style="letter-spacing: -0.02em;"
-        >
+        <span class="text-elegant-caps text-or tracking-widest mb-4 block">Contact</span>
+        <h2 class="section-title">
           Une question ?
         </h2>
-        <p class="text-xl text-gray-text mb-12 max-w-2xl mx-auto leading-relaxed">
-          N'hésitez pas à nous contacter pour toute demande d'information
+        <div class="separator-gold-center mt-6 mb-6"></div>
+        <p class="section-subtitle mx-auto mb-12">
+          N'hesitez pas a nous contacter pour toute demande d'information
         </p>
-        <a href="/#contact" class="btn-primary text-lg"> Nous contacter </a>
+        <a href="/#contact" class="btn-gold"> Nous contacter </a>
       </div>
     </div>
   </section>

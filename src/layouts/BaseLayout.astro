@@ -106,6 +106,7 @@ const jsonLdSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
 
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col bg-creme">
     <header

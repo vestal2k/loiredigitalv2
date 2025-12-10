@@ -33,15 +33,37 @@ const formatDate = (date: Date) => {
 const allPosts = (await getAllBlogPosts())
   .filter((p) => p.slug !== post.slug)
   .slice(0, 2)
+
+// Generate SEO keywords from tags if not specified
+const seoKeywords = post.keywords?.length
+  ? post.keywords.join(', ')
+  : [...post.tags, 'Loire Digital', 'Saint-Etienne', 'site web'].join(', ')
+
+// Use ogImage if available, otherwise fall back to image or default
+const ogImageUrl = post.ogImage || post.image || '/og-image.jpg'
 ---
 
-<BaseLayout title={`${post.title} - Loire Digital`} description={post.description}>
+<BaseLayout
+  title={`${post.title} | Loire Digital`}
+  description={post.description}
+  ogImage={ogImageUrl}
+>
+  <!-- Additional SEO meta tags for blog posts -->
+  <meta slot="head" name="keywords" content={seoKeywords} />
+  <meta slot="head" property="article:published_time" content={post.pubDate.toISOString()} />
+  <meta slot="head" property="article:author" content={post.author} />
+  {post.tags.map((tag: string) => (
+    <meta slot="head" property="article:tag" content={tag} />
+  ))}
+
   <!-- Article Schema.org structured data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
     "description": post.description,
+    "image": post.image || post.ogImage,
+    "keywords": seoKeywords,
     "author": {
       "@type": "Person",
       "name": post.author
@@ -62,17 +84,17 @@ const allPosts = (await getAllBlogPosts())
   })} />
 
   <!-- Article Header -->
-  <article class="py-12 bg-white">
+  <article class="py-12 section-white">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto">
         <!-- Breadcrumb -->
         <nav class="mb-8 text-sm">
-          <ol class="flex items-center space-x-2 text-gray-500">
-            <li><a href="/" class="hover:text-blue-600 transition-colors">Accueil</a></li>
-            <li><span class="mx-2">/</span></li>
-            <li><a href="/blog" class="hover:text-blue-600 transition-colors">Blog</a></li>
-            <li><span class="mx-2">/</span></li>
-            <li class="text-gray-400 truncate">{post.title}</li>
+          <ol class="flex items-center space-x-2 text-charbon">
+            <li><a href="/" class="hover:text-or transition-colors">Accueil</a></li>
+            <li><span class="mx-2 text-gris-moyen">/</span></li>
+            <li><a href="/blog" class="hover:text-or transition-colors">Blog</a></li>
+            <li><span class="mx-2 text-gris-moyen">/</span></li>
+            <li class="text-gris-moyen truncate">{post.title}</li>
           </ol>
         </nav>
 
@@ -80,7 +102,7 @@ const allPosts = (await getAllBlogPosts())
         <div class="flex flex-wrap gap-2 mb-6">
           {
             post.tags.map((tag: string) => (
-              <span class="text-xs bg-blue-50 text-blue-600 px-3 py-1 rounded-full font-semibold capitalize">
+              <span class="text-xs bg-or/10 text-or px-3 py-1 rounded-full font-semibold capitalize">
                 {tag}
               </span>
             ))
@@ -88,27 +110,24 @@ const allPosts = (await getAllBlogPosts())
         </div>
 
         <!-- Title -->
-        <h1
-          class="text-4xl md:text-6xl font-black text-black mb-6 leading-tight"
-          style="letter-spacing: -0.02em;"
-        >
+        <h1 class="text-4xl md:text-6xl font-serif font-bold text-noir mb-6 leading-tight">
           {post.title}
         </h1>
 
         <!-- Meta -->
-        <div class="flex items-center text-gray-text mb-8 pb-8 border-b border-gray-100">
+        <div class="flex items-center text-charbon mb-8 pb-8 border-b border-gris-doux">
           <div class="flex items-center">
-            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mr-4">
-              <span class="text-white font-bold text-lg">LD</span>
+            <div class="w-12 h-12 bg-or rounded-full flex items-center justify-center mr-4">
+              <span class="text-white font-serif font-bold text-lg">LD</span>
             </div>
             <div>
-              <div class="font-semibold text-black">{post.author}</div>
-              <div class="text-sm flex items-center text-gray-text">
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="font-serif font-semibold text-noir">{post.author}</div>
+              <div class="text-sm flex items-center text-charbon">
+                <svg class="w-4 h-4 mr-1 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    stroke-width="2"
+                    stroke-width="1.5"
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   ></path>
                 </svg>
@@ -123,15 +142,17 @@ const allPosts = (await getAllBlogPosts())
         <!-- Article Content -->
         <div
           class="prose prose-lg max-w-none
-          prose-headings:font-black prose-headings:text-black
-          prose-p:text-gray-text prose-p:leading-relaxed
-          prose-a:text-blue-600 prose-a:no-underline hover:prose-a:text-blue-700
-          prose-strong:text-black prose-strong:font-semibold
-          prose-ul:text-gray-text prose-ol:text-gray-text
-          prose-li:text-gray-text
-          prose-code:text-blue-600 prose-code:bg-gray-50 prose-code:px-2 prose-code:py-1 prose-code:rounded
-          prose-pre:bg-gray-50 prose-pre:border prose-pre:border-gray-100
-          prose-blockquote:border-l-blue-600 prose-blockquote:text-gray-text"
+          prose-headings:font-serif prose-headings:font-bold prose-headings:text-noir
+          prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl
+          prose-p:text-charbon prose-p:leading-relaxed
+          prose-a:text-or prose-a:no-underline hover:prose-a:text-or-light prose-a:transition-colors
+          prose-strong:text-noir prose-strong:font-semibold
+          prose-ul:text-charbon prose-ol:text-charbon
+          prose-li:text-charbon prose-li:marker:text-or
+          prose-code:text-or prose-code:bg-creme prose-code:px-2 prose-code:py-1 prose-code:rounded-elegant prose-code:font-normal
+          prose-pre:bg-noir prose-pre:border prose-pre:border-gris-doux prose-pre:rounded-elegant
+          prose-blockquote:border-l-or prose-blockquote:border-l-4 prose-blockquote:text-charbon prose-blockquote:italic prose-blockquote:pl-6
+          prose-hr:border-gris-doux"
         >
           {post._source === 'astro' && AstroContent ? (
             <AstroContent />
@@ -141,14 +162,14 @@ const allPosts = (await getAllBlogPosts())
         </div>
 
         <!-- Share Buttons -->
-        <div class="mt-12 pt-8 border-t border-gray-100">
-          <h3 class="text-lg font-bold text-black mb-4">Partager cet article</h3>
+        <div class="mt-12 pt-8 border-t border-gris-doux">
+          <h3 class="text-lg font-serif font-bold text-noir mb-4">Partager cet article</h3>
           <div class="flex gap-3">
             <a
               href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(Astro.url.href)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
+              class="px-4 py-2 bg-white hover:bg-creme border border-gris-doux rounded-elegant text-charbon font-medium transition-colors hover:border-or hover:text-or"
             >
               Twitter
             </a>
@@ -156,7 +177,7 @@ const allPosts = (await getAllBlogPosts())
               href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.href)}&title=${encodeURIComponent(post.title)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
+              class="px-4 py-2 bg-white hover:bg-creme border border-gris-doux rounded-elegant text-charbon font-medium transition-colors hover:border-or hover:text-or"
             >
               LinkedIn
             </a>
@@ -164,7 +185,7 @@ const allPosts = (await getAllBlogPosts())
               href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.href)}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="px-4 py-2 bg-white hover:bg-gray-50 border border-gray-200 rounded-lg text-gray-700 font-medium transition-colors"
+              class="px-4 py-2 bg-white hover:bg-creme border border-gris-doux rounded-elegant text-charbon font-medium transition-colors hover:border-or hover:text-or"
             >
               Facebook
             </a>
@@ -177,59 +198,69 @@ const allPosts = (await getAllBlogPosts())
   <!-- Related Articles -->
   {
     allPosts.length > 0 && (
-      <section class="py-20 section-pale">
+      <section class="py-20 section-creme">
         <div class="container mx-auto px-4">
           <div class="max-w-5xl mx-auto">
-            <h2
-              class="text-4xl font-black text-black mb-12 text-center"
-              style="letter-spacing: -0.02em;"
-            >
-              Articles recommandés
-            </h2>
+            <div class="text-center mb-12">
+              <span class="text-elegant-caps text-or tracking-widest mb-4 block">A lire aussi</span>
+              <h2 class="section-title">
+                Articles recommandes
+              </h2>
+              <div class="separator-gold-center mt-6 mb-6"></div>
+            </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
               {allPosts.map((relatedPost) => (
-                <article class="card-minimal hover:scale-[1.02] transition-transform">
-                  <div class="aspect-video bg-white border border-gray-100 rounded-xl flex items-center justify-center mb-6 overflow-hidden">
-                    <div class="text-center p-6">
-                      <div class="w-16 h-16 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                        {relatedPost.tags.includes('SEO') ? (
-                          <Icon name="search" class="text-blue-600" size={32} />
-                        ) : relatedPost.tags.includes('tarifs') ? (
-                          <Icon name="price-tag" class="text-blue-600" size={32} />
-                        ) : relatedPost.tags.includes('commerce local') ? (
-                          <Icon name="storefront" class="text-blue-600" size={32} />
-                        ) : (
-                          <Icon name="document-text" class="text-blue-600" size={32} />
-                        )}
+                <article class="card-elegant hover:scale-[1.02] transition-transform group">
+                  <div class="aspect-video bg-creme border border-gris-doux rounded-elegant flex items-center justify-center mb-6 overflow-hidden">
+                    {relatedPost.image ? (
+                      <img
+                        src={relatedPost.image}
+                        alt={relatedPost.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div class="text-center p-6">
+                        <div class="icon-container icon-container-lg mx-auto mb-4">
+                          {relatedPost.tags.includes('SEO') ? (
+                            <Icon name="search" class="icon-gold" size={32} />
+                          ) : relatedPost.tags.includes('tarifs') ? (
+                            <Icon name="price-tag" class="icon-gold" size={32} />
+                          ) : relatedPost.tags.includes('commerce local') ? (
+                            <Icon name="storefront" class="icon-gold" size={32} />
+                          ) : (
+                            <Icon name="document-text" class="icon-gold" size={32} />
+                          )}
+                        </div>
+                        <p class="text-or font-serif font-semibold text-sm">
+                          {relatedPost.title.split(' ').slice(0, 3).join(' ')}
+                        </p>
                       </div>
-                      <p class="text-blue-600 font-semibold text-sm">
-                        {relatedPost.title.split(' ').slice(0, 3).join(' ')}
-                      </p>
-                    </div>
+                    )}
                   </div>
 
                   <div class="flex flex-wrap gap-2 mb-3">
                     {relatedPost.tags.slice(0, 2).map((tag: string) => (
-                      <span class="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded-full capitalize font-semibold">
+                      <span class="text-xs bg-or/10 text-or px-2 py-1 rounded-full capitalize font-semibold">
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <h3 class="text-xl font-bold text-black mb-3 hover:text-blue-600 transition-colors">
+                  <h3 class="text-xl font-serif font-bold text-noir mb-3 group-hover:text-or transition-colors">
                     <a href={`/blog/${relatedPost.slug}`}>{relatedPost.title}</a>
                   </h3>
 
-                  <p class="text-gray-text mb-4 text-sm line-clamp-2">{relatedPost.description}</p>
+                  <p class="text-charbon mb-4 text-sm line-clamp-2">{relatedPost.description}</p>
 
                   <a
                     href={`/blog/${relatedPost.slug}`}
-                    class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 text-sm group"
+                    class="inline-flex items-center text-or font-semibold hover:text-or-light text-sm group/link"
                   >
                     Lire l'article
                     <svg
-                      class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                      class="w-4 h-4 ml-1 group-hover/link:translate-x-1 transition-transform"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -247,7 +278,7 @@ const allPosts = (await getAllBlogPosts())
             </div>
 
             <div class="text-center mt-12">
-              <a href="/blog" class="btn-primary">
+              <a href="/blog" class="btn-gold">
                 Voir tous les articles
               </a>
             </div>
@@ -261,7 +292,7 @@ const allPosts = (await getAllBlogPosts())
   <CTABlock
     variant="blog"
     title="Besoin d'aide pour votre projet web ?"
-    description="Loire Digital accompagne les commerces de Saint-Étienne dans leur transformation digitale. Discutons de votre projet !"
+    description="Loire Digital accompagne les commerces de Saint-Etienne dans leur transformation digitale. Discutons de votre projet !"
     primaryText="Calculer mon devis"
     secondaryText="Nous contacter"
   />
