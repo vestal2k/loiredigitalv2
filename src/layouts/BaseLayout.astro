@@ -109,6 +109,34 @@ const jsonLdSchema = {
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
 
+    <!-- Google Analytics 4 - Remplacer GA_MEASUREMENT_ID par votre ID -->
+    <!-- Pour obtenir votre ID: https://analytics.google.com > Admin > Data Streams > Web -->
+    <script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID || '' }}>
+      if (gaId && typeof window !== 'undefined') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', gaId);
+
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+        document.head.appendChild(script);
+      }
+    </script>
+
+    <!-- Microsoft Clarity - Remplacer CLARITY_PROJECT_ID par votre ID -->
+    <!-- Pour obtenir votre ID: https://clarity.microsoft.com > Settings > Overview -->
+    <script is:inline define:vars={{ clarityId: import.meta.env.PUBLIC_CLARITY_ID || '' }}>
+      if (clarityId && typeof window !== 'undefined') {
+        (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", clarityId);
+      }
+    </script>
+
     <title>{title}</title>
     <slot name="head" />
   </head>
@@ -474,6 +502,53 @@ const jsonLdSchema = {
         ['site_url', window.location.href],
         ['langue', 'fr']
       ]]])
+    </script>
+
+    <!-- Cookie Banner RGPD -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-noir text-white p-4 z-[60] transform translate-y-full transition-transform duration-300" style="display: none;">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <p class="text-sm text-center md:text-left">
+            Ce site utilise des cookies pour ameliorer votre experience et analyser le trafic.
+            <a href="/politique-confidentialite" class="text-or hover:text-or-light underline">En savoir plus</a>
+          </p>
+          <div class="flex gap-3">
+            <button id="cookie-reject" class="px-4 py-2 text-sm border border-white/30 rounded-elegant hover:bg-white/10 transition-colors">
+              Refuser
+            </button>
+            <button id="cookie-accept" class="px-4 py-2 text-sm bg-or text-white rounded-elegant hover:bg-or-light transition-colors">
+              Accepter
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        var banner = document.getElementById('cookie-banner');
+        var acceptBtn = document.getElementById('cookie-accept');
+        var rejectBtn = document.getElementById('cookie-reject');
+
+        if (!localStorage.getItem('cookies-consent')) {
+          banner.style.display = 'block';
+          setTimeout(function() {
+            banner.style.transform = 'translateY(0)';
+          }, 500);
+        }
+
+        acceptBtn?.addEventListener('click', function() {
+          localStorage.setItem('cookies-consent', 'accepted');
+          banner.style.transform = 'translateY(100%)';
+          setTimeout(function() { banner.style.display = 'none'; }, 300);
+        });
+
+        rejectBtn?.addEventListener('click', function() {
+          localStorage.setItem('cookies-consent', 'rejected');
+          banner.style.transform = 'translateY(100%)';
+          setTimeout(function() { banner.style.display = 'none'; }, 300);
+        });
+      })();
     </script>
 
     <!-- Vercel Analytics and Speed Insights -->
