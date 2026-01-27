@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-or: #b8860b;
+  --color-or-light: #d4a84b;
+  --color-or-dark: #8b6914;
+  --color-noir: #1a1a1a;
+  --color-creme: #faf9f7;
+  --color-charbon: #4a4a4a;
+  --color-gris-doux: #e8e6e3;
+  --color-gris-moyen: #9a9a9a;
+  --shadow-elegant: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-or: 0 4px 20px rgba(184, 134, 11, 0.25);
+  --radius-elegant: 6px;
+}
+
 body {
   @apply font-sans text-charbon antialiased;
   background-color: #faf9f7;
