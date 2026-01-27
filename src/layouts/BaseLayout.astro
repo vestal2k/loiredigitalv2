@@ -370,26 +370,35 @@ const jsonLdSchema = {
       </div>
     </footer>
 
-    <script>
-      const mobileMenuButton = document.getElementById('mobile-menu-button')
-      const mobileMenu = document.getElementById('mobile-menu')
-      const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
-      const menuIconOpen = document.getElementById('menu-icon-open')
-      const menuIconClose = document.getElementById('menu-icon-close')
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button')
+        const mobileMenu = document.getElementById('mobile-menu')
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
+        const menuIconOpen = document.getElementById('menu-icon-open')
+        const menuIconClose = document.getElementById('menu-icon-close')
 
-      function toggleMobileMenu() {
-        const isHidden = mobileMenu?.classList.contains('hidden')
+        function toggleMobileMenu() {
+          const isHidden = mobileMenu?.classList.contains('hidden')
 
-        if (isHidden) {
-          // Open menu
-          mobileMenu?.classList.remove('hidden')
-          mobileMenuButton?.setAttribute('aria-expanded', 'true')
-          mobileMenuButton?.setAttribute('aria-label', 'Fermer le menu de navigation')
-          document.body.style.overflow = 'hidden'
-          menuIconOpen?.classList.add('hidden')
-          menuIconClose?.classList.remove('hidden')
-        } else {
-          // Close menu
+          if (isHidden) {
+            mobileMenu?.classList.remove('hidden')
+            mobileMenuButton?.setAttribute('aria-expanded', 'true')
+            mobileMenuButton?.setAttribute('aria-label', 'Fermer le menu de navigation')
+            document.body.style.overflow = 'hidden'
+            menuIconOpen?.classList.add('hidden')
+            menuIconClose?.classList.remove('hidden')
+          } else {
+            mobileMenu?.classList.add('hidden')
+            mobileMenuButton?.setAttribute('aria-expanded', 'false')
+            mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu de navigation')
+            document.body.style.overflow = ''
+            menuIconOpen?.classList.remove('hidden')
+            menuIconClose?.classList.add('hidden')
+          }
+        }
+
+        function closeMobileMenu() {
           mobileMenu?.classList.add('hidden')
           mobileMenuButton?.setAttribute('aria-expanded', 'false')
           mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu de navigation')
@@ -397,87 +406,73 @@ const jsonLdSchema = {
           menuIconOpen?.classList.remove('hidden')
           menuIconClose?.classList.add('hidden')
         }
-      }
 
-      function closeMobileMenu() {
-        mobileMenu?.classList.add('hidden')
-        mobileMenuButton?.setAttribute('aria-expanded', 'false')
-        mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu de navigation')
-        document.body.style.overflow = ''
-        menuIconOpen?.classList.remove('hidden')
-        menuIconClose?.classList.add('hidden')
-      }
+        if (mobileMenuButton) {
+          mobileMenuButton.addEventListener('click', toggleMobileMenu)
+        }
 
-      // Toggle menu on button click
-      mobileMenuButton?.addEventListener('click', toggleMobileMenu)
-
-      // Close menu when clicking on a link
-      mobileMenuLinks.forEach((link) => {
-        link.addEventListener('click', () => {
-          closeMobileMenu()
+        mobileMenuLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            closeMobileMenu()
+          })
         })
-      })
 
-      // Close menu on Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
-          closeMobileMenu()
-        }
-      })
-
-      // Close menu on window resize to desktop size
-      window.addEventListener('resize', () => {
-        if (window.innerWidth >= 768 && !mobileMenu?.classList.contains('hidden')) {
-          closeMobileMenu()
-        }
-      })
-
-      // Set active navigation link
-      const currentPath = window.location.pathname
-      const navLinks = document.querySelectorAll('.nav-link')
-
-      navLinks.forEach((link) => {
-        const href = link.getAttribute('href')
-        if (
-          href && (
-            href === currentPath ||
-            (currentPath === '/' && href === '/') ||
-            (currentPath.startsWith(href) && href !== '/')
-          )
-        ) {
-          link.classList.add('active')
-        }
-      })
-
-      // Scroll Progress Indicator
-      const scrollProgress = document.getElementById('scroll-progress')
-      window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight
-        const progress = (scrollTop / docHeight) * 100
-        if (scrollProgress) {
-          scrollProgress.style.width = `${progress}%`
-        }
-      })
-
-      // Scroll Animations with Intersection Observer
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-visible')
-            observer.unobserve(entry.target)
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
+            closeMobileMenu()
           }
         })
-      }, observerOptions)
 
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.add('animate-on-scroll')
-        observer.observe(section)
+        window.addEventListener('resize', () => {
+          if (window.innerWidth >= 768 && !mobileMenu?.classList.contains('hidden')) {
+            closeMobileMenu()
+          }
+        })
+
+        const currentPath = window.location.pathname
+        const navLinks = document.querySelectorAll('.nav-link')
+
+        navLinks.forEach((link) => {
+          const href = link.getAttribute('href')
+          if (
+            href && (
+              href === currentPath ||
+              (currentPath === '/' && href === '/') ||
+              (currentPath.startsWith(href) && href !== '/')
+            )
+          ) {
+            link.classList.add('active')
+          }
+        })
+
+        const scrollProgress = document.getElementById('scroll-progress')
+        window.addEventListener('scroll', () => {
+          const scrollTop = window.scrollY
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight
+          const progress = (scrollTop / docHeight) * 100
+          if (scrollProgress) {
+            scrollProgress.style.width = `${progress}%`
+          }
+        })
+
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-visible')
+              observer.unobserve(entry.target)
+            }
+          })
+        }, observerOptions)
+
+        document.querySelectorAll('section').forEach(section => {
+          section.classList.add('animate-on-scroll')
+          observer.observe(section)
+        })
       })
     </script>
 
