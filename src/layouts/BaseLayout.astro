@@ -166,96 +166,49 @@ const jsonLdSchema = {
 
           <!-- Mobile menu button -->
           <button
-            id="mobile-menu-button"
+            type="button"
+            id="burger-btn"
             class="md:hidden p-2 text-charbon hover:bg-creme-dark rounded-elegant transition-colors focus:outline-none focus:ring-2 focus:ring-or"
-            aria-label="Ouvrir le menu de navigation"
-            aria-expanded="false"
-            aria-controls="mobile-menu"
+            aria-label="Menu"
+            onclick="document.getElementById('mobile-nav').classList.toggle('translate-x-full'); document.getElementById('burger-btn').classList.toggle('is-active'); document.body.classList.toggle('overflow-hidden');"
           >
-            <svg
-              id="menu-icon-open"
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-            <svg
-              id="menu-icon-close"
-              class="w-6 h-6 hidden"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                d="M6 18L18 6M6 6l12 12"></path>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
           </button>
         </div>
-
-        <!-- Mobile menu (full-screen overlay) -->
-        <div
-          id="mobile-menu"
-          class="hidden md:hidden fixed inset-0 bg-white z-40 flex flex-col"
-          style="top: 81px;"
-        >
-          <nav class="flex-1 overflow-y-auto px-6 py-8">
-            <ul class="flex flex-col space-y-2">
-              <li>
-                <a
-                  href="/#avantages"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
-                  >Avantages</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/#process"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
-                  >Process</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/#realisations"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
-                  >Réalisations</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/#tarifs"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
-                  >Tarifs</a
-                >
-              </li>
-              <li>
-                <a
-                  href="/blog"
-                  class="mobile-menu-link block px-6 py-4 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium"
-                  >Blog</a
-                >
-              </li>
-              <li class="pt-6">
-                <a
-                  href="/#contact"
-                  class="mobile-menu-link btn-gold block text-center"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </div>
       </nav>
     </header>
+
+    <!-- Mobile Navigation (hors du header) -->
+    <div
+      id="mobile-nav"
+      class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+      style="top: 73px;"
+    >
+      <nav class="h-full overflow-y-auto px-6 py-8">
+        <ul class="flex flex-col space-y-2">
+          <li>
+            <a href="/#avantages" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Avantages</a>
+          </li>
+          <li>
+            <a href="/#process" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Process</a>
+          </li>
+          <li>
+            <a href="/#realisations" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Realisations</a>
+          </li>
+          <li>
+            <a href="/#tarifs" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Tarifs</a>
+          </li>
+          <li>
+            <a href="/blog" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Blog</a>
+          </li>
+          <li class="pt-4">
+            <a href="/#contact" class="btn-gold block text-center" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <main id="main-content" class="flex-grow" role="main">
       <slot />
@@ -371,109 +324,61 @@ const jsonLdSchema = {
     </footer>
 
     <script is:inline>
-      document.addEventListener('DOMContentLoaded', function() {
-        const mobileMenuButton = document.getElementById('mobile-menu-button')
-        const mobileMenu = document.getElementById('mobile-menu')
-        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link')
-        const menuIconOpen = document.getElementById('menu-icon-open')
-        const menuIconClose = document.getElementById('menu-icon-close')
-
-        function toggleMobileMenu() {
-          const isHidden = mobileMenu?.classList.contains('hidden')
-
-          if (isHidden) {
-            mobileMenu?.classList.remove('hidden')
-            mobileMenuButton?.setAttribute('aria-expanded', 'true')
-            mobileMenuButton?.setAttribute('aria-label', 'Fermer le menu de navigation')
-            document.body.style.overflow = 'hidden'
-            menuIconOpen?.classList.add('hidden')
-            menuIconClose?.classList.remove('hidden')
-          } else {
-            mobileMenu?.classList.add('hidden')
-            mobileMenuButton?.setAttribute('aria-expanded', 'false')
-            mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu de navigation')
-            document.body.style.overflow = ''
-            menuIconOpen?.classList.remove('hidden')
-            menuIconClose?.classList.add('hidden')
-          }
-        }
-
-        function closeMobileMenu() {
-          mobileMenu?.classList.add('hidden')
-          mobileMenuButton?.setAttribute('aria-expanded', 'false')
-          mobileMenuButton?.setAttribute('aria-label', 'Ouvrir le menu de navigation')
-          document.body.style.overflow = ''
-          menuIconOpen?.classList.remove('hidden')
-          menuIconClose?.classList.add('hidden')
-        }
-
-        if (mobileMenuButton) {
-          mobileMenuButton.addEventListener('click', toggleMobileMenu)
-        }
-
-        mobileMenuLinks.forEach((link) => {
-          link.addEventListener('click', () => {
-            closeMobileMenu()
-          })
-        })
-
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && !mobileMenu?.classList.contains('hidden')) {
-            closeMobileMenu()
-          }
-        })
-
-        window.addEventListener('resize', () => {
-          if (window.innerWidth >= 768 && !mobileMenu?.classList.contains('hidden')) {
-            closeMobileMenu()
-          }
-        })
-
-        const currentPath = window.location.pathname
-        const navLinks = document.querySelectorAll('.nav-link')
-
-        navLinks.forEach((link) => {
-          const href = link.getAttribute('href')
-          if (
-            href && (
-              href === currentPath ||
-              (currentPath === '/' && href === '/') ||
-              (currentPath.startsWith(href) && href !== '/')
-            )
-          ) {
-            link.classList.add('active')
-          }
-        })
-
-        const scrollProgress = document.getElementById('scroll-progress')
-        window.addEventListener('scroll', () => {
-          const scrollTop = window.scrollY
-          const docHeight = document.documentElement.scrollHeight - window.innerHeight
-          const progress = (scrollTop / docHeight) * 100
-          if (scrollProgress) {
-            scrollProgress.style.width = `${progress}%`
-          }
-        })
-
-        const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-visible')
-              observer.unobserve(entry.target)
+      (function() {
+        // Close mobile menu on resize to desktop
+        window.addEventListener('resize', function() {
+          if (window.innerWidth >= 768) {
+            var nav = document.getElementById('mobile-nav');
+            var btn = document.getElementById('burger-btn');
+            if (nav && !nav.classList.contains('translate-x-full')) {
+              nav.classList.add('translate-x-full');
+              btn.classList.remove('is-active');
+              document.body.classList.remove('overflow-hidden');
             }
-          })
-        }, observerOptions)
+          }
+        });
 
-        document.querySelectorAll('section').forEach(section => {
-          section.classList.add('animate-on-scroll')
-          observer.observe(section)
-        })
-      })
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            var nav = document.getElementById('mobile-nav');
+            var btn = document.getElementById('burger-btn');
+            if (nav && !nav.classList.contains('translate-x-full')) {
+              nav.classList.add('translate-x-full');
+              btn.classList.remove('is-active');
+              document.body.classList.remove('overflow-hidden');
+            }
+          }
+        });
+
+        // Scroll Progress
+        var scrollProgress = document.getElementById('scroll-progress');
+        window.addEventListener('scroll', function() {
+          var scrollTop = window.scrollY;
+          var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          var progress = (scrollTop / docHeight) * 100;
+          if (scrollProgress) {
+            scrollProgress.style.width = progress + '%';
+          }
+        });
+
+        // Scroll Animations
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('animate-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+          document.querySelectorAll('section').forEach(function(section) {
+            section.classList.add('animate-on-scroll');
+            observer.observe(section);
+          });
+        }
+      })();
     </script>
 
     <!-- Cookie Banner RGPD -->
