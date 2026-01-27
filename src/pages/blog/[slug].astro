@@ -51,7 +51,7 @@ const allPosts = (await getAllBlogPosts())
 // Generate SEO keywords from tags if not specified
 const seoKeywords = post.keywords?.length
   ? post.keywords.join(', ')
-  : [...post.tags, 'Loire Digital', 'Saint-Etienne', 'site web'].join(', ')
+  : [...post.tags, 'Loire Digital', 'Saint-Étienne', 'site web'].join(', ')
 
 // Use ogImage if available, otherwise fall back to image or default
 const ogImageUrl = post.ogImage || post.image || '/og-image.jpg'
@@ -212,9 +212,9 @@ const ogImageUrl = post.ogImage || post.image || '/og-image.jpg'
         <div class="container mx-auto px-4">
           <div class="max-w-5xl mx-auto">
             <div class="text-center mb-12">
-              <span class="text-elegant-caps text-or tracking-widest mb-4 block">A lire aussi</span>
+              <span class="text-elegant-caps text-or tracking-widest mb-4 block">À lire aussi</span>
               <h2 class="section-title">
-                Articles recommandes
+                Articles recommandés
               </h2>
               <div class="separator-gold-center mt-6 mb-6"></div>
             </div>
@@ -302,7 +302,7 @@ const ogImageUrl = post.ogImage || post.image || '/og-image.jpg'
   <CTABlock
     variant="blog"
     title="Besoin d'aide pour votre projet web ?"
-    description="Loire Digital accompagne les commerces de Saint-Etienne dans leur transformation digitale. Discutons de votre projet !"
+    description="Loire Digital accompagne les commerces de Saint-Étienne dans leur transformation digitale. Discutons de votre projet !"
     primaryText="Calculer mon devis"
     secondaryText="Nous contacter"
   />
