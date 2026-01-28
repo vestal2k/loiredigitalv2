@@ -138,6 +138,7 @@ const jsonLdSchema = {
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-or z-[60] transition-all duration-100" style="width: 0%"></div>
 
     <header
+      id="main-header"
       class="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gris-doux"
       role="banner"
     >
@@ -164,51 +165,54 @@ const jsonLdSchema = {
             <li><a href="/#contact" class="btn-gold ml-6">Contact</a></li>
           </ul>
 
-          <!-- Mobile menu button -->
+          <!-- Mobile menu button - Burger animé -->
           <button
             type="button"
             id="burger-btn"
-            class="md:hidden p-2 text-charbon hover:bg-creme-dark rounded-elegant transition-colors focus:outline-none focus:ring-2 focus:ring-or"
-            aria-label="Menu"
-            onclick="document.getElementById('mobile-nav').classList.toggle('translate-x-full'); document.getElementById('burger-btn').classList.toggle('is-active'); document.body.classList.toggle('overflow-hidden');"
+            class="burger-btn md:hidden"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
           >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
           </button>
         </div>
       </nav>
     </header>
 
-    <!-- Mobile Navigation (hors du header) -->
-    <div
+    <!-- Mobile Navigation Overlay -->
+    <div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation -->
+    <nav
       id="mobile-nav"
-      class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
-      style="top: 73px;"
+      class="mobile-nav"
+      aria-label="Menu mobile"
+      aria-hidden="true"
     >
-      <nav class="h-full overflow-y-auto px-6 py-8">
-        <ul class="flex flex-col space-y-2">
-          <li>
-            <a href="/#avantages" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Avantages</a>
-          </li>
-          <li>
-            <a href="/#process" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Process</a>
-          </li>
-          <li>
-            <a href="/#realisations" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Realisations</a>
-          </li>
-          <li>
-            <a href="/#tarifs" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Tarifs</a>
-          </li>
-          <li>
-            <a href="/blog" class="block px-4 py-3 text-lg text-charbon hover:text-noir hover:bg-creme-dark rounded-elegant transition-all font-medium" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Blog</a>
-          </li>
-          <li class="pt-4">
-            <a href="/#contact" class="btn-gold block text-center" onclick="document.getElementById('mobile-nav').classList.add('translate-x-full'); document.getElementById('burger-btn').classList.remove('is-active'); document.body.classList.remove('overflow-hidden');">Contact</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <ul class="mobile-nav-list">
+        <li>
+          <a href="/#avantages" class="mobile-nav-link" data-mobile-link>Avantages</a>
+        </li>
+        <li>
+          <a href="/#process" class="mobile-nav-link" data-mobile-link>Process</a>
+        </li>
+        <li>
+          <a href="/#realisations" class="mobile-nav-link" data-mobile-link>Réalisations</a>
+        </li>
+        <li>
+          <a href="/#tarifs" class="mobile-nav-link" data-mobile-link>Tarifs</a>
+        </li>
+        <li>
+          <a href="/blog" class="mobile-nav-link" data-mobile-link>Blog</a>
+        </li>
+        <li class="pt-6">
+          <a href="/#contact" class="btn-gold w-full text-center" data-mobile-link>Contact</a>
+        </li>
+      </ul>
+    </nav>
 
     <main id="main-content" class="flex-grow" role="main">
       <slot />
@@ -325,29 +329,68 @@ const jsonLdSchema = {
 
     <script is:inline>
       (function() {
-        // Close mobile menu on resize to desktop
-        window.addEventListener('resize', function() {
-          if (window.innerWidth >= 768) {
-            var nav = document.getElementById('mobile-nav');
-            var btn = document.getElementById('burger-btn');
-            if (nav && !nav.classList.contains('translate-x-full')) {
-              nav.classList.add('translate-x-full');
-              btn.classList.remove('is-active');
-              document.body.classList.remove('overflow-hidden');
-            }
+        // Mobile Menu Logic
+        var burgerBtn = document.getElementById('burger-btn');
+        var mobileNav = document.getElementById('mobile-nav');
+        var mobileOverlay = document.getElementById('mobile-overlay');
+        var mobileLinks = document.querySelectorAll('[data-mobile-link]');
+        var isMenuOpen = false;
+
+        function openMenu() {
+          isMenuOpen = true;
+          burgerBtn.classList.add('is-active');
+          burgerBtn.setAttribute('aria-expanded', 'true');
+          burgerBtn.setAttribute('aria-label', 'Fermer le menu');
+          mobileNav.classList.add('is-open');
+          mobileNav.setAttribute('aria-hidden', 'false');
+          mobileOverlay.classList.add('is-visible');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+          isMenuOpen = false;
+          burgerBtn.classList.remove('is-active');
+          burgerBtn.setAttribute('aria-expanded', 'false');
+          burgerBtn.setAttribute('aria-label', 'Ouvrir le menu');
+          mobileNav.classList.remove('is-open');
+          mobileNav.setAttribute('aria-hidden', 'true');
+          mobileOverlay.classList.remove('is-visible');
+          document.body.style.overflow = '';
+        }
+
+        function toggleMenu() {
+          if (isMenuOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        }
+
+        // Event listeners
+        if (burgerBtn) {
+          burgerBtn.addEventListener('click', toggleMenu);
+        }
+
+        if (mobileOverlay) {
+          mobileOverlay.addEventListener('click', closeMenu);
+        }
+
+        // Close menu when clicking on a link
+        mobileLinks.forEach(function(link) {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && isMenuOpen) {
+            closeMenu();
           }
         });
 
-        // Close on Escape
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape') {
-            var nav = document.getElementById('mobile-nav');
-            var btn = document.getElementById('burger-btn');
-            if (nav && !nav.classList.contains('translate-x-full')) {
-              nav.classList.add('translate-x-full');
-              btn.classList.remove('is-active');
-              document.body.classList.remove('overflow-hidden');
-            }
+        // Close menu on resize to desktop
+        window.addEventListener('resize', function() {
+          if (window.innerWidth >= 768 && isMenuOpen) {
+            closeMenu();
           }
         });
 
