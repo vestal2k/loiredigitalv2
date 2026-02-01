@@ -497,28 +497,6 @@ section[id] {
   box-shadow: 0 0 0 2px var(--color-or);
 }
 
-.mobile-nav-link-page {
-  display: block;
-  padding: 16px 20px;
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--color-or);
-  border-radius: var(--radius-elegant);
-  transition: all 0.2s ease;
-  border-left: 3px solid var(--color-or);
-  margin-left: 8px;
-}
-
-.mobile-nav-link-page:hover,
-.mobile-nav-link-page:focus {
-  color: var(--color-or-dark);
-  background-color: rgba(184, 134, 11, 0.08);
-}
-
-.mobile-nav-link-page:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-or);
-}
 
 /* Hide mobile elements on desktop */
 @media (min-width: 768px) {
