@@ -29,7 +29,7 @@ body::before {
   pointer-events: none;
   z-index: 9999;
   mix-blend-mode: multiply;
-  opacity: 0.025;
+  opacity: 0.15;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='papyrus'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' seed='15' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23d4c4a8' surfaceScale='2' result='light'%3E%3CfeDistantLight azimuth='45' elevation='60'/%3E%3C/feDiffuseLighting%3E%3CfeBlend in='SourceGraphic' in2='light' mode='multiply'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' fill='%23c9b896' filter='url(%23papyrus)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -183,6 +183,35 @@ h1, h2, h3, h4, h5, h6 {
 .nav-link.active {
   @apply text-or font-semibold;
   background-color: rgba(184, 134, 11, 0.1);
+}
+
+.nav-link-page {
+  @apply px-4 py-2 text-charbon font-medium transition-all duration-200;
+  position: relative;
+}
+
+.nav-link-page::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #b8860b;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link-page:hover {
+  @apply text-or;
+}
+
+.nav-link-page:hover::after {
+  width: calc(100% - 32px);
+}
+
+.nav-link-page:focus-visible {
+  @apply outline-none ring-2 ring-or ring-offset-2 rounded-elegant;
 }
 
 .separator-gold {
@@ -464,6 +493,29 @@ section[id] {
 }
 
 .mobile-nav-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-or);
+}
+
+.mobile-nav-link-page {
+  display: block;
+  padding: 16px 20px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-or);
+  border-radius: var(--radius-elegant);
+  transition: all 0.2s ease;
+  border-left: 3px solid var(--color-or);
+  margin-left: 8px;
+}
+
+.mobile-nav-link-page:hover,
+.mobile-nav-link-page:focus {
+  color: var(--color-or-dark);
+  background-color: rgba(184, 134, 11, 0.08);
+}
+
+.mobile-nav-link-page:focus-visible {
   outline: none;
   box-shadow: 0 0 0 2px var(--color-or);
 }
