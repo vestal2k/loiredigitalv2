@@ -320,7 +320,7 @@ En 2025, ne pas avoir de site web en tant que TPE, c'est **laisser vos concurren
 - Générer des demandes de devis
 - Développer votre chiffre d'affaires
 
-Avec des solutions accessibles dès 500 €, il n'y a plus d'excuse pour rester invisible en ligne.
+Avec des solutions accessibles dès 400 €, il n'y a plus d'excuse pour rester invisible en ligne.
 
 **Donnez à votre TPE la visibilité qu'elle mérite. Investissez dans un site web et voyez votre activité décoller !**
 
