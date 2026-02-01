@@ -142,7 +142,7 @@ Certains prestataires proposent des sites à 200-300€ mais :
 
 ### Pack Starter : **400 EUR**
 
-Pour demarrer rapidement :
+Pour démarrer rapidement :
 
 - Landing page (1 page)
 - Design sobre et professionnel
@@ -151,32 +151,32 @@ Pour demarrer rapidement :
 
 ### Pack Essentiel : **800 EUR**
 
-Pour les commercants et artisans :
+Pour les commerçants et artisans :
 
-- Jusqu'a 4 pages
+- Jusqu'à 4 pages
 - SEO de base
 - Google Maps
 - Galerie photos
 
 ### Pack Complet : **1 500 EUR**
 
-Pour les activites installees :
+Pour les activités installées :
 
-- Jusqu'a 8 pages
-- Blog integre
-- SEO avance
-- Formulaires avances
+- Jusqu'à 8 pages
+- Blog intégré
+- SEO avancé
+- Formulaires avancés
 
-### Pack E-commerce : **a partir de 2 500 EUR**
+### Pack E-commerce : **à partir de 2 500 EUR**
 
 Pour vendre en ligne :
 
-- Boutique en ligne complete
+- Boutique en ligne complète
 - Gestion des produits
-- Paiement en ligne securise
+- Paiement en ligne sécurisé
 - Gestion des commandes
 
-[Utilisez notre calculateur](/devis) pour obtenir un devis instantane personnalise.
+[Utilisez notre calculateur](/devis) pour obtenir un devis instantané personnalisé.
 
 ## Le vrai coût : le coût d'opportunité
 

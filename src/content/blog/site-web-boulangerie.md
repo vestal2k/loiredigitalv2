@@ -11,9 +11,9 @@ Dans un secteur aussi concurrentiel que la boulangerie-pâtisserie, se démarque
 
 ## Pourquoi votre boulangerie a besoin d'un site web ?
 
-### Les habitudes de consommation ont change
+### Les habitudes de consommation ont changé
 
-Aujourd'hui, la majorite des clients recherchent des informations en ligne avant de se rendre dans un commerce local. Que ce soit pour :
+Aujourd'hui, la majorité des clients recherchent des informations en ligne avant de se rendre dans un commerce local. Que ce soit pour :
 
 - Vérifier vos horaires d'ouverture
 - Découvrir vos spécialités
@@ -120,7 +120,7 @@ Chez **Loire Digital**, nous proposons des solutions adaptées aux boulangeries 
 
 ### Pack Starter - 400 EUR
 
-Pour demarrer rapidement :
+Pour démarrer rapidement :
 
 - Landing page (1 page)
 - Design sobre et professionnel
@@ -131,7 +131,7 @@ Pour demarrer rapidement :
 
 Pour un site vitrine complet :
 
-- Jusqu'a 4 pages
+- Jusqu'à 4 pages
 - SEO de base
 - Google Maps
 - Galerie photos
@@ -140,17 +140,17 @@ Pour un site vitrine complet :
 
 Pour aller plus loin :
 
-- Jusqu'a 8 pages
-- Blog integre
-- SEO avance
-- Formulaires avances
+- Jusqu'à 8 pages
+- Blog intégré
+- SEO avancé
+- Formulaires avancés
 
-### Pack E-commerce - a partir de 2 500 EUR
+### Pack E-commerce - à partir de 2 500 EUR
 
 Pour vendre en ligne :
 
-- Boutique en ligne complete
-- Paiement securise
+- Boutique en ligne complète
+- Paiement sécurisé
 - Gestion des stocks
 - Gestion des commandes
 
@@ -170,7 +170,7 @@ Investissez dans de **belles photos** de vos produits. C'est ce qui donne envie 
 
 ### 3. Optimisation pour mobile
 
-La majorite des recherches locales se font sur smartphone. Votre site doit etre parfaitement lisible et rapide sur mobile.
+La majorité des recherches locales se font sur smartphone. Votre site doit être parfaitement lisible et rapide sur mobile.
 
 ### 4. Collectez des avis clients
 

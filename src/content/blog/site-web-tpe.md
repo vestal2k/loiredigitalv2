@@ -13,7 +13,7 @@ En tant que **Très Petite Entreprise (TPE)**, vous pensez peut-être qu'un site
 
 ### La crédibilité avant tout
 
-La plupart des consommateurs considerent qu'une entreprise avec un site web est plus credible qu'une entreprise qui n'en a pas. Sans site web en 2025, vous donnez l'impression :
+La plupart des consommateurs considèrent qu'une entreprise avec un site web est plus crédible qu'une entreprise qui n'en a pas. Sans site web en 2025, vous donnez l'impression :
 
 - De ne pas être sérieux
 - D'être dépassé par la technologie
@@ -95,7 +95,7 @@ Les avis rassurent et influencent :
 - Logos de clients (si vous travaillez en B2B)
 - Certifications ou labels
 
-La plupart des consommateurs lisent les avis en ligne avant de faire appel a une entreprise.
+La plupart des consommateurs lisent les avis en ligne avant de faire appel à une entreprise.
 
 ### 6. Blog ou actualités (optionnel mais recommandé)
 
@@ -144,43 +144,43 @@ Chez **Loire Digital**, nous proposons des solutions adaptées aux **budgets des
 
 ### Pack Starter - 400 EUR
 
-Pour demarrer rapidement :
+Pour démarrer rapidement :
 
 - Landing page (1 page)
 - Design sobre et professionnel
 - Formulaire de contact
 - Optimisation mobile
 
-Parfait pour avoir une presence web rapidement et a moindre cout.
+Parfait pour avoir une présence web rapidement et à moindre coût.
 
 ### Pack Essentiel - 800 EUR
 
 Site vitrine complet :
 
-- Jusqu'a 4 pages
+- Jusqu'à 4 pages
 - SEO de base
 - Google Maps
 - Galerie photos
 
-Le choix ideal pour la plupart des TPE.
+Le choix idéal pour la plupart des TPE.
 
 ### Pack Complet - 1 500 EUR
 
 Pour aller plus loin :
 
-- Jusqu'a 8 pages
-- Blog integre
-- SEO avance
-- Formulaires avances
+- Jusqu'à 8 pages
+- Blog intégré
+- SEO avancé
+- Formulaires avancés
 
-Recommande si vous voulez vraiment vous demarquer.
+Recommandé si vous voulez vraiment vous démarquer.
 
-### Options supplementaires
+### Options supplémentaires
 
-- **Systeme de prise de RDV en ligne** : +500 EUR
-- **Boutique e-commerce** : a partir de 2 500 EUR
+- **Système de prise de RDV en ligne** : +500 EUR
+- **Boutique e-commerce** : à partir de 2 500 EUR
 - **Shooting photo professionnel** : sur devis
-- **Maintenance mensuelle** : a partir de 29 EUR/mois
+- **Maintenance mensuelle** : à partir de 29 EUR/mois
 
 [Utilisez notre calculateur de devis](/devis) pour obtenir une estimation personnalisée.
 
@@ -198,7 +198,7 @@ Un site efficace a un **objectif clair** et chaque élément doit y contribuer.
 
 ### 2. Priorisez le mobile
 
-La majorite des recherches se font sur smartphone. Votre site doit etre :
+La majorité des recherches se font sur smartphone. Votre site doit être :
 
 - Parfaitement lisible sur mobile
 - Rapide à charger (moins de 3 secondes)

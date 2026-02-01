@@ -21,9 +21,9 @@ Le SEO local consiste à optimiser votre présence en ligne pour être trouvé p
 
 ### Pourquoi c'est important
 
-Les recherches locales representent une part significative des requetes Google. Beaucoup de ces recherches aboutissent a une visite en magasin ou a un achat.
+Les recherches locales représentent une part significative des requêtes Google. Beaucoup de ces recherches aboutissent à une visite en magasin ou à un achat.
 
-Si vous n'etes pas visible localement sur Google, vous laissez des clients partir chez vos concurrents.
+Si vous n'êtes pas visible localement sur Google, vous laissez des clients partir chez vos concurrents.
 
 ## Les 3 piliers du SEO local réussi
 

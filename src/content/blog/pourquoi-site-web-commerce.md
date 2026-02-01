@@ -9,13 +9,13 @@ ogImage: '/og-blog-commerce-local.jpg'
 
 En 2025, avoir un site web n'est plus un luxe pour les commerces locaux de Saint-Étienne, c'est une **nécessité absolue**. Que vous soyez boulanger, coiffeur, restaurateur ou artisan, votre présence en ligne peut faire la différence entre prospérer et stagner.
 
-## La realite du comportement des consommateurs
+## La réalité du comportement des consommateurs
 
-Avant de se deplacer dans un commerce, la majorite des consommateurs recherchent d'abord des informations en ligne. Si votre commerce n'apparait pas dans les resultats Google, vous perdez une part importante de clients potentiels.
+Avant de se déplacer dans un commerce, la majorité des consommateurs recherchent d'abord des informations en ligne. Si votre commerce n'apparaît pas dans les résultats Google, vous perdez une part importante de clients potentiels.
 
 ### Ce que recherchent vos clients
 
-Les recherches locales representent une part importante des requetes sur Google. Les clients cherchent des informations pratiques : horaires, adresse, avis, produits disponibles. Sans site web, vous etes invisible pour tous ces clients potentiels.
+Les recherches locales représentent une part importante des requêtes sur Google. Les clients cherchent des informations pratiques : horaires, adresse, avis, produits disponibles. Sans site web, vous êtes invisible pour tous ces clients potentiels.
 
 ## Les avantages concrets d'un site web pour votre commerce
 
@@ -62,7 +62,7 @@ Saint-Étienne connaît un renouveau économique important. Les habitants recher
 
 ## Combien ça coûte ?
 
-Contrairement aux idées reçues, un site web professionnel n'est plus hors de prix. Chez Loire Digital, les sites commencent a partir de **400 EUR** pour une landing page, avec des formules de maintenance a partir de **29 EUR/mois**.
+Contrairement aux idées reçues, un site web professionnel n'est plus hors de prix. Chez Loire Digital, les sites commencent à partir de **400 EUR** pour une landing page, avec des formules de maintenance à partir de **29 EUR/mois**.
 
 C'est un investissement qui se rentabilise rapidement grâce aux nouveaux clients qu'il génère.
 

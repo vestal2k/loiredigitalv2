@@ -13,7 +13,7 @@ Dans le secteur de la coiffure et de l'esthétique, la concurrence est féroce. 
 
 ### La recherche en ligne, premier réflexe des clients
 
-Aujourd'hui, la majorite des clients recherchent un salon de coiffure sur Internet avant de prendre rendez-vous. Ils cherchent :
+Aujourd'hui, la majorité des clients recherchent un salon de coiffure sur Internet avant de prendre rendez-vous. Ils cherchent :
 
 - Vos prestations et tarifs
 - Des photos de vos réalisations (coupes, colorations, coiffures)
@@ -130,7 +130,7 @@ Les réservations en ligne se font sans intervention de votre part. Pendant que 
 
 ### 2. Réduisez les absences et no-shows
 
-Les rappels automatiques par email et SMS reduisent significativement les rendez-vous manques. Votre temps est precieux, ne le gaspillez plus.
+Les rappels automatiques par email et SMS réduisent significativement les rendez-vous manqués. Votre temps est précieux, ne le gaspillez plus.
 
 ### 3. Attirez de nouveaux clients via Google
 
@@ -165,7 +165,7 @@ Chez **Loire Digital**, nous proposons des solutions adaptées aux salons de coi
 
 ### Pack Starter - 400 EUR
 
-Pour demarrer rapidement :
+Pour démarrer rapidement :
 
 - Landing page (1 page)
 - Design sobre et professionnel
@@ -176,35 +176,35 @@ Pour demarrer rapidement :
 
 Site vitrine complet :
 
-- Jusqu'a 4 pages
-- Presentation des prestations et tarifs
+- Jusqu'à 4 pages
+- Présentation des prestations et tarifs
 - SEO de base
 - Google Maps
 
 ### Pack Complet - 1 500 EUR
 
-Pour une experience complete :
+Pour une expérience complète :
 
-- Jusqu'a 8 pages
-- Blog integre
-- SEO avance
-- Formulaires avances
+- Jusqu'à 8 pages
+- Blog intégré
+- SEO avancé
+- Formulaires avancés
 
-### Option Reservation en ligne - +500 EUR
+### Option Réservation en ligne - +500 EUR
 
-Systeme de prise de rendez-vous :
+Système de prise de rendez-vous :
 
-- Calendrier en temps reel
+- Calendrier en temps réel
 - Rappels automatiques
 - Gestion des annulations
 - Interface d'administration
 
-### Pack E-commerce - a partir de 2 500 EUR
+### Pack E-commerce - à partir de 2 500 EUR
 
 Boutique en ligne :
 
 - Vente de produits capillaires
-- Paiement securise
+- Paiement sécurisé
 - Gestion des stocks
 - Vente de cartes cadeaux
 
@@ -234,7 +234,7 @@ Votre site doit refléter le **style de votre salon** :
 
 ### 3. Optimisation mobile absolue
 
-La majorite des recherches de salons se font sur smartphone. Votre site doit etre :
+La majorité des recherches de salons se font sur smartphone. Votre site doit être :
 
 - Parfaitement lisible sur mobile
 - Rapide à charger

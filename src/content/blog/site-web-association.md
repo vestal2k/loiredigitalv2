@@ -202,13 +202,13 @@ Site simple et efficace :
 - Formulaire de contact
 - Optimisation mobile
 
-Ideal pour les petites associations qui demarrent.
+Idéal pour les petites associations qui démarrent.
 
 ### Pack Essentiel - 800 EUR
 
 Site complet :
 
-- Jusqu'a 4 pages
+- Jusqu'à 4 pages
 - SEO de base
 - Google Maps
 - Galerie photos
@@ -219,17 +219,17 @@ Le choix le plus populaire pour les associations actives.
 
 Pour les associations ambitieuses :
 
-- Jusqu'a 8 pages
-- Blog integre
-- SEO avance
-- Formulaires avances
+- Jusqu'à 8 pages
+- Blog intégré
+- SEO avancé
+- Formulaires avancés
 
-### Options supplementaires
+### Options supplémentaires
 
-- **Systeme de reservation en ligne** : +500 EUR
-- **Boutique en ligne** : a partir de 2 500 EUR
-- **Shooting photo evenementiel** : sur devis
-- **Formation de vos benevoles** : incluse
+- **Système de réservation en ligne** : +500 EUR
+- **Boutique en ligne** : à partir de 2 500 EUR
+- **Shooting photo événementiel** : sur devis
+- **Formation de vos bénévoles** : incluse
 - **Maintenance mensuelle** : 29 EUR/mois
 
 [Demandez un devis personnalisé](/devis) pour votre association.
@@ -375,11 +375,11 @@ En 2025, une association sans site web **passe à côté d'opportunités** :
 - Bénévoles motivés qui ne savent pas comment s'engager
 - Partenaires qui ne vous trouvent pas
 
-Avec un site web professionnel adapte a votre budget, vous pouvez :
+Avec un site web professionnel adapté à votre budget, vous pouvez :
 
-- Attirer de nouveaux adherents
+- Attirer de nouveaux adhérents
 - Faciliter les dons en ligne
-- Faciliter la vie de vos benevoles
+- Faciliter la vie de vos bénévoles
 - Amplifier votre impact
 
 Ne laissez plus le manque de visibilité freiner vos belles initiatives.
