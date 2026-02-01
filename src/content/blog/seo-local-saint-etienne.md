@@ -206,7 +206,7 @@ Le SEO local demande du temps et de l'expertise. Chez Loire Digital, nous propos
 ✅ Stratégie de contenus locaux
 ✅ Suivi et rapports mensuels
 
-[Découvrez notre service SEO](/services#seo) ou [contactez-nous pour un audit gratuit](/contact).
+[Demandez un devis gratuit](/devis) pour votre projet SEO local.
 
 ## Conclusion
 
@@ -216,4 +216,4 @@ N'attendez pas que vos concurrents prennent de l'avance. Commencez dès aujourd'
 
 ---
 
-**Loire Digital** est spécialisé dans le référencement local des commerces de Saint-Étienne. [Demandez un devis gratuit](/devis) pour votre projet SEO.
+**Loire Digital** propose des services de référencement local pour les commerces de Saint-Étienne. [Demandez un devis gratuit](/devis) pour votre projet SEO.

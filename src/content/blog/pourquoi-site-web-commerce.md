@@ -75,8 +75,8 @@ C'est un investissement qui se rentabilise rapidement grâce aux nouveaux client
 
 En 2025, ne pas avoir de site web, c'est laisser des clients partir chez la concurrence. Investir dans votre présence en ligne, c'est investir dans l'avenir de votre commerce.
 
-Vous êtes prêt à franchir le pas ? [Contactez Loire Digital](/contact) pour un devis gratuit et personnalisé.
+Vous êtes prêt à franchir le pas ? [Demandez un devis gratuit](/devis) et personnalisé.
 
 ---
 
-**Loire Digital** accompagne les commerces de Saint-Étienne dans leur transformation digitale. [Découvrez nos services](/services) ou [calculez votre devis en ligne](/devis).
+**Loire Digital** propose des sites web pour les commerces de Saint-Étienne. [Calculez votre devis en ligne](/devis).

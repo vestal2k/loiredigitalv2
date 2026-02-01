@@ -282,9 +282,9 @@ Un site web est bénéfique pour **toutes les TPE**, mais particulièrement pour
 
 ❌ **Abandonner après le lancement** : Un site demande un minimum d'entretien
 
-## Loire Digital, spécialiste des sites pour TPE
+## Loire Digital peut vous aider
 
-Nous comprenons les contraintes des **Très Petites Entreprises** :
+Notre offre est pensée pour les **Très Petites Entreprises** :
 
 - Budgets limités
 - Peu de temps à consacrer au digital
@@ -309,7 +309,7 @@ C'est pourquoi nous proposons :
 5. **Lancement** : Votre site est en ligne
 6. **Suivi** : Nous restons disponibles
 
-[Contactez-nous pour discuter de votre projet](/contact) ou [demandez un devis gratuit](/devis).
+[Demandez un devis gratuit](/devis) pour votre projet.
 
 ## Conclusion
 
@@ -326,4 +326,4 @@ Avec des solutions accessibles dès 400 €, il n'y a plus d'excuse pour rester 
 
 ---
 
-**Loire Digital** accompagne les TPE de Saint-Étienne et de la Loire dans leur transformation digitale. [Démarrez votre projet dès aujourd'hui](/devis).
+**Loire Digital** propose des sites web pour les TPE de Saint-Étienne et de la Loire. [Démarrez votre projet dès aujourd'hui](/devis).

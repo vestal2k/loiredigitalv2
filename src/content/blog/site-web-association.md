@@ -363,7 +363,7 @@ Nous sommes convaincus de l'**utilité sociale des associations** et nous voulon
 5. **Lancement** : Votre site est en ligne
 6. **Support continu** : Nous restons à vos côtés
 
-[Contactez-nous pour discuter de votre projet associatif](/contact) ou [obtenez un devis gratuit](/devis).
+[Obtenez un devis gratuit](/devis) pour votre projet associatif.
 
 ## Conclusion
 
@@ -387,4 +387,4 @@ Ne laissez plus le manque de visibilité freiner vos belles initiatives.
 
 ---
 
-**Loire Digital** accompagne les associations de Saint-Étienne et de la Loire dans leur communication digitale. Profitez de nos **tarifs associatifs préférentiels**. [Demandez votre devis dès maintenant](/devis).
+**Loire Digital** propose des sites web pour les associations de Saint-Étienne et de la Loire. Profitez de nos **tarifs associatifs préférentiels**. [Demandez votre devis dès maintenant](/devis).

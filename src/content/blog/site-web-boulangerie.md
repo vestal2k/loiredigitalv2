@@ -201,9 +201,9 @@ Un blog enrichit votre site et améliore votre SEO :
 
 ❌ **Design trop complexe** : Les visiteurs doivent trouver rapidement ce qu'ils cherchent
 
-## Loire Digital, votre partenaire digital
+## Loire Digital peut vous aider
 
-Nous comprenons les besoins spécifiques des **boulangers-pâtissiers**. Notre mission est de créer un site web qui :
+Notre objectif : créer un site web qui :
 
 ✅ Reflète la qualité de votre savoir-faire
 ✅ Attire de nouveaux clients localement
@@ -218,7 +218,7 @@ Nous comprenons les besoins spécifiques des **boulangers-pâtissiers**. Notre m
 - Maintenance et support
 - Photos professionnelles de vos produits (en option)
 
-[Contactez-nous pour un devis personnalisé](/contact) ou [utilisez notre calculateur de devis](/devis) pour obtenir une estimation immédiate.
+[Utilisez notre calculateur de devis](/devis) pour obtenir une estimation immédiate.
 
 ## Conclusion
 
@@ -228,4 +228,4 @@ Ne laissez pas passer cette opportunité. **Donnez à votre boulangerie la vitri
 
 ---
 
-**Loire Digital** accompagne les boulangeries de Saint-Étienne et de la Loire dans leur transformation digitale. [Démarrez votre projet dès aujourd'hui](/devis).
+**Loire Digital** propose des sites web pour les boulangeries de Saint-Étienne et de la Loire. [Démarrez votre projet dès aujourd'hui](/devis).

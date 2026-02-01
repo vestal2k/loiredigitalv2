@@ -284,9 +284,9 @@ Un blog améliore votre SEO et valorise votre expertise :
 
 ❌ **Pas d'avis clients** : Les avis rassurent et influencent
 
-## Loire Digital, spécialiste des sites pour salons de beauté
+## Loire Digital peut vous aider
 
-Nous comprenons les besoins spécifiques des **salons de coiffure et instituts de beauté**. Notre expertise :
+Ce que nous proposons pour les **salons de coiffure et instituts de beauté** :
 
 ✅ Design élégant et moderne
 ✅ Système de réservation en ligne performant
@@ -304,7 +304,7 @@ Nous comprenons les besoins spécifiques des **salons de coiffure et instituts d
 - Formation de votre équipe
 - Maintenance et mises à jour
 
-[Contactez-nous pour discuter de votre projet](/contact) ou [obtenez une estimation gratuite](/devis).
+[Obtenez une estimation gratuite](/devis) pour votre projet.
 
 ## Conclusion
 
@@ -316,4 +316,4 @@ Un site web avec réservation en ligne est un **investissement rentable** pour t
 
 ---
 
-**Loire Digital** accompagne les salons de coiffure de Saint-Étienne et de la Loire dans leur digitalisation. [Lancez votre projet dès maintenant](/devis).
+**Loire Digital** propose des sites web pour les salons de coiffure de Saint-Étienne et de la Loire. [Lancez votre projet dès maintenant](/devis).

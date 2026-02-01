@@ -219,7 +219,7 @@ C'est un investissement qui se rentabilise rapidement grâce aux nouveaux client
 
 Chez Loire Digital, nous proposons des **tarifs transparents et adaptés aux commerces locaux** de Saint-Étienne. Pas de surprise, pas de frais cachés.
 
-[Calculez votre devis en 2 minutes](/devis) ou [contactez-nous pour en discuter](/contact).
+[Calculez votre devis en 2 minutes](/devis).
 
 ---
 
