@@ -10,6 +10,8 @@ C'est LA question que tout commerçant se pose avant de se lancer. Les prix vari
 
 ## Les différentes fourchettes de prix
 
+Selon les données du marché français ([Codeur.com](https://www.codeur.com/pages/prix-site-internet), [Sortlist](https://www.sortlist.fr/blog/combien-coute-un-site-internet/)), voici les grandes catégories de tarifs :
+
 ### Site DIY (Do It Yourself) : 0 à 300€/an
 
 **Outils :** Wix, Squarespace, Shopify
@@ -30,11 +32,11 @@ C'est LA question que tout commerçant se pose avant de se lancer. Les prix vari
 
 **Bon pour :** Test d'idée, projet très simple sans enjeu commercial
 
-### Site freelance/agence locale : 800€ à 5000€
+### Site par un freelance : 500€ à 5 000€
 
 **Ce que vous obtenez :**
 
-- Design sur-mesure ou personnalisé
+- Design personnalisé
 - Optimisation SEO
 - Site responsive (mobile, tablette, desktop)
 - Support professionnel
@@ -42,16 +44,16 @@ C'est LA question que tout commerçant se pose avant de se lancer. Les prix vari
 
 **Bon pour :** Commerces locaux sérieux qui veulent un outil professionnel
 
-### Agence web premium : 5000€ à 20000€+
+### Site par une agence web : 2 000€ à 30 000€+
 
-**Pour des projets complexes :**
+**Pour des projets plus complexes :**
 
-- E-commerce avec des centaines de produits
+- E-commerce avec de nombreux produits
 - Fonctionnalités avancées sur-mesure
 - Applications web complexes
 - Intégrations multiples
 
-**Bon pour :** Grandes entreprises avec besoins spécifiques
+**Bon pour :** Entreprises avec besoins spécifiques et budget conséquent
 
 ## Décomposition des coûts d'un site vitrine classique
 
@@ -86,44 +88,44 @@ Prenons l'exemple d'un site vitrine pour un commerce local à Saint-Étienne :
 - Certificat SSL (sécurité)
 - Nom de domaine
 
-**Maintenance (optionnelle) :** 49-99€/mois
+**Maintenance (optionnelle) :** variable selon les prestataires
 
 - Mises à jour de sécurité
 - Sauvegardes
 - Support technique
 - Modifications de contenu
 
+Chez Loire Digital, nous proposons une maintenance à **29€/mois** sans engagement.
+
 ## Ce qui fait varier le prix
 
 ### 1. Le nombre de pages
 
-Plus votre site a de pages, plus le coût augmente :
+Plus votre site a de pages, plus le coût augmente. Chez Loire Digital :
 
-- 1-5 pages : 800-1200€
-- 6-10 pages : 1200-1800€
-- 11-15 pages : 1800-2500€
+- 1 page (Pack Starter) : 400€
+- Jusqu'à 4 pages (Pack Essentiel) : 800€
+- Jusqu'à 8 pages (Pack Complet) : 1 500€
+- Pages supplémentaires : 100€/page
 
 ### 2. Les fonctionnalités
 
-Chaque fonctionnalité ajoute du temps de développement :
+Chaque fonctionnalité ajoute du temps de développement. Nos options :
 
 - Formulaire de contact : inclus
-- Système de réservation : +300-500€
-- Blog : +200-400€
-- E-commerce (panier, paiement) : +1500-3000€
-- Multilingue : +400-600€
+- Système de réservation : +500€
+- Blog : +300€
+- Galerie photo avancée : +200€
+- SEO avancé : +300€
 
 ### 3. Le design
 
-- Template adapté : inclus dans le prix de base
-- Design semi-sur-mesure : +300-500€
-- Design 100% sur-mesure : +500-1500€
+Tous nos packs incluent un design personnalisé adapté à votre activité.
 
 ### 4. Le SEO
 
-- SEO de base : inclus
-- Pack SEO local complet : +300-600€
-- Stratégie SEO avancée : sur devis
+- SEO de base : inclus dans les packs Essentiel et Complet
+- SEO avancé : +300€ ou inclus dans le Pack Complet
 
 ## Les vrais coûts cachés à éviter
 
