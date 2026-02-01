@@ -4,7 +4,6 @@ description: "Découvrez pourquoi votre boulangerie a besoin d'un site web profe
 pubDate: 2025-01-15
 tags: ['boulangerie', 'site web', 'commerce local', 'SEO local']
 keywords: ['site web boulangerie', 'création site boulanger', 'site internet pâtisserie', 'présence digitale boulangerie', 'SEO boulangerie', 'site vitrine artisan boulanger', 'marketing digital boulangerie']
-ogImage: '/og-blog-boulangerie.jpg'
 ---
 
 Dans un secteur aussi concurrentiel que la boulangerie-pâtisserie, se démarquer est essentiel. Un **site web professionnel** n'est plus un luxe, c'est une nécessité pour toute boulangerie qui souhaite développer sa clientèle à l'ère digitale.

@@ -4,7 +4,6 @@ description: 'Découvrez pourquoi avoir un site web est devenu indispensable pou
 pubDate: 2025-01-15
 tags: ['commerce local', 'site web', 'saint-etienne', 'marketing digital']
 keywords: ['site web commerce local', 'création site internet Saint-Étienne', 'présence en ligne commerce', 'site vitrine commerce', 'digitalisation commerce local', 'SEO local Saint-Étienne', 'visibilité Google commerce']
-ogImage: '/og-blog-commerce-local.jpg'
 ---
 
 En 2025, avoir un site web n'est plus un luxe pour les commerces locaux de Saint-Étienne, c'est une **nécessité absolue**. Que vous soyez boulanger, coiffeur, restaurateur ou artisan, votre présence en ligne peut faire la différence entre prospérer et stagner.

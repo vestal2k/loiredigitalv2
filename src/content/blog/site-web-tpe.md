@@ -4,7 +4,6 @@ description: "Découvrez pourquoi et comment créer un site web professionnel po
 pubDate: 2025-01-20
 tags: ['TPE', 'petite entreprise', 'site web', 'budget', 'digital']
 keywords: ['site web TPE', 'création site petite entreprise', 'site internet pas cher TPE', 'présence digitale TPE', 'site vitrine petit budget', 'développement web PME', 'digitalisation TPE']
-ogImage: '/og-blog-tpe.jpg'
 ---
 
 En tant que **Très Petite Entreprise (TPE)**, vous pensez peut-être qu'un site web est un luxe réservé aux grandes sociétés. Détrompez-vous ! Un site web professionnel est aujourd'hui **accessible et indispensable** pour toute entreprise qui souhaite se développer.

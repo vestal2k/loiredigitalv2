@@ -4,7 +4,6 @@ description: "Découvrez les vrais prix d'un site web professionnel, ce qui infl
 pubDate: 2025-01-05
 tags: ['tarifs', 'site web', 'devis', 'budget']
 keywords: ['prix site web', 'tarif création site internet', 'coût site vitrine', 'devis site web', 'budget site internet entreprise', 'création site web pas cher', 'forfait site web professionnel']
-ogImage: '/og-blog-tarifs.jpg'
 ---
 
 C'est LA question que tout commerçant se pose avant de se lancer. Les prix varient énormément sur le marché, de quelques centaines à plusieurs milliers d'euros. Mais **qu'est-ce qui justifie ces différences** ? Et surtout, quel budget prévoir pour votre projet ?

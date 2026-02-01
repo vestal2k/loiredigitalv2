@@ -4,7 +4,6 @@ description: "Découvrez comment un site web peut transformer la communication d
 pubDate: 2025-01-22
 tags: ['association', 'site web', 'communication', 'adhésion', 'bénévolat']
 keywords: ['site web association', 'création site association loi 1901', 'site internet bénévoles', 'adhésion en ligne association', 'communication digitale association', 'gestion membres association', 'visibilité association']
-ogImage: '/og-blog-association.jpg'
 ---
 
 Que vous soyez une association sportive, culturelle, caritative ou éducative, un **site web professionnel** est devenu indispensable pour faire connaître vos actions, recruter des bénévoles et faciliter les adhésions.

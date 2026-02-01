@@ -4,7 +4,6 @@ description: "Découvrez comment un site web professionnel peut transformer votr
 pubDate: 2025-01-18
 tags: ['coiffure', 'salon', 'réservation en ligne', 'beauté', 'SEO local']
 keywords: ['site web salon coiffure', 'réservation en ligne coiffeur', 'site internet coiffeur', 'création site salon beauté', 'SEO coiffure', 'marketing digital salon', 'prise rendez-vous coiffure']
-ogImage: '/og-blog-coiffure.jpg'
 ---
 
 Dans le secteur de la coiffure et de l'esthétique, la concurrence est féroce. Un **site web professionnel** est devenu indispensable pour se démarquer, attirer de nouveaux clients et fidéliser votre clientèle existante.

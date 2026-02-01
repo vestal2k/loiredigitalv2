@@ -4,7 +4,6 @@ description: "Découvrez comment optimiser votre référencement local à Saint-
 pubDate: 2025-01-10
 tags: ['SEO', 'référencement local', 'saint-etienne', 'Google My Business']
 keywords: ['SEO local Saint-Étienne', 'référencement Google commerce', 'Google My Business optimisation', 'visibilité locale Google', 'agence SEO Loire', 'référencement commerce proximité', 'première page Google Saint-Étienne']
-ogImage: '/og-blog-seo-local.jpg'
 ---
 
 Le **SEO local** (référencement local) est l'art d'apparaître en première position sur Google quand des clients potentiels recherchent vos services à Saint-Étienne. C'est l'une des stratégies marketing les plus rentables pour les commerces de proximité.
