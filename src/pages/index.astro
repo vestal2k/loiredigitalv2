@@ -14,97 +14,21 @@ const ecommercePack = PRICING_PACKS.find((pack) => pack.id === 'ecommerce')
 const processSteps = [
   {
     number: '01',
-    title: 'Demande & Devis',
-    description: 'Vous nous contactez via le formulaire ou le calculateur de devis. Nous analysons votre besoin et vous envoyons un devis détaillé avec un plan d\'action personnalisé.',
-    timing: 'J+0 — Réponse sous 24h',
-    clientProvides: [
-      'Type de site souhaité (vitrine, blog, e-commerce...)',
-      'Nombre de pages approximatif',
-      'Fonctionnalités spécifiques (formulaire, réservation, galerie...)',
-      'Budget indicatif',
-    ],
-    weDeliver: [
-      'Devis détaillé et transparent',
-      'Plan d\'action personnalisé',
-      'Délais précis de réalisation',
-      'Conseil sur la meilleure formule',
-    ],
+    title: 'Devis & Préparation',
+    description: 'Vous nous contactez, nous vous envoyons un devis sous 24h. Une fois validé, vous nous transmettez vos contenus (textes, photos, logo).',
+    timing: 'J+0 à J+3',
   },
   {
     number: '02',
-    title: 'Préparation & Collecte',
-    description: 'Une fois le devis validé, nous collectons tous les éléments nécessaires : textes, photos, logo et informations sur votre activité. Vous nous envoyez tout par e-mail, à votre rythme.',
-    timing: 'J+1 à J+3',
-    clientProvides: [
-      'Textes pour chaque page (nous pouvons vous aider)',
-      'Photos de qualité (produits, équipe, locaux)',
-      'Logo en haute résolution',
-      'Couleurs de votre charte graphique (si existante)',
-    ],
-    weDeliver: [
-      'Guide de préparation des contenus',
-      'Liste précise des éléments à fournir',
-      'Accompagnement pour la rédaction si besoin',
-    ],
-    details: [
-      { label: 'Délai client', content: '2-3 jours pour rassembler les éléments' },
-      { label: 'Support', content: 'Aide à la rédaction incluse' },
-    ],
+    title: 'Maquette & Validation',
+    description: 'Nous créons une maquette sur mesure. Vous validez le design avant le développement. 2 révisions incluses.',
+    timing: 'J+4 à J+7',
   },
   {
     number: '03',
-    title: 'Maquette & Validation',
-    description: 'Nous créons une maquette graphique sur mesure, adaptée à votre secteur d\'activité et à votre identité. Vous validez le design avant que nous commencions le développement.',
-    timing: 'J+4 à J+7',
-    clientProvides: [
-      'Feedback sur la maquette proposée',
-      'Demandes de modifications éventuelles',
-    ],
-    weDeliver: [
-      'Maquette professionnelle complète',
-      '2 révisions incluses dans le prix',
-      'Présentation claire de la structure du site',
-    ],
-    details: [
-      { label: 'Révisions', content: '2 allers-retours inclus' },
-      { label: 'Validation', content: 'Vous validez avant développement' },
-      { label: 'Délai', content: '3-5 jours pour la maquette' },
-    ],
-  },
-  {
-    number: '04',
-    title: 'Développement & Mise en ligne',
-    description: 'Nous développons votre site avec du code propre, rapide et optimisé. Vous suivez l\'avancement par e-mail. Une fois terminé, nous mettons le site en ligne sur votre nom de domaine.',
-    timing: 'J+8 à J+18',
-    weDeliver: [
-      'Site développé et optimisé (vitesse, SEO)',
-      'Tests sur tous les navigateurs et appareils',
-      'Mise en ligne sur votre domaine',
-      'Configuration HTTPS et sécurité',
-    ],
-    details: [
-      { label: 'Délai', content: '7-10 jours de développement' },
-      { label: 'Tests', content: 'Tous navigateurs et mobiles' },
-      { label: 'Sécurité', content: 'HTTPS automatique' },
-    ],
-  },
-  {
-    number: '05',
-    title: 'Formation & Suivi',
-    description: 'Nous vous formons aux modifications de base (textes, images) et vous livrons un guide d\'utilisation. Support par e-mail inclus pour toutes vos questions.',
-    timing: 'J+19 à J+21',
-    weDeliver: [
-      'Formation vidéo ou écrite aux modifications simples',
-      'Guide d\'utilisation complet',
-      'Support par e-mail (réponse sous 24h)',
-      'Conseils pour améliorer votre visibilité',
-    ],
-    details: [
-      { label: 'Formation', content: 'Modifications textes & images' },
-      { label: 'Documentation', content: 'Guide complet inclus' },
-      { label: 'Support', content: 'Réponse garantie sous 24h' },
-      { label: 'Maintenance', content: 'Optionnelle à 29€/mois' },
-    ],
+    title: 'Développement & Livraison',
+    description: 'Nous développons votre site, optimisé pour Google. Mise en ligne sur votre domaine, formation incluse, support par e-mail.',
+    timing: 'J+8 à J+21',
   },
 ]
 
@@ -143,9 +67,9 @@ const faqItems = [
 >
   <!-- Hero Section -->
   <Hero
-    title="Votre commerce mérite"
-    highlight="un site qui travaille pour vous"
-    description="Sites web professionnels pour commerçants et artisans de Saint-Étienne. Rapides, visibles sur Google, livrés en 2-3 semaines."
+    title="Création de sites web"
+    highlight="à Saint-Étienne"
+    description="Sites vitrines pour commerçants et artisans de la Loire. Visibles sur Google, livrés en 2-3 semaines."
     primaryCTA={{
       text: 'Calculer mon budget',
       href: '/devis',
@@ -154,7 +78,7 @@ const faqItems = [
       text: 'Voir les tarifs',
       href: '#tarifs',
     }}
-    features={['Réponse sous 24h', 'Prix affichés', 'Code moderne']}
+    features={['Réponse sous 24h', 'Prix affichés', 'Livraison 2-3 semaines']}
   />
 
   <!-- Problem/Solution Section -->
@@ -277,13 +201,11 @@ const faqItems = [
           </h2>
           <div class="separator-gold-center mt-6 mb-6"></div>
           <p class="section-subtitle mx-auto">
-            Simple, efficace, transparent.
+            Ce qui nous distingue pour la création de votre site.
           </p>
         </div>
 
-        <!-- Grille 3x2 uniformisee -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Réactivité garantie -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div class="card-elegant-highlight p-8 flex flex-col items-center text-center">
             <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
               <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -292,24 +214,10 @@ const faqItems = [
             </div>
             <h3 class="font-serif text-xl font-bold text-noir mb-3">Réactivité garantie</h3>
             <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Réponse sous 24 h</strong> avec un devis détaillé et un vrai plan d'action.
+              Réponse sous 24 h avec un devis détaillé.
             </p>
           </div>
 
-          <!-- Sécurité renforcée -->
-          <div class="card-elegant p-8 flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
-              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-noir mb-3">Sécurité renforcée</h3>
-            <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Cadenas vert dès le jour 1.</strong> Vos clients ont confiance et Google vous positionne mieux.
-            </p>
-          </div>
-
-          <!-- Prix clairs -->
           <div class="card-elegant p-8 flex flex-col items-center text-center">
             <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
               <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -318,169 +226,32 @@ const faqItems = [
             </div>
             <h3 class="font-serif text-xl font-bold text-noir mb-3">Prix clairs et définitifs</h3>
             <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Le prix du devis = le prix final.</strong> Zéro frais cachés, zéro mauvaise surprise.
+              Le prix du devis = le prix final. Zéro frais cachés.
             </p>
           </div>
 
-          <!-- 100% sur mesure -->
-          <div class="card-elegant p-8 flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
-              <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-              </svg>
-            </div>
-            <h3 class="font-serif text-xl font-bold text-noir mb-3">100% sur mesure</h3>
-            <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Zéro template générique.</strong> Votre site reflète votre identité et votre métier.
-            </p>
-          </div>
-
-          <!-- Vitesse éclair -->
           <div class="card-elegant p-8 flex flex-col items-center text-center">
             <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
               <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
-            <h3 class="font-serif text-xl font-bold text-noir mb-3">Vitesse éclair</h3>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Sites rapides et sécurisés</h3>
             <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Chargement instantané.</strong> Les visiteurs restent et Google booste votre référencement.
+              Chargement instantané, HTTPS inclus. Google vous référence mieux.
             </p>
           </div>
 
-          <!-- Processus en ligne -->
           <div class="card-elegant p-8 flex flex-col items-center text-center">
             <div class="w-16 h-16 rounded-elegant bg-or/10 flex items-center justify-center mb-5">
               <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
               </svg>
             </div>
-            <h3 class="font-serif text-xl font-bold text-noir mb-3">Processus 100% en ligne</h3>
+            <h3 class="font-serif text-xl font-bold text-noir mb-3">Tout par e-mail</h3>
             <p class="text-sm text-charbon leading-relaxed">
-              <strong class="text-noir">Tout se fait par e-mail.</strong> Simplicité et transparence totales.
+              Pas de réunions. Vous gérez à votre rythme.
             </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pourquoi nous faire confiance -->
-  <section class="section-padding section-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <span class="text-elegant-caps text-or tracking-widest mb-4 block">Notre engagement</span>
-          <h2 class="section-title">
-            Pourquoi nous faire confiance ?
-          </h2>
-          <div class="separator-gold-center mt-6 mb-6"></div>
-          <p class="section-subtitle mx-auto">
-            Transparence, professionnalisme et expertise au service de votre activité.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="card-elegant p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-elegant bg-or/10 flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  ></path>
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-serif text-lg font-bold text-noir mb-2">Basé à Saint-Étienne</h3>
-                <p class="text-sm text-charbon leading-relaxed">
-                  Proximité locale, connaissance du tissu économique de la Loire.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-elegant p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-elegant bg-or/10 flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-serif text-lg font-bold text-noir mb-2">Process clair</h3>
-                <p class="text-sm text-charbon leading-relaxed">
-                  Étapes définies, sans frais cachés. Vous savez exactement ce que vous payez.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-elegant p-6">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-elegant bg-or/10 flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-serif text-lg font-bold text-noir mb-2">Délais respectés</h3>
-                <p class="text-sm text-charbon leading-relaxed">
-                  Engagement sur les délais annoncés. Transparence totale sur l'avancement.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-elegant-highlight p-6 md:col-span-2">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-elegant bg-or/20 flex items-center justify-center flex-shrink-0">
-                <svg class="w-6 h-6 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  ></path>
-                </svg>
-              </div>
-              <div>
-                <h3 class="font-serif text-lg font-bold text-noir mb-2">Support par e-mail</h3>
-                <p class="text-sm text-charbon leading-relaxed">
-                  Accompagnement complet par e-mail. Réponse sous 24 h pour toutes vos questions.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Trust Badge -->
-        <div class="mt-12 pt-8 border-t border-gris-doux">
-          <div class="flex flex-wrap justify-center">
-            <a href="/politique-confidentialite" class="flex items-center gap-2 text-sm text-charbon hover:text-or transition-colors">
-              <svg class="w-5 h-5 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-              </svg>
-              <span>RGPD conforme</span>
-            </a>
           </div>
         </div>
       </div>
@@ -813,7 +584,7 @@ const faqItems = [
   <!-- Projet en lancement -->
   <section id="a-propos-projet" class="section-padding section-white">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto text-center">
+      <div class="max-w-3xl mx-auto text-center">
         <span class="text-elegant-caps text-or tracking-widest mb-4 block">Lancement 2026</span>
         <h2 class="section-title">
           Un projet qui démarre
@@ -822,41 +593,8 @@ const faqItems = [
 
         <p class="text-lg text-charbon leading-relaxed mb-8">
           Loire Digital est un projet personnel de création de sites web pour les commerces locaux.
-          Je démarre mon activité en 2026, ce qui signifie que je n'ai pas encore de réalisations à vous montrer.
+          Je démarre mon activité en 2026 : pas encore de réalisations à montrer, mais un engagement sur la qualité et la transparence.
         </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div class="card-elegant p-6">
-            <div class="icon-container icon-container-md mx-auto mb-4">
-              <svg class="w-7 h-7 icon-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-noir mb-2">Code moderne</h3>
-            <p class="text-sm text-charbon">Technologies actuelles (Astro, React), sites rapides et optimisés pour le SEO.</p>
-          </div>
-
-          <div class="card-elegant p-6">
-            <div class="icon-container icon-container-md mx-auto mb-4">
-              <svg class="w-7 h-7 icon-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-noir mb-2">Prix affichés</h3>
-            <p class="text-sm text-charbon">Tarifs clairs dès le départ. Pas de surprise, pas de frais cachés.</p>
-          </div>
-
-          <div class="card-elegant p-6">
-            <div class="icon-container icon-container-md mx-auto mb-4">
-              <svg class="w-7 h-7 icon-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <h3 class="font-serif text-lg font-bold text-noir mb-2">Basé à Saint-Étienne</h3>
-            <p class="text-sm text-charbon">Connaissance du tissu local et des besoins des commerçants de la Loire.</p>
-          </div>
-        </div>
 
         <div class="card-elegant p-8 bg-or/5 border-or/20">
           <p class="text-charbon mb-4">
@@ -870,145 +608,19 @@ const faqItems = [
     </div>
   </section>
 
-  <!-- Local Presence Section -->
-  <section class="section-padding section-white">
-    <div class="container mx-auto px-4">
-      <div class="max-w-5xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span class="text-elegant-caps text-or tracking-widest mb-4 block">Ancrage local</span>
-            <h2 class="section-title mb-6">
-              Au service des commerces de la Loire
-            </h2>
-            <div class="separator-gold mb-6"></div>
-            <p class="text-lg text-charbon mb-6 leading-relaxed">
-              Basé à <strong class="text-noir">Saint-Étienne</strong>, nous connaissons parfaitement le tissu économique local
-              et les besoins spécifiques des commerçants et artisans de la Loire.
-            </p>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-or/10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg class="w-4 h-4 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-noir">Connaissance des quartiers</p>
-                  <p class="text-sm text-charbon">
-                    <strong class="text-noir">Votre site parle à votre quartier.</strong>
-                    Centre-ville, Bellevue, Châteaucreux, Fauriel... nous ciblons précisément votre clientèle locale.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-or/10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg class="w-4 h-4 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-noir">SEO local optimisé</p>
-                  <p class="text-sm text-charbon">
-                    <strong class="text-noir">Apparaissez en premier sur Google.</strong>
-                    Quand vos clients cherchent "coiffeur Saint-Étienne" ou "boulangerie près de moi", ils vous trouvent.
-                  </p>
-                </div>
-              </li>
-              <li class="flex items-start gap-3">
-                <div class="w-6 h-6 rounded-full bg-or/10 flex items-center justify-center flex-shrink-0 mt-1">
-                  <svg class="w-4 h-4 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                  </svg>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold text-noir">Disponibilité et réactivité</p>
-                  <p class="text-sm text-charbon">Nous comprenons les contraintes des commerçants : horaires étendus, week-ends... nous nous adaptons.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <div class="card-elegant-highlight p-8">
-              <div class="space-y-6">
-                <div class="flex items-center gap-4">
-                  <div class="icon-container-lg rounded-elegant bg-white flex-shrink-0 shadow-sm">
-                    <svg class="w-8 h-8 text-or" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-sm font-bold text-charbon">Zone d'intervention</p>
-                    <p class="text-lg font-serif font-bold text-noir">Saint-Étienne & Loire (42)</p>
-                  </div>
-                </div>
-
-                <div class="border-t border-gris-doux pt-6">
-                  <p class="text-sm font-semibold text-charbon mb-3">Villes couvertes :</p>
-                  <div class="flex flex-wrap gap-2">
-                    {['Saint-Étienne', 'Firminy', 'Rive-de-Gier', 'Saint-Chamond', 'Montbrison', 'La Ricamarie', 'Andrézieux', 'Roanne'].map(city => (
-                      <span class="px-3 py-1 bg-white rounded-full text-xs font-medium text-noir border border-or/30 hover:border-or transition-colors">
-                        {city}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div class="border-t border-gris-doux pt-6">
-                  <p class="text-sm font-semibold text-charbon mb-3">Secteurs d'activité :</p>
-                  <div class="grid grid-cols-2 gap-2 text-xs text-charbon">
-                    <div class="flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 bg-or rounded-full"></div>
-                      <span>Boulangeries</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 bg-or rounded-full"></div>
-                      <span>Salons</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 bg-or rounded-full"></div>
-                      <span>Artisans</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 bg-or rounded-full"></div>
-                      <span>Restaurants</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 bg-or rounded-full"></div>
-                      <span>Commerce de détail</span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <div class="w-1.5 h-1.5 bg-or rounded-full"></div>
-                      <span>Services</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Objections Section -->
   <section class="section-padding section-creme">
     <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
+      <div class="max-w-3xl mx-auto">
         <div class="text-center mb-12">
           <span class="text-elegant-caps text-or tracking-widest mb-4 block">Vos doutes</span>
           <h2 class="section-title">
-            Vos questions, nos réponses
+            Questions fréquentes avant de se lancer
           </h2>
           <div class="separator-gold-center mt-6 mb-6"></div>
-          <p class="section-subtitle mx-auto">
-            Les objections les plus fréquentes et comment nous y répondons
-          </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Objection 1: C'est trop cher -->
           <div class="card-elegant p-8">
             <div class="icon-container icon-container-md mb-6">
               <svg
@@ -1027,28 +639,11 @@ const faqItems = [
             </div>
             <h3 class="text-xl font-serif font-bold text-noir mb-3">"C'est trop cher"</h3>
             <p class="text-sm text-charbon leading-relaxed mb-4">
-              Comparons :
-            </p>
-            <ul class="space-y-2 text-sm text-charbon mb-4">
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Agence classique : 3 000 à 8 000 €</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Publicité Facebook pendant 6 mois : 1 200 € (résultats non garantis)</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span><strong class="text-noir">Loire Digital :</strong> 400 à 1 500 €, site professionnel qui travaille pour vous 24/7</span>
-              </li>
-            </ul>
-            <p class="text-sm font-semibold text-noir">
-              Il suffit de 2 à 3 nouveaux clients pour rentabiliser votre investissement.
+              Une agence classique facture 3 000 à 8 000 €. Nos tarifs (400 à 1 500 €) permettent aux petits commerces d'avoir un site professionnel.
+              Il suffit de 2-3 nouveaux clients pour rentabiliser votre investissement.
             </p>
           </div>
 
-          <!-- Objection 2: Mon neveu peut le faire -->
           <div class="card-elegant p-8">
             <div class="icon-container icon-container-md mb-6">
               <svg
@@ -1065,110 +660,10 @@ const faqItems = [
                 ></path>
               </svg>
             </div>
-            <h3 class="text-xl font-serif font-bold text-noir mb-3">"Mon neveu / l'IA peut le faire"</h3>
+            <h3 class="text-xl font-serif font-bold text-noir mb-3">"Mon neveu peut le faire"</h3>
             <p class="text-sm text-charbon leading-relaxed mb-4">
-              La différence entre bricolage et site professionnel :
+              Un site amateur nuit à votre image. Le SEO local, la vitesse, la sécurité HTTPS, l'optimisation mobile : ce sont des compétences techniques qui font la différence entre un site visible et un site inutile.
             </p>
-            <ul class="space-y-2 text-sm text-charbon mb-4">
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span><strong class="text-noir">Image de marque</strong> - Votre site reflète votre sérieux</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span><strong class="text-noir">SEO local</strong> - Apparaître sur Google nécessite une vraie stratégie</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span><strong class="text-noir">Fiabilité</strong> - Un site qui fonctionne toujours, sans bugs</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span><strong class="text-noir">Temps gagné</strong> - Concentrez-vous sur votre métier</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Objection 3: Je n'ai pas le temps -->
-          <div class="card-elegant p-8">
-            <div class="icon-container icon-container-md mb-6">
-              <svg
-                class="w-7 h-7 icon-gold"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-serif font-bold text-noir mb-3">"Je n'ai pas le temps"</h3>
-            <p class="text-sm text-charbon leading-relaxed mb-4">
-              Justement, notre process est conçu pour vous faire gagner du temps :
-            </p>
-            <ul class="space-y-2 text-sm text-charbon mb-4">
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Tout par e-mail, quand vous voulez</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Pas de réunions interminables</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Nous gérons toute la partie technique</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Total : 2-3 heures de votre temps sur 2 semaines</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Objection 4: Je n'y comprends rien -->
-          <div class="card-elegant p-8">
-            <div class="icon-container icon-container-md mb-6">
-              <svg
-                class="w-7 h-7 icon-gold"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
-                  d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                ></path>
-              </svg>
-            </div>
-            <h3 class="text-xl font-serif font-bold text-noir mb-3">"Je n'y comprends rien au web"</h3>
-            <p class="text-sm text-charbon leading-relaxed mb-4">
-              Pas besoin d'être expert, c'est notre métier :
-            </p>
-            <ul class="space-y-2 text-sm text-charbon mb-4">
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Langage simple, sans jargon technique</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Accompagnement complet de A à Z</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Formation incluse pour les modifications simples</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <div class="w-1.5 h-1.5 bg-or rounded-full mt-2 flex-shrink-0"></div>
-                <span>Support continu par e-mail</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
