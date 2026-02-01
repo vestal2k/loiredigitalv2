@@ -12,7 +12,7 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
       return new Response(
         JSON.stringify({
           success: true,
-          message: 'Votre message a ete envoye avec succes.',
+          message: 'Votre message a été envoyé avec succès.',
         }),
         {
           status: 200,
