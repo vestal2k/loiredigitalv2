@@ -182,33 +182,30 @@ const jsonLdSchema = {
       </nav>
     </header>
 
-    <!-- Mobile Navigation Overlay -->
-    <div id="mobile-overlay" class="mobile-overlay" aria-hidden="true"></div>
-
-    <!-- Mobile Navigation -->
+    <!-- Mobile Navigation Dropdown -->
     <nav
       id="mobile-nav"
-      class="mobile-nav"
+      class="mobile-nav-dropdown"
       aria-label="Menu mobile"
       aria-hidden="true"
     >
-      <ul class="mobile-nav-list">
+      <ul class="mobile-nav-dropdown-list">
         <li>
-          <a href="/#avantages" class="mobile-nav-link" data-mobile-link>Pourquoi nous</a>
+          <a href="/#avantages" class="mobile-nav-dropdown-link" data-mobile-link>Pourquoi nous</a>
         </li>
         <li>
-          <a href="/#process" class="mobile-nav-link" data-mobile-link>Comment ça marche</a>
+          <a href="/#process" class="mobile-nav-dropdown-link" data-mobile-link>Comment ça marche</a>
         </li>
         <li>
-          <a href="/#tarifs" class="mobile-nav-link" data-mobile-link>Nos prix</a>
+          <a href="/#tarifs" class="mobile-nav-dropdown-link" data-mobile-link>Nos prix</a>
         </li>
         <li>
-          <a href="/a-propos" class="mobile-nav-link" data-mobile-link>À propos</a>
+          <a href="/a-propos" class="mobile-nav-dropdown-link" data-mobile-link>À propos</a>
         </li>
         <li>
-          <a href="/blog" class="mobile-nav-link" data-mobile-link>Blog</a>
+          <a href="/blog" class="mobile-nav-dropdown-link" data-mobile-link>Blog</a>
         </li>
-        <li class="pt-6">
+        <li class="pt-4">
           <a href="/#contact" class="btn-gold w-full text-center" data-mobile-link>Contact</a>
         </li>
       </ul>
@@ -329,10 +326,8 @@ const jsonLdSchema = {
 
     <script is:inline>
       (function() {
-        // Mobile Menu Logic
         var burgerBtn = document.getElementById('burger-btn');
         var mobileNav = document.getElementById('mobile-nav');
-        var mobileOverlay = document.getElementById('mobile-overlay');
         var mobileLinks = document.querySelectorAll('[data-mobile-link]');
         var isMenuOpen = false;
 
@@ -343,8 +338,6 @@ const jsonLdSchema = {
           burgerBtn.setAttribute('aria-label', 'Fermer le menu');
           mobileNav.classList.add('is-open');
           mobileNav.setAttribute('aria-hidden', 'false');
-          mobileOverlay.classList.add('is-visible');
-          document.body.style.overflow = 'hidden';
         }
 
         function closeMenu() {
@@ -354,8 +347,6 @@ const jsonLdSchema = {
           burgerBtn.setAttribute('aria-label', 'Ouvrir le menu');
           mobileNav.classList.remove('is-open');
           mobileNav.setAttribute('aria-hidden', 'true');
-          mobileOverlay.classList.remove('is-visible');
-          document.body.style.overflow = '';
         }
 
         function toggleMenu() {
@@ -366,28 +357,20 @@ const jsonLdSchema = {
           }
         }
 
-        // Event listeners
         if (burgerBtn) {
           burgerBtn.addEventListener('click', toggleMenu);
         }
 
-        if (mobileOverlay) {
-          mobileOverlay.addEventListener('click', closeMenu);
-        }
-
-        // Close menu when clicking on a link
         mobileLinks.forEach(function(link) {
           link.addEventListener('click', closeMenu);
         });
 
-        // Close on Escape key
         document.addEventListener('keydown', function(e) {
           if (e.key === 'Escape' && isMenuOpen) {
             closeMenu();
           }
         });
 
-        // Close menu on resize to desktop
         window.addEventListener('resize', function() {
           if (window.innerWidth >= 768 && isMenuOpen) {
             closeMenu();
