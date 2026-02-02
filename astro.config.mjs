@@ -19,17 +19,9 @@ export default defineConfig({
     webAnalytics: {
       enabled: true,
     },
+    imageService: true,
   }),
   site: 'https://loiredigital.fr',
-  image: {
-    // Optimize images automatically
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-      config: {
-        limitInputPixels: false,
-      },
-    },
-  },
   vite: {
     resolve: {
       alias: {
